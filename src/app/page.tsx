@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Scissors, Ruler } from "lucide-react";
 import { useRef } from "react";
+import { ServicesSection } from "@/components/sections/ServicesSection";
 
 // Variáveis de animação corrigidas
 const containerReveal = {
@@ -69,18 +70,34 @@ export default function Home() {
             variants={containerReveal} 
             initial="hidden" 
             animate="show" 
-            className="flex flex-col items-center"
-          >
-            <div className="overflow-hidden pb-2">
-              <motion.h1 variants={itemReveal} className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-white">
-                A Arte da
-              </motion.h1>
-            </div>
-            <div className="overflow-hidden pb-4">
-              <motion.h1 variants={itemReveal} className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-zinc-500">
-                Precisão.
-              </motion.h1>
-            </div>
+            className="flex flex-col items-center">
+            
+            {/* Único H1 para SEO Otimizado */}
+            <h1 className="flex flex-col items-center">
+              {/* Texto de SEO Oculto (Acessível para robôs e leitores de tela) */}
+              <span className="sr-only">
+                Dom Elii Barbershop - Barbearia no Bacacheri em Curitiba especializada em Visagismo
+              </span>
+              {/* Linha 1: "A Arte da" */}
+              <div className="overflow-hidden pt-2"> {/* pt-2 evita cortes no topo */}
+                <motion.span 
+                  variants={itemReveal} 
+                  className="block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-white"
+                >
+                  A Arte da
+                </motion.span>
+              </div>
+
+              {/* Linha 2: "Precisão." */}
+              <div className="overflow-hidden pt-4 pb-2"> {/* pt-4 garante que o acento apareça 100% */}
+                <motion.span 
+                  variants={itemReveal} 
+                  className="block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-zinc-500"
+                >
+                  Precisão.
+                </motion.span>
+              </div>
+            </h1>
           </motion.div>
 
           <motion.div
@@ -109,53 +126,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DOBRA 2: A EXPERIÊNCIA */}
-      <section className="relative w-full bg-[#0A0A0A] py-32 z-20 border-t border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      {/* DOBRA 2: O AMBIENTE - Editorial Premium (Padrão Codexo) */}
+      <section className="relative w-full bg-[#0A0A0A] py-24 md:pt-32 pb-12 md:pb-16 z-20 border-t border-white/5 overflow-hidden">
+        <div className="container mx-auto px-6 md:px-12">
+          
+          {/* Usando Flexbox em vez de Grid para controle absoluto da ordem no Mobile/Desktop */}
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+            
+            {/* Bloco 1: O Manifesto (Vem SEMPRE primeiro no mobile e no desktop) */}
             <motion.div 
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="w-full lg:w-1/2 flex flex-col justify-center order-1"
             >
               <h3 className="text-xs font-bold text-zinc-500 tracking-[0.3em] uppercase mb-6 flex items-center gap-4">
-                <span className="w-12 h-px bg-zinc-700"></span> O Padrão Dom Elii
+                <span className="w-12 h-px bg-zinc-700"></span> A Experiência
               </h3>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase text-white mb-8">
-                Engenharia <span className="text-zinc-600">Visual.</span>
+              
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter uppercase text-white mb-8 leading-[1.1]">
+                Santuário de <br className="hidden md:block" />
+                <span className="text-zinc-500">Desconexão.</span> 
               </h2>
-              <p className="text-zinc-400 text-lg font-light leading-relaxed mb-6">
-                Aplicamos fundamentos do visagismo para esculpir sua melhor versão no coração do Bacacheri.
+              
+              <p className="text-zinc-400 text-lg font-light leading-relaxed mb-10 max-w-md">
+                Mais do que uma barbearia, forjamos um refúgio no Bacacheri. Um ambiente projetado com precisão geométrica e linhas limpas, onde o visagismo encontra a estética clássica.
               </p>
+
+              {/* Elemento de UI Memorable: Blockquote Editorial em vez de Botão de Serviço */}
+              <div className="relative pl-6 py-2 border-l-2 border-zinc-800">
+                <p className="text-xl text-zinc-300 font-medium italic tracking-wide">
+                  "Não apenas cortamos cabelo.<br/>
+                  Esculpimos confiança."
+                </p>
+              </div>
             </motion.div>
-            <div className="relative aspect-[4/5] bg-zinc-900 border border-white/10 rounded-sm overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-               <Image src="/barbearia-estacao-trabalho.jpeg" alt="Espaço" fill className="object-cover" />
-            </div>
+
+            {/* Bloco 2: A Imagem Real com UI Flutuante */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="w-full lg:w-1/2 order-2 relative"
+            >
+              {/* Contêiner da Foto: Cores vivas, mas com contraste de cinema */}
+              <div className="relative w-full aspect-[4/5] md:aspect-square bg-zinc-900 rounded-sm overflow-hidden shadow-2xl group">
+                
+                {/* Overlay sutil de vinheta para focar o olhar no centro da foto */}
+                <div className="absolute inset-0 bg-radial-gradient from-transparent to-black/40 z-10 pointer-events-none"></div>
+                
+                <Image 
+                  src="/barbearia-estacao-trabalho.jpeg" 
+                  alt="Estação de trabalho da Dom Elii Barbershop" 
+                  fill 
+                  priority
+                  // Sem grayscale. Apenas um leve ajuste de contraste e brilho para o dark mode
+                  className="object-cover contrast-[1.1] brightness-[0.9] group-hover:scale-105 transition-transform duration-[2s] ease-out" 
+                />
+
+                {/* UI Element: Badge Glassmorphism flutuante - O detalhe que marca a memória */}
+                <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-20 bg-black/40 backdrop-blur-md border border-white/10 px-6 py-4 rounded-sm transform translate-y-4 group-hover:translate-y-0 opacity-90 group-hover:opacity-100 transition-all duration-500">
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <p className="text-white text-xs font-bold tracking-[0.2em] uppercase">Bacacheri, PR</p>
+                  </div>
+                  <p className="text-zinc-400 text-sm font-light">Padrão Ouro em Curitiba</p>
+                </div>
+
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* DOBRA 3: SERVIÇOS */}
-      <section className="relative w-full bg-zinc-950 py-32 z-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white">A Curadoria</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto font-sans">
-             <div className="p-8 border border-white/5 bg-[#0A0A0A] hover:border-zinc-500 transition-colors">
-                <Scissors className="text-zinc-600 mb-4" />
-                <h3 className="text-xl font-bold uppercase text-white mb-2">Corte & Visagismo</h3>
-                <p className="text-zinc-400 text-sm">A partir de R$ XX,00</p>
-             </div>
-             <div className="p-8 border border-white/5 bg-[#0A0A0A] hover:border-zinc-500 transition-colors">
-                <Ruler className="text-zinc-600 mb-4" />
-                <h3 className="text-xl font-bold uppercase text-white mb-2">Barboterapia</h3>
-                <p className="text-zinc-400 text-sm">A partir de R$ XX,00</p>
-             </div>
-          </div>
-        </div>
-      </section>
+      {/* DOBRA 3: RITUAIS (O componente já gerencia seu próprio espaço e cor) */}
+      <ServicesSection />
 
       {/* DOBRA 4: GALERIA HORIZONTAL (AQUI É ONDE ENTRA O EFEITO QUE VOCÊ QUERIA) */}
       <section ref={galleryRef} className="relative h-[300vh] bg-[#0A0A0A]">
