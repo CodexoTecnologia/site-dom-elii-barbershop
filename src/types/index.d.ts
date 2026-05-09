@@ -1,0 +1,1 @@
+//# Tipagens estritas do TypeScript
