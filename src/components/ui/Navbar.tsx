@@ -70,6 +70,9 @@ export function Navbar() {
           <Link href="/blog" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
             Editorial
           </Link>
+          <Link href="/faq" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+            FAQ
+          </Link>
         </nav>
 
         {/* CTA Desktop */}
@@ -124,6 +127,14 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Editorial
+            </Link>
+
+            <Link 
+              href="/faq" 
+              className="text-lg font-medium text-zinc-300 hover:text-white transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              FAQ
             </Link>
             
             <motion.a 
