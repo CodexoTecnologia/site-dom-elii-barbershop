@@ -18,6 +18,7 @@ export function FaqClient() {
       <FundoHero
         src="/barba-1.jpeg"
         alt="Barboterapia na Dom Elii Barbershop"
+        escurecer={90}
       />
 
       <section className="relative w-full pt-32 lg:pt-36 pb-32 z-10">
@@ -26,12 +27,12 @@ export function FaqClient() {
             {/* mt no desktop: a logo grande da navbar invade esta coluna */}
             <div className="lg:w-1/3 flex flex-col relative lg:mt-16">
               <Revelar className="lg:sticky lg:top-32">
-                <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-white uppercase mb-6 leading-[1.1]">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white uppercase mb-6 leading-[1.05]">
                   Suas <br className="hidden lg:block" />
                   <span className="text-zinc-500">Dúvidas.</span>
                 </h1>
 
-                <p className="text-zinc-400 font-light leading-relaxed mb-10 max-w-sm">
+                <p className="text-zinc-300 font-light leading-relaxed mb-10 max-w-sm">
                   Reunimos aqui o que mais nos perguntam sobre endereço,
                   horários, preços e agendamento. Se ficar qualquer dúvida,
                   é só chamar no WhatsApp — a gente responde.

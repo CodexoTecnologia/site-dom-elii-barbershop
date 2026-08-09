@@ -42,7 +42,7 @@ export default function BarbeariaCuritibaPage() {
           <div className="container mx-auto px-6 md:px-12 relative z-10">
             <div className="flex flex-col lg:flex-row gap-16 items-center">
               <div className="lg:w-1/2">
-                <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase leading-[1.05] mb-8">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white uppercase leading-[1.05] mb-8">
                   Barbearia em <br />
                   <span className="text-zinc-500">Curitiba.</span>
                 </h1>

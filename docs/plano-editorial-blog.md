@@ -1,8 +1,9 @@
 # Plano editorial do blog — Dom Elii Barbershop
 
 Base: AnswerThePublic e People Also Ask para "barbearia em curitiba" (09/08/2026).
-Cada pauta virou uma entrada em `src/data/artigos.ts`, que gera a URL, a
-metadata e o schema `BlogPosting` sozinha.
+Cada artigo é um arquivo em `src/data/artigos/`, registrado em
+`src/data/artigos/index.ts`. A URL, a metadata e o schema `BlogPosting` são
+gerados a partir dele.
 
 ---
 
@@ -43,74 +44,40 @@ que tem volume menor e intenção de agendar muito mais alta. O tráfego de
 
 ---
 
-## Pauta priorizada
+## Publicados (11 artigos)
 
-Ordem = ordem de publicação sugerida. As três primeiras cobrem intenção
-comercial direta e devem sair antes das demais.
+| Artigo | Alvo | Categoria |
+|---|---|---|
+| Quanto custa cortar o cabelo em Curitiba | "quanto um barbeiro cobra" (PAA) | Preços |
+| Como saber se o barbeiro é bom | "como saber se o cabeleireiro é bom" (PAA) | Barbearia |
+| Degradê masculino: tipos de fade | degradê / fade masculino | Cortes |
+| Pomada, cera ou pó: qual usar | "produtos para barbearia em curitiba" | Produtos |
+| De quanto em quanto tempo voltar à barbearia | recorrência, cauda longa | Rotina |
+| Como cuidar do cabelo em casa | caspa, oleosidade, rotina masculina | Cuidados |
+| Barba falhada: o que dá para resolver | barba falhada / preencher falhas | Barba |
+| Sobrancelha masculina: o que esperar | sobrancelha masculina design | Cuidados |
+| Visagismo masculino: corte por formato de rosto | visagismo masculino | Visagismo |
+| Tendências de barba no inverno | barba curitiba, sazonal | Barba |
+| Platinado masculino: manutenção | platinado masculino curitiba | Química |
 
-### 1. Quanto custa cortar o cabelo em Curitiba
-- **Alvo:** "quanto um barbeiro cobra", "preço corte de cabelo curitiba"
-- **Slug:** `quanto-custa-cortar-cabelo-em-curitiba`
-- **Ângulo:** faixas reais de preço na cidade, o que faz o preço variar
-  (tempo de cadeira, química, produto), e por que o mais barato costuma sair
-  caro. Terminar com a tabela da Dom Elii.
-- **Foto de capa:** cadeira com cliente de costas e espelho ao fundo,
-  enquadramento horizontal 16:9, luz do ambiente.
+## Pautas para a próxima leva
 
-### 2. Como saber se o barbeiro é bom: 6 sinais antes de sentar
-- **Alvo:** "como saber se o cabeleireiro é bom", "barbearia bem avaliada curitiba"
-- **Slug:** `como-saber-se-o-barbeiro-e-bom`
-- **Ângulo:** checklist prático (pergunta sobre rotina, mostra o acabamento,
-  higieniza a máquina na frente do cliente, tem avaliação recente e pública).
-- **Foto:** detalhe das mãos com máquina/navalha em ação, 16:9.
+Ideias que ficaram de fora desta rodada, em ordem de prioridade:
 
-### 3. Degradê masculino: qual fade combina com o seu cabelo
-- **Alvo:** "degradê curitiba", "tipos de fade"
-- **Slug:** `degrade-masculino-tipos-de-fade`
-- **Ângulo:** low, mid, high e skin fade; o que cada um exige de manutenção;
-  qual sustenta em cabelo fino, crespo e com entradas.
-- **Foto:** três nucas lado a lado com alturas diferentes de degradê. Se der,
-  padronizar fundo e distância para virar um comparativo visual.
-
-### 4. Barbearia com visagismo em Curitiba: o que muda na prática
-- **Alvo:** "barbearia com visagismo em curitiba"
-- **Slug:** `barbearia-com-visagismo-em-curitiba`
-- **Ângulo:** o que o barbeiro observa antes de cortar e como isso muda o
-  resultado. Complementa o artigo de visagismo já publicado, sem repeti-lo:
-  aqui o foco é o atendimento, lá é o formato de rosto.
-- **Foto:** barbeiro conversando com o cliente antes do corte, os dois de
-  frente para o espelho.
-
-### 5. Pomada, cera ou pó: qual usar em cada tipo de cabelo
-- **Alvo:** "produtos para barbearia em curitiba", "qual pomada usar"
-- **Slug:** `pomada-cera-ou-po-qual-usar`
-- **Ângulo:** fixação x brilho x peso do fio. Conecta com os produtos vendidos
-  na loja (Classe A, Tocton) sem virar catálogo.
-- **Foto:** produtos alinhados sobre a bancada, luz lateral, 16:9.
-
-### 6. Com que frequência voltar à barbearia
-- **Alvo:** cauda longa de manutenção; serve para trazer cliente de volta
-- **Slug:** `com-que-frequencia-voltar-a-barbearia`
-- **Ângulo:** intervalo por tipo de corte e de barba, e o que acontece quando
-  passa do ponto. É a pauta com maior efeito sobre recorrência.
-- **Foto:** calendário/agenda ao lado das ferramentas, ou antes/depois de
-  manutenção de 20 dias.
-
----
-
-## Já publicados
-
-| Artigo | Alvo |
-|---|---|
-| Visagismo masculino: qual o corte ideal para o seu formato de rosto | visagismo masculino |
-| Tendências de barba em Curitiba para o inverno | barba curitiba, sazonal |
-| Platinado masculino: como manter o cabelo saudável pós-química | platinado masculino curitiba |
-
----
+1. **Primeira vez em barbearia: como pedir o corte** — cauda longa com alta
+   intenção, e resolve a insegurança de quem nunca foi.
+2. **Corte infantil: a partir de que idade e como preparar a criança** — a
+   barbearia atende a partir dos 3 anos e o assunto não está coberto.
+3. **Cabelo cacheado e crespo masculino: cortes que funcionam** — hoje só há
+   menções dentro de outros textos.
+4. **Barba no verão de Curitiba** — par sazonal do artigo de inverno, para
+   publicar em novembro ou dezembro.
+5. **Quanto tempo leva cada serviço** — útil para quem precisa encaixar a
+   visita no intervalo do trabalho.
 
 ## Padrão das fotos de capa
 
-Para o blog ficar coeso quando tiver 10 artigos:
+Para o blog ficar coeso conforme cresce:
 
 - **Proporção:** 16:9 (o card do blog e o Open Graph usam essa forma)
 - **Resolução:** 1600px de largura é suficiente — o site recomprime
@@ -127,7 +94,7 @@ Para o blog ficar coeso quando tiver 10 artigos:
 
 1. Colocar a foto em `public/`
 2. Rodar `npm run otimizar-imagens`
-3. Adicionar o objeto em `src/data/artigos.ts` (o arquivo tem o formato
-   comentado no topo)
+3. Criar `src/data/artigos/<slug>.ts` (copie qualquer artigo existente como
+   modelo) e registrar em `src/data/artigos/index.ts`
 4. Pronto: a URL, o `<title>`, a descrição, o schema `BlogPosting` e a entrada
-   no sitemap são gerados a partir dessa entrada
+   no sitemap saem daí. A ordem no blog é por data, automática.

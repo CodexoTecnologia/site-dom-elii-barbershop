@@ -13,6 +13,9 @@ import { negocio } from "@/data/negocio";
 import { JsonLd } from "@/components/JsonLd";
 import { schemaArtigo, schemaBreadcrumb } from "@/lib/schema";
 import { criarMetadata } from "@/lib/seo";
+import { slugify } from "@/lib/slug";
+import { IndiceArtigo } from "@/components/ui/IndiceArtigo";
+import { montarIndice } from "@/lib/indice";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -43,13 +46,20 @@ function Bloco({ bloco }: { bloco: BlocoConteudo }) {
   switch (bloco.tipo) {
     case "h2":
       return (
-        <h2 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight mt-14 mb-5">
+        // scroll-mt compensa a navbar fixa quando se chega pelo índice
+        <h2
+          id={slugify(bloco.texto)}
+          className="scroll-mt-28 text-2xl md:text-3xl font-bold text-white uppercase tracking-tight mt-14 mb-5"
+        >
           {bloco.texto}
         </h2>
       );
     case "h3":
       return (
-        <h3 className="text-xl font-bold text-zinc-200 tracking-tight mt-10 mb-4">
+        <h3
+          id={slugify(bloco.texto)}
+          className="scroll-mt-28 text-xl font-bold text-zinc-200 tracking-tight mt-10 mb-4"
+        >
           {bloco.texto}
         </h3>
       );
@@ -68,6 +78,38 @@ function Bloco({ bloco }: { bloco: BlocoConteudo }) {
             </li>
           ))}
         </ul>
+      );
+    case "imagem":
+      return (
+        <figure className="my-10 -mx-6 md:mx-0">
+          <div className="relative aspect-[4/3] md:aspect-[16/9] overflow-hidden md:rounded-sm border-y md:border border-white/10 bg-zinc-900">
+            <Image
+              src={bloco.src}
+              alt={bloco.alt}
+              fill
+              quality={65}
+              // Sem `priority`: imagem no meio do texto só carrega ao chegar nela.
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
+          {bloco.legenda && (
+            <figcaption className="mt-3 px-6 md:px-0 text-xs text-zinc-400 font-light">
+              {bloco.legenda}
+            </figcaption>
+          )}
+        </figure>
+      );
+    case "destaque":
+      return (
+        <aside className="my-10 border border-white/10 bg-zinc-900/40 rounded-sm p-6 md:p-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-100/80 mb-3">
+            {bloco.titulo}
+          </p>
+          <p className="text-zinc-300 font-light leading-relaxed">
+            {bloco.texto}
+          </p>
+        </aside>
       );
     case "citacao":
       return (
@@ -92,6 +134,8 @@ export default async function ArtigoPage({ params }: Props) {
 
   const relacionados = artigosBlog.filter((a) => a.slug !== artigo.slug).slice(0, 2);
 
+  const indice = montarIndice(artigo.conteudo);
+
   return (
     <>
       <JsonLd
@@ -106,27 +150,8 @@ export default async function ArtigoPage({ params }: Props) {
       />
 
       <main className="flex min-h-screen flex-col bg-[#0A0A0A]">
-        <article className="w-full pt-32 md:pt-40 pb-24">
+        <article className="w-full pt-40 md:pt-48 pb-24">
           <div className="container mx-auto px-6 md:px-12">
-            {/* Breadcrumb visível — reforça a hierarquia para usuário e robô. */}
-            <nav aria-label="Trilha de navegação" className="mb-10">
-              <ol className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-400">
-                <li>
-                  <Link href="/" className="hover:text-white transition-colors">
-                    Início
-                  </Link>
-                </li>
-                <li aria-hidden="true">/</li>
-                <li>
-                  <Link href="/blog" className="hover:text-white transition-colors">
-                    Editorial
-                  </Link>
-                </li>
-                <li aria-hidden="true">/</li>
-                <li className="text-zinc-400">{artigo.categoria}</li>
-              </ol>
-            </nav>
-
             <header className="max-w-3xl mb-12">
               <p className="text-xs font-bold text-zinc-400 tracking-[0.3em] uppercase mb-6">
                 {artigo.categoria}
@@ -163,10 +188,16 @@ export default async function ArtigoPage({ params }: Props) {
               />
             </div>
 
-            <div className="max-w-3xl">
-              {artigo.conteudo.map((bloco, i) => (
-                <Bloco key={i} bloco={bloco} />
-              ))}
+            <div className="grid lg:grid-cols-[16rem_minmax(0,1fr)] gap-10 lg:gap-16">
+              <aside className="lg:order-1">
+                <IndiceArtigo itens={indice} />
+              </aside>
+
+              <div className="max-w-3xl lg:order-2">
+                {artigo.conteudo.map((bloco, i) => (
+                  <Bloco key={i} bloco={bloco} />
+                ))}
+              </div>
             </div>
 
             {/* CTA — todo artigo termina levando para o Booksy. */}

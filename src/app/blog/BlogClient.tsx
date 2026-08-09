@@ -95,7 +95,7 @@ export function BlogClient() {
               {artigosFiltrados.map((artigo, index) => (
                 <Revelar
                   as="article"
-                  key={artigo.id}
+                  key={artigo.slug}
                   atraso={index * 0.1}
                   className="group flex flex-col"
                 >

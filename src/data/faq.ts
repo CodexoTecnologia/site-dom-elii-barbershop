@@ -64,6 +64,31 @@ export const faqData: ItemFaq[] = [
       "Aceitamos Pix, dinheiro e cartões de crédito e débito. O pagamento também pode ser feito no momento do agendamento pelo Booksy.",
   },
   {
+    pergunta: "Qual é a melhor barbearia em Curitiba?",
+    resposta:
+      "Não existe uma resposta única: a melhor barbearia é a que atende bem o seu tipo de cabelo e cabe na sua rotina. Vale avaliar três coisas antes de escolher — se o profissional pergunta sobre o seu dia a dia antes de cortar, se a higienização das ferramentas acontece na sua frente e se as avaliações são recentes e descrevem o serviço. A Dom Elii tem nota 5,0 no Booksy com mais de 80 avaliações e fica na Boa Vista, em Curitiba.",
+  },
+  {
+    pergunta: "Quanto tempo demora cada serviço?",
+    resposta:
+      "Corte de cabelo leva 30 minutos. Barba, 30 minutos. Cabelo e barba juntos, 1 hora. O combo com cabelo, barba e sobrancelha leva 1h15. Serviços rápidos como pezinho, sobrancelha e acabamento de barba levam 15 minutos. Química, como platinado e luzes, começa em 30 a 45 minutos e varia conforme o comprimento do cabelo.",
+  },
+  {
+    pergunta: "Como remarcar ou cancelar um horário?",
+    resposta:
+      "Pelo próprio Booksy, no mesmo lugar onde o agendamento foi feito, ou pelo WhatsApp (41) 99538-4975. Avisar com antecedência libera o horário para outro cliente e garante que a sua próxima reserva seja tratada da mesma forma.",
+  },
+  {
+    pergunta: "Posso levar uma foto do corte que eu quero?",
+    resposta:
+      "Sim, e ajuda bastante. Só vale lembrar que o mesmo corte em tipos de cabelo diferentes dá resultados diferentes: se possível, leve a foto de alguém com textura e densidade parecidas com as suas. O barbeiro vai dizer o que é possível reproduzir no seu cabelo antes de começar.",
+  },
+  {
+    pergunta: "E se eu não gostar do corte?",
+    resposta:
+      "Fale ainda durante o atendimento. Quase todo ajuste é possível enquanto você está na barbearia, e nenhum é possível depois que você foi embora. Se perceber algo depois, chame no WhatsApp no mesmo dia ou no dia seguinte que a gente resolve.",
+  },
+  {
     pergunta: "A Dom Elii possui estacionamento?",
     resposta:
       "Há vagas na via em frente à barbearia, na Rua Lodovico Geronazzo. Como o movimento varia ao longo do dia, sugerimos chegar com alguns minutos de antecedência.",
