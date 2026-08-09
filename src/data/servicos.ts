@@ -33,16 +33,16 @@ export type CategoriaServico = {
 export const catalogoServicos: CategoriaServico[] = [
   {
     slug: "rituais-e-combos",
-    categoria: "Rituais & Combos",
+    categoria: "Combos",
     resumo:
-      "Pacotes completos que unem corte, barba e design facial numa única sessão.",
+      "Mais de um serviço na mesma sessão, por menos do que sairiam separados.",
     servicos: [
       {
         slug: "cabelo-barba-e-sobrancelha",
         titulo: "Cabelo, Barba & Sobrancelha",
-        subtitulo: "O Ritual Completo",
+        subtitulo: "Pacote completo",
         descricao:
-          "A experiência máxima da Dom Elii: corte com visagismo, barboterapia completa e design de sobrancelha na navalha em uma única sessão.",
+          "Cabelo, barba e sobrancelha no mesmo horário, em 1h15. Sai mais barato que os três separados.",
         preco: 105,
         duracaoMin: 75,
         imagem: "/corte-1.jpeg",
@@ -50,9 +50,9 @@ export const catalogoServicos: CategoriaServico[] = [
       {
         slug: "cabelo-e-barba",
         titulo: "Cabelo e Barba",
-        subtitulo: "O Clássico Indispensável",
+        subtitulo: "O combo mais pedido",
         descricao:
-          "Corte premium alinhado à barba desenhada, com opção de barboterapia com toalha no vapor para relaxamento total.",
+          "Corte de cabelo mais barba desenhada na navalha, com opção de toalha quente. Leva 1 hora e sai mais barato que os dois separados.",
         preco: 90,
         duracaoMin: 60,
         imagem: "/barba-1.jpeg",
@@ -60,9 +60,9 @@ export const catalogoServicos: CategoriaServico[] = [
       {
         slug: "corte-e-sobrancelha",
         titulo: "Corte e Sobrancelha",
-        subtitulo: "A Moldura do Rosto",
+        subtitulo: "Sem barba, rosto alinhado",
         descricao:
-          "Corte de cabelo com visagismo somado ao design de sobrancelha feito na navalha, valorizando o peso do olhar.",
+          "Corte de cabelo mais o desenho da sobrancelha na navalha. Bom para quem não usa barba e quer o rosto alinhado.",
         preco: 64.9,
         duracaoMin: 45,
         imagem: "/corte-2.jpeg",
@@ -70,9 +70,9 @@ export const catalogoServicos: CategoriaServico[] = [
       {
         slug: "corte-e-freestyle",
         titulo: "Corte & Freestyle",
-        subtitulo: "Arte no Cabelo",
+        subtitulo: "Corte com desenho",
         descricao:
-          "Corte alinhado ao desenvolvimento de desenhos exclusivos à navalha (freestyle), do traço simples ao projeto autoral.",
+          "Corte de cabelo com desenho feito à navalha, do traço simples ao projeto autoral. O valor varia conforme a complexidade do desenho.",
         preco: 64.9,
         apartirDe: true,
         duracaoMin: 45,
@@ -83,14 +83,14 @@ export const catalogoServicos: CategoriaServico[] = [
   {
     slug: "corte-e-barba",
     categoria: "Corte & Barba",
-    resumo: "O núcleo da barbearia: técnica de corte e cuidado com a barba.",
+    resumo: "O básico bem feito: corte de cabelo e barba, separados.",
     servicos: [
       {
         slug: "corte-de-cabelo",
         titulo: "Corte de Cabelo",
         subtitulo: "Degradê, Social ou Tesoura",
         descricao:
-          "Execução impecável de acordo com o seu perfil, estrutura óssea e estilo. Degradê (fade), social clássico ou trabalho integral na tesoura.",
+          "Degradê, social ou tesoura, conforme o seu tipo de cabelo e a sua rotina. Leva 30 minutos.",
         preco: 49.9,
         duracaoMin: 30,
         imagem: "/corte-3.jpeg",
@@ -100,7 +100,7 @@ export const catalogoServicos: CategoriaServico[] = [
         titulo: "Barba",
         subtitulo: "Barboterapia com toalha no vapor",
         descricao:
-          "Alinhamento na navalha com hidratação, óleos essenciais e toalha quente. A barboterapia é opcional.",
+          "Contorno na navalha com toalha quente e óleo. A toalha no vapor é opcional, e não muda o preço.",
         preco: 45,
         duracaoMin: 30,
         imagem: "/barba-1.jpeg",
@@ -108,18 +108,18 @@ export const catalogoServicos: CategoriaServico[] = [
       {
         slug: "so-maquina",
         titulo: "Só Máquina",
-        subtitulo: "Praticidade Premium",
+        subtitulo: "Manutenção rápida",
         descricao:
-          "Somente um pente no cabelo inteiro, mantendo acabamento de alto nível. Ideal para manutenção rápida.",
+          "Um pente só no cabelo inteiro, com acabamento na navalha. Para quem quer manter o mesmo comprimento.",
         preco: 40,
         duracaoMin: 20,
       },
       {
         slug: "freestyle",
         titulo: "Freestyle",
-        subtitulo: "Apenas Desenho",
+        subtitulo: "Só o desenho",
         descricao:
-          "Criação de arte, linhas e padrões exclusivos feitos à navalha sobre o corte já existente.",
+          "Desenho à navalha sobre o corte que você já tem. O valor depende da complexidade do traço.",
         preco: 15,
         apartirDe: true,
         duracaoMin: 15,
@@ -131,14 +131,14 @@ export const catalogoServicos: CategoriaServico[] = [
     slug: "quimica-e-estetica",
     categoria: "Química & Estética",
     resumo:
-      "Coloração, alisamento e cuidados de pele executados com produto profissional.",
+      "Cor, alisamento e pele. Serviços que pedem avaliação antes de começar.",
     servicos: [
       {
         slug: "platinado",
         titulo: "Platinado",
         subtitulo: "Branco ou Cinza",
         descricao:
-          "Descoloração avançada para o platinado perfeito, preservando ao máximo a saúde do fio. Valor varia conforme comprimento e histórico químico.",
+          "Descoloração para chegar ao branco ou cinza. O valor e o tempo dependem do comprimento e do histórico químico do seu cabelo.",
         preco: 100,
         apartirDe: true,
         duracaoMin: 30,
@@ -146,9 +146,9 @@ export const catalogoServicos: CategoriaServico[] = [
       {
         slug: "luzes",
         titulo: "Luzes",
-        subtitulo: "Iluminação",
+        subtitulo: "Mechas e contraste",
         descricao:
-          "Técnica de mechas para criar contraste e movimento, com transição natural entre a base e as pontas.",
+          "Mechas para criar contraste, com transição natural entre a raiz e as pontas.",
         preco: 100,
         apartirDe: true,
         duracaoMin: 45,
@@ -156,9 +156,9 @@ export const catalogoServicos: CategoriaServico[] = [
       {
         slug: "alisamento-capilar",
         titulo: "Alisamento Capilar",
-        subtitulo: "Rápido e Eficaz",
+        subtitulo: "De 5 a 10 minutos",
         descricao:
-          "De 5 a 10 minutos de aplicação para um cabelo liso e alinhado. Não compatível com cabelos que já receberam amônia.",
+          "Aplicação de 5 a 10 minutos para alinhar o fio. Não compatível com cabelo que já recebeu amônia.",
         preco: 40,
         apartirDe: true,
         duracaoMin: 20,
@@ -168,25 +168,25 @@ export const catalogoServicos: CategoriaServico[] = [
         titulo: "Pigmentação / Retoque na Cor",
         subtitulo: "Cabelo ou Barba",
         descricao:
-          "Retoque de cor, cobertura de fios brancos ou realce de contornos escuros no cabelo e na barba.",
+          "Cobre fios brancos e reforça os contornos, no cabelo ou na barba.",
         preco: 40,
         duracaoMin: 30,
       },
       {
         slug: "limpeza-de-pele",
         titulo: "Limpeza de Pele",
-        subtitulo: "Renovação Facial",
+        subtitulo: "Limpeza profunda",
         descricao:
-          "Remoção de impurezas, cravos e oleosidade para um rosto revitalizado. Ótimo complemento à barboterapia.",
+          "Remove cravos, oleosidade e impurezas. Combina bem com a barba no mesmo horário.",
         preco: 20,
         duracaoMin: 15,
       },
       {
         slug: "hidratacao-no-cabelo",
         titulo: "Hidratação no Cabelo",
-        subtitulo: "Saúde dos Fios",
+        subtitulo: "Depois da química",
         descricao:
-          "Reposição profunda de nutrientes para cabelos secos ou quimicamente tratados. Indicada após platinado e luzes.",
+          "Repõe o que a química tirou. Indicada depois de platinado e luzes, ou para cabelo ressecado.",
         preco: 20,
         duracaoMin: 15,
       },
@@ -194,24 +194,24 @@ export const catalogoServicos: CategoriaServico[] = [
   },
   {
     slug: "acabamentos",
-    categoria: "Acabamentos Minuciosos",
-    resumo: "Manutenção entre um corte e outro, sem perder o desenho.",
+    categoria: "Acabamentos",
+    resumo: "Serviços de 15 minutos para segurar o visual entre um corte e outro.",
     servicos: [
       {
         slug: "sobrancelha",
         titulo: "Sobrancelha",
         subtitulo: "Design na navalha",
         descricao:
-          "Limpeza e desenho geométrico da sobrancelha para valorizar o peso do seu olhar.",
+          "Limpeza e desenho da sobrancelha na navalha, sem tirar o traço natural.",
         preco: 20,
         duracaoMin: 15,
       },
       {
         slug: "pezinho",
         titulo: "Pezinho",
-        subtitulo: "Alinhamento de Nuca",
+        subtitulo: "Nuca e costeletas",
         descricao:
-          "Acabamento do cabelo na maquininha ou navalha, com simetria perfeita na linha do pescoço e costeletas.",
+          "Acerta a nuca e as costeletas entre um corte e outro. Leva 15 minutos.",
         preco: 20,
         apartirDe: true,
         duracaoMin: 15,
@@ -221,7 +221,7 @@ export const catalogoServicos: CategoriaServico[] = [
         titulo: "Acabamento da Barba",
         subtitulo: "Contornos",
         descricao:
-          "Desenho ou contorno da barba com máquina de acabamento, apenas o alinhamento das linhas externas.",
+          "Só o contorno da barba na máquina de acabamento, sem mexer no comprimento.",
         preco: 25,
         duracaoMin: 15,
       },
@@ -233,12 +233,22 @@ export const todosServicos: Servico[] = catalogoServicos.flatMap(
   (c) => c.servicos
 );
 
-/** Ex.: 49.9 -> "R$ 49,90" ; com apartirDe -> "A partir de R$ 15,00" */
+/**
+ * Ex.: 49.9 -> "R$ 49,90".
+ *
+ * Formatação feita à mão em vez de `Intl.NumberFormat` de propósito: o Node
+ * e o navegador podem usar caracteres de espaço diferentes entre "R$" e o
+ * número (U+00A0 x U+202F, dependendo da versão do ICU). Como este texto é
+ * renderizado no servidor e hidratado no cliente, essa diferença invisível
+ * dispara erro de hidratação do React.
+ */
+export function precoEmReais(valor: number): string {
+  return `R$ ${valor.toFixed(2).replace(".", ",")}`;
+}
+
+/** Ex.: com apartirDe -> "A partir de R$ 15,00" */
 export function precoFormatado(servico: Servico): string {
-  const valor = servico.preco.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
+  const valor = precoEmReais(servico.preco);
   return servico.apartirDe ? `A partir de ${valor}` : valor;
 }
 

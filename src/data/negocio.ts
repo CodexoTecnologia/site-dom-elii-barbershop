@@ -11,11 +11,11 @@ export const SITE_URL = "https://domelii.com.br";
 export const negocio = {
   nome: "Dom Elii Barbershop",
   nomeLegal: "Dom Elii Barbershop",
-  slogan: "A Arte da Precisão",
+  slogan: "Corte e barba que mudam como você se vê",
   descricaoCurta:
-    "Barbearia premium na Boa Vista, Curitiba. Visagismo, degradê, barboterapia e estética masculina.",
+    "Barbearia na Boa Vista, em Curitiba. Corte, barba, sobrancelha e química masculina, com agendamento pelo Booksy.",
   descricaoLonga:
-    "Barbearia especializada em visagismo e estética masculina na Boa Vista, Curitiba, atendendo também Bacacheri, Cabral e Ahú. Corte de cabelo, degradê, barboterapia com toalha no vapor, platinado, luzes, sobrancelha na navalha e freestyle.",
+    "Barbearia em Curitiba, no bairro Boa Vista, atendendo clientes de toda a cidade. Corte de cabelo, degradê, barba com toalha no vapor, platinado, luzes, sobrancelha na navalha e freestyle. Agendamento pelo Booksy, com atendimento também por ordem de chegada quando há horário livre.",
 
   endereco: {
     rua: "Rua Lodovico Geronazzo",

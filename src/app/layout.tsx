@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   title: {
     // Páginas internas viram "Serviços | Dom Elii Barbershop"
     template: `%s | ${negocio.nome}`,
-    default: `${negocio.nome} | Barbearia Premium na Boa Vista, Curitiba`,
+    default: `Barbearia em Curitiba | ${negocio.nome} — Boa Vista`,
   },
-  description: `Barbearia premium na Boa Vista, em Curitiba. Visagismo, degradê, barboterapia e estética masculina. Agende pelo Booksy. ${negocio.telefone}.`,
+  description: `Barbearia em Curitiba, no bairro Boa Vista. Corte, barba, sobrancelha e química masculina. Atendemos toda a cidade. Agende pelo Booksy. ${negocio.telefone}.`,
   applicationName: negocio.nome,
   authors: [{ name: negocio.nome, url: SITE_URL }],
   creator: negocio.nome,
@@ -33,7 +33,8 @@ export const metadata: Metadata = {
     "corte masculino curitiba",
     "degradê curitiba",
     "barboterapia curitiba",
-    "visagismo masculino",
+    "barbearia cwb",
+    "corte masculino curitiba",
     "platinado masculino curitiba",
   ],
   category: "Barbearia",

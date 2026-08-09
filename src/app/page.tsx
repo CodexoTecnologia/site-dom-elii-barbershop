@@ -5,14 +5,14 @@ import { negocio } from "@/data/negocio";
 
 export const metadata: Metadata = {
   ...criarMetadata({
-    titulo: `${negocio.nome} | Barbearia Premium na Boa Vista, Curitiba`,
+    titulo: `Barbearia em Curitiba | ${negocio.nome} — Boa Vista`,
     descricao:
-      "Barbearia premium na Boa Vista, em Curitiba. Visagismo, degradê, barboterapia e platinado, a minutos do Bacacheri. Agende seu horário pelo Booksy.",
+      "Barbearia em Curitiba, no bairro Boa Vista, atendendo toda a cidade. Corte, barba, sobrancelha, platinado e luzes. Veja os preços e agende pelo Booksy.",
     caminho: "/",
   }),
   // Home usa o título completo, sem o template "%s | Dom Elii Barbershop".
   title: {
-    absolute: `${negocio.nome} | Barbearia Premium na Boa Vista, Curitiba`,
+    absolute: `Barbearia em Curitiba | ${negocio.nome} — Boa Vista`,
   },
 };
 

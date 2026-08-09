@@ -21,10 +21,6 @@ export default function TermosPage() {
     <main className="flex min-h-screen flex-col bg-[#0A0A0A]">
       <section className="w-full pt-36 md:pt-44 pb-24">
         <div className="container mx-auto px-6 md:px-12 max-w-3xl">
-          <p className="text-xs font-bold text-zinc-400 tracking-[0.3em] uppercase mb-6">
-            Documento legal
-          </p>
-
           <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white uppercase leading-[1.1] mb-4">
             Termos de Uso e <span className="text-zinc-500">Privacidade.</span>
           </h1>
@@ -49,10 +45,9 @@ export default function TermosPage() {
                 2. Uso do site
               </h2>
               <p>
-                O conteúdo publicado aqui tem caráter informativo e promocional.
-                Preços, horários e serviços podem ser alterados sem aviso
-                prévio; a informação vigente é sempre a exibida na plataforma de
-                agendamento Booksy no momento da reserva.
+                O conteúdo aqui é informativo. Preços, horários e serviços podem
+                mudar sem aviso: vale sempre o que estiver no Booksy no momento
+                da reserva.
               </p>
             </section>
 

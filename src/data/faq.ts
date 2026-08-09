@@ -21,7 +21,7 @@ export const faqData: ItemFaq[] = [
   {
     pergunta: "É necessário agendar horário?",
     resposta:
-      "Recomendamos fortemente o agendamento pelo Booksy para garantir horário e barbeiro. Atendemos por ordem de chegada apenas quando há janela livre na agenda do dia.",
+      "Não é obrigatório, mas recomendamos: agendando pelo Booksy você garante o horário e escolhe o barbeiro. Se chegar sem agendar, atendemos sempre que houver janela livre na agenda do dia.",
   },
   {
     pergunta: "Qual o horário de funcionamento?",
@@ -31,7 +31,32 @@ export const faqData: ItemFaq[] = [
   {
     pergunta: "Quanto custa um corte de cabelo?",
     resposta:
-      "O corte de cabelo custa R$ 49,90 e leva cerca de 30 minutos. O combo cabelo e barba sai por R$ 90,00 e o ritual completo com cabelo, barba e sobrancelha por R$ 105,00. A tabela completa está na página de serviços.",
+      "O corte de cabelo custa R$ 49,90 e leva cerca de 30 minutos. O combo cabelo e barba sai por R$ 90,00, e o pacote com cabelo, barba e sobrancelha por R$ 105,00. A tabela completa está na página de preços.",
+  },
+  {
+    pergunta: "Quanto um barbeiro cobra em Curitiba?",
+    resposta:
+      "Na Dom Elii Barbershop, em Curitiba, o corte de cabelo custa R$ 49,90, a barba R$ 45,00 e o combo cabelo e barba R$ 90,00. Serviços rápidos como pezinho e sobrancelha saem por R$ 20,00. A tabela completa dos 17 serviços está na página de preços.",
+  },
+  {
+    pergunta: "Como saber se o barbeiro é bom?",
+    resposta:
+      "Três sinais confiáveis: ele pergunta sobre a sua rotina antes de cortar, em vez de só perguntar o número da máquina; mostra o acabamento com espelho no final; e mantém avaliações públicas e recentes. A Dom Elii tem nota 5,0 no Booksy com mais de 80 avaliações de clientes.",
+  },
+  {
+    pergunta: "A barbearia abre no domingo?",
+    resposta:
+      "Não. Abrimos de segunda a sábado: segunda das 13h às 20h, de terça a sexta das 9h às 20h e sábado das 9h às 19h. Aos domingos permanecemos fechados.",
+  },
+  {
+    pergunta: "Vocês vendem produtos para cabelo?",
+    resposta:
+      "Sim. Vendemos as pomadas Classe A e as ceras Tocton Style que usamos na finalização do corte, além de roupas da Rawa Surf Wear, tudo na loja dentro da barbearia.",
+  },
+  {
+    pergunta: "Precisa pagar antecipado para agendar?",
+    resposta:
+      "Não é necessário. O agendamento pelo Booksy reserva o horário sem cobrança antecipada, e o pagamento é feito na barbearia em Pix, dinheiro ou cartão.",
   },
   {
     pergunta: "Quais as formas de pagamento?",
@@ -44,9 +69,9 @@ export const faqData: ItemFaq[] = [
       "Há vagas na via em frente à barbearia, na Rua Lodovico Geronazzo. Como o movimento varia ao longo do dia, sugerimos chegar com alguns minutos de antecedência.",
   },
   {
-    pergunta: "O que é o visagismo que vocês aplicam?",
+    pergunta: "Vocês ajudam a escolher o corte?",
     resposta:
-      "Visagismo é o estudo das proporções do rosto aplicado ao corte. Antes de cortar, analisamos formato do rosto, linha de implantação do cabelo, densidade do fio e rotina do cliente para definir a altura do degradê, o comprimento do topo e o desenho da barba.",
+      "Sim. Antes de começar, o barbeiro considera o formato do seu rosto, a linha de implantação do cabelo, a densidade do fio e a sua rotina para sugerir a altura do degradê, o comprimento do topo e o desenho da barba. A decisão final é sempre sua.",
   },
   {
     pergunta: "Posso escolher o barbeiro?",

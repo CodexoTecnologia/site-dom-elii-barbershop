@@ -1,67 +1,100 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { Scissors } from "lucide-react";
+import { negocio } from "@/data/negocio";
 
+/**
+ * Anel de progresso de leitura no canto, com atalho para agendar.
+ *
+ * Antes usava useScroll + useSpring do framer-motion. Agora o progresso é
+ * escrito direto no atributo do SVG dentro de um requestAnimationFrame — o
+ * React não re-renderiza nenhuma vez durante o scroll, e a biblioteca de
+ * animação sai do bundle de todas as páginas (este componente está no layout,
+ * então ele sozinho puxaria a lib para o site inteiro).
+ */
 export function ScrollIndicator() {
-  const { scrollYProgress } = useScroll();
+  const circuloRef = useRef<SVGCircleElement>(null);
 
-  // Suaviza a animação do círculo para não ficar "dura" quando o usuário para de rolar
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  useEffect(() => {
+    const circulo = circuloRef.current;
+    if (!circulo) return;
 
-  // Transforma o progresso de 0 a 1 em uma porcentagem para a borda do SVG (strokeDashoffset)
-  const pathLength = useTransform(smoothProgress, [0, 1], [0, 1]);
+    const perimetro = 2 * Math.PI * 46;
+    circulo.style.strokeDasharray = String(perimetro);
+    circulo.style.strokeDashoffset = String(perimetro);
+
+    let pendente = false;
+
+    const atualizar = () => {
+      pendente = false;
+      const rolavel =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progresso = rolavel > 0 ? window.scrollY / rolavel : 0;
+      circulo.style.strokeDashoffset = String(
+        perimetro * (1 - Math.min(Math.max(progresso, 0), 1))
+      );
+    };
+
+    const aoRolar = () => {
+      if (pendente) return;
+      pendente = true;
+      requestAnimationFrame(atualizar);
+    };
+
+    atualizar();
+    window.addEventListener("scroll", aoRolar, { passive: true });
+    window.addEventListener("resize", aoRolar, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", aoRolar);
+      window.removeEventListener("resize", aoRolar);
+    };
+  }, []);
 
   return (
     <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-50 flex items-center justify-center">
-      
-      {/* Botão interativo que engloba tudo */}
-      <a 
-        href="https://booksy.com/pt-br/311640_dom-elii-barbershop_barbearias_583853_curitiba#site" 
-        target="_blank" 
+      <a
+        href={negocio.links.booksy}
+        target="_blank"
         rel="noopener noreferrer"
         className="group relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/40 backdrop-blur-md border border-white/5 shadow-2xl hover:bg-white transition-colors duration-500"
-        aria-label="Agendar Horário"
+        aria-label="Agendar horário no Booksy"
       >
-        {/* SVG do Anel de Progresso */}
-        <svg 
-          className="absolute inset-0 w-full h-full transform -rotate-90 pointer-events-none" 
+        <svg
+          className="absolute inset-0 w-full h-full transform -rotate-90 pointer-events-none"
           viewBox="0 0 100 100"
+          aria-hidden="true"
         >
-          {/* Círculo de fundo escuro */}
-          <circle 
-            cx="50" cy="50" r="46" 
-            className="stroke-zinc-800/50" 
-            strokeWidth="2" 
-            fill="none" 
+          <circle
+            cx="50"
+            cy="50"
+            r="46"
+            className="stroke-zinc-800/50"
+            strokeWidth="2"
+            fill="none"
           />
-          {/* Círculo de progresso animado pelo Framer Motion */}
-          <motion.circle 
-            cx="50" cy="50" r="46" 
-            className="stroke-white group-hover:stroke-black transition-colors duration-500" 
-            strokeWidth="4" 
-            fill="none" 
+          <circle
+            ref={circuloRef}
+            cx="50"
+            cy="50"
+            r="46"
+            className="stroke-white group-hover:stroke-black transition-colors duration-500"
+            strokeWidth="4"
+            fill="none"
             strokeLinecap="round"
-            style={{ pathLength }} // A mágica acontece aqui
           />
         </svg>
 
-        {/* Ícone no centro que muda de cor no Hover */}
-        <Scissors 
-          className="text-white group-hover:text-black transition-colors duration-500 z-10" 
-          size={20} 
+        <Scissors
+          className="text-white group-hover:text-black transition-colors duration-500 z-10"
+          size={20}
         />
-        
-        {/* Tooltip elegante que aparece ao passar o mouse */}
+
         <span className="absolute right-full mr-4 px-3 py-1.5 bg-white text-black text-xs font-bold tracking-widest uppercase rounded-sm opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap">
-          Reservar Cadeira
+          Agendar horário
         </span>
       </a>
-
     </div>
   );
 }

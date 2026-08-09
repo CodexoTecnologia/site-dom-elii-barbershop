@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Revelar } from "@/components/ui/Revelar";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import {
   catalogoServicos,
@@ -23,15 +23,12 @@ type Props = {
 
 function CardServico({ servico, index }: { servico: Servico; index: number }) {
   return (
-    <motion.a
+    <Revelar atraso={(index % 3) * 0.1}>
+    <a
       id={servico.slug}
       href={negocio.links.booksy}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
       className="relative block h-[300px] scroll-mt-32 rounded-sm overflow-hidden group cursor-pointer border border-white/5 hover:border-white/20 transition-colors bg-zinc-900/50"
     >
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
@@ -40,6 +37,7 @@ function CardServico({ servico, index }: { servico: Servico; index: number }) {
             src={servico.imagem}
             alt={`${servico.titulo} na Dom Elii Barbershop, Curitiba`}
             fill
+            quality={65}
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-60 group-hover:opacity-40"
           />
@@ -76,11 +74,12 @@ function CardServico({ servico, index }: { servico: Servico; index: number }) {
           </p>
 
           <div className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest">
-            Agendar no Booksy <ArrowUpRight className="w-4 h-4" />
+            Agendar este serviço <ArrowUpRight className="w-4 h-4" />
           </div>
         </div>
       </div>
-    </motion.a>
+    </a>
+    </Revelar>
   );
 }
 
@@ -93,20 +92,20 @@ export function ServicesSection({ limite }: Props) {
   return (
     <section
       id="servicos"
-      className="secao-adiada w-full bg-[#0A0A0A] pt-24 pb-32 z-20 border-t border-white/5"
+      className="secao-adiada w-full bg-[#0A0A0A] pt-24 pb-16 md:pb-32 z-20 border-t border-white/5"
     >
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col mb-16 text-center md:text-left">
           <p className="text-xs font-bold text-zinc-400 tracking-[0.3em] uppercase mb-6 flex items-center justify-center md:justify-start gap-4">
-            <span className="w-12 h-px bg-zinc-700" /> Catálogo e preços
+            <span className="w-12 h-px bg-zinc-700" /> Serviços
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white uppercase leading-[1.1]">
-            Nossos <br className="hidden md:block" />
-            <span className="text-zinc-500">Serviços.</span>
+            Quanto custa <br className="hidden md:block" />
+            <span className="text-zinc-500">cada serviço.</span>
           </h2>
           <p className="mt-6 text-zinc-400 font-light max-w-lg mx-auto md:mx-0">
-            Da manutenção rápida à transformação completa, com preço aberto.
-            Escolha o seu ritual e finalize o agendamento direto no Booksy.
+            Preço e duração de cada serviço, sem precisar perguntar. Toque no
+            card para agendar.
           </p>
         </div>
 

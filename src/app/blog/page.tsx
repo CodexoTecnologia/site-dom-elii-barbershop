@@ -5,9 +5,9 @@ import { schemaBlog, schemaBreadcrumb } from "@/lib/schema";
 import { criarMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = criarMetadata({
-  titulo: "Editorial",
+  titulo: "Dicas de Corte, Barba e Cuidados Masculinos",
   descricao:
-    "Artigos sobre visagismo masculino, cortes, barba e cuidados pós-química, escritos pelos barbeiros da Dom Elii Barbershop, em Curitiba.",
+    "Quanto custa cortar cabelo em Curitiba, como escolher o corte para o seu rosto, cuidados com barba e química. Escrito pelos barbeiros da Dom Elii.",
   caminho: "/blog",
 });
 

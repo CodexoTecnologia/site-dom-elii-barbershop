@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { negocio } from "@/data/negocio";
 
 /** Navegação principal. Rótulo = o que o usuário procura, não metáfora. */
@@ -102,6 +101,7 @@ export function Navbar() {
           type="button"
           className="md:hidden text-white"
           aria-expanded={isMobileMenuOpen}
+          aria-controls="menu-mobile"
           aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -109,39 +109,44 @@ export function Navbar() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="md:hidden absolute top-full left-0 right-0 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/5 px-6 py-8 flex flex-col gap-6 shadow-2xl"
-          >
-            {navegacao.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-                className="text-lg font-medium text-zinc-300 hover:text-white transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.rotulo}
-              </Link>
-            ))}
-
-            <a
-              href={negocio.links.booksy}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 px-6 py-4 bg-white text-black text-center text-sm tracking-widest uppercase font-bold rounded-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Agendar no Booksy
-            </a>
-          </motion.div>
+      {/*
+        Menu mobile com transição CSS: fica sempre montado e alterna
+        visibilidade. `inert` tira do foco e dos leitores de tela quando
+        fechado, papel que o AnimatePresence fazia desmontando o nó.
+      */}
+      <div
+        id="menu-mobile"
+        inert={!isMobileMenuOpen}
+        className={cn(
+          "md:hidden absolute top-full left-0 right-0 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/5 px-6 py-8 flex flex-col gap-6 shadow-2xl transition-all duration-300 ease-in-out",
+          isMobileMenuOpen
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-2 pointer-events-none"
         )}
-      </AnimatePresence>
+      >
+        {navegacao.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={pathname === item.href ? "page" : undefined}
+            className="text-lg font-medium text-zinc-300 hover:text-white transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {item.rotulo}
+          </Link>
+        ))}
+
+        <a
+          href={negocio.links.booksy}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 px-6 py-4 bg-white text-black text-center text-sm tracking-widest uppercase font-bold rounded-sm"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Agendar no Booksy
+        </a>
+      </div>
+
     </header>
   );
 }

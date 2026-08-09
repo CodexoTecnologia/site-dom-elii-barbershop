@@ -6,7 +6,7 @@ import { negocio, enderecoLinhaUnica } from "@/data/negocio";
  * Gerado no build — nenhuma imagem precisa ser mantida à mão.
  * Vale para todas as rotas que não definirem a sua própria.
  */
-export const alt = `${negocio.nome} — barbearia premium na Boa Vista, Curitiba`;
+export const alt = `${negocio.nome} — barbearia em Curitiba, na Boa Vista`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -75,7 +75,7 @@ export default async function Image() {
               color: "#A1A1AA",
             }}
           >
-            {negocio.slogan} · Visagismo, degradê e barboterapia
+            {negocio.slogan}
           </div>
         </div>
 

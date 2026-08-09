@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { Revelar } from "@/components/ui/Revelar";
 import { MapPin, Clock, Phone, ArrowUpRight } from "lucide-react";
 import {
   negocio,
@@ -9,6 +9,9 @@ import {
 } from "@/data/negocio";
 
 /**
+ * NÃO ESTÁ EM USO. Ficou fora da home porque duplicava o rodapé; mantida
+ * caso a informação volte a ter uma seção própria.
+ *
  * Endereço + horários em texto visível.
  *
  * Não é decoração: NAP e horário em HTML (não só dentro do JSON-LD) é um dos
@@ -16,7 +19,6 @@ import {
  * Profile. Precisa bater caractere a caractere com o GBP e o Booksy.
  */
 export function LocalizacaoSection() {
-  const hoje = new Date().toLocaleDateString("en-US", { weekday: "long" });
 
   return (
     <section
@@ -25,11 +27,7 @@ export function LocalizacaoSection() {
     >
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <Revelar
             className="lg:w-1/2 flex flex-col"
           >
             <p className="text-xs font-bold text-zinc-400 tracking-[0.3em] uppercase mb-6 flex items-center gap-4">
@@ -43,8 +41,8 @@ export function LocalizacaoSection() {
 
             <p className="text-zinc-400 font-light leading-relaxed mb-10 max-w-md">
               Estamos na {negocio.endereco.rua}, na Boa Vista — a poucos minutos
-              do Bacacheri, Cabral, Ahú e Juvevê. Atendimento com hora marcada,
-              sem fila de espera.
+              do Bacacheri, Cabral, Ahú e Juvevê. Agende pelo Booksy ou passe
+              por aqui.
             </p>
 
             <address className="not-italic flex flex-col gap-6">
@@ -90,13 +88,10 @@ export function LocalizacaoSection() {
             >
               Agendar no Booksy
             </a>
-          </motion.div>
+          </Revelar>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+          <Revelar
+            atraso={0.15}
             className="lg:w-1/2 flex flex-col"
           >
             <div className="flex items-center gap-3 mb-8">
@@ -107,33 +102,21 @@ export function LocalizacaoSection() {
             </div>
 
             <dl className="flex flex-col">
-              {negocio.horarios.map((h) => {
-                const ehHoje = h.dia === hoje;
-                return (
-                  <div
-                    key={h.dia}
-                    className={`flex items-center justify-between border-t border-white/5 py-4 ${
-                      ehHoje ? "text-white" : "text-zinc-400"
+              {negocio.horarios.map((h) => (
+                <div
+                  key={h.dia}
+                  className="flex items-center justify-between border-t border-white/5 py-4 text-zinc-400"
+                >
+                  <dt className="font-light">{h.rotulo}</dt>
+                  <dd
+                    className={`text-sm tracking-wide ${
+                      h.abre ? "font-medium text-zinc-200" : "text-zinc-400"
                     }`}
                   >
-                    <dt className="font-light">
-                      {h.rotulo}
-                      {ehHoje && (
-                        <span className="ml-3 text-[10px] font-bold uppercase tracking-[0.2em] text-amber-100/70">
-                          Hoje
-                        </span>
-                      )}
-                    </dt>
-                    <dd
-                      className={`text-sm tracking-wide ${
-                        h.abre ? "font-medium" : "text-zinc-400"
-                      }`}
-                    >
-                      {horarioLegivel(h)}
-                    </dd>
-                  </div>
-                );
-              })}
+                    {horarioLegivel(h)}
+                  </dd>
+                </div>
+              ))}
               <div className="border-t border-white/5" />
             </dl>
 
@@ -141,7 +124,7 @@ export function LocalizacaoSection() {
               Horários sujeitos a alteração em feriados. A agenda em tempo real
               está sempre no Booksy.
             </p>
-          </motion.div>
+          </Revelar>
         </div>
       </div>
     </section>

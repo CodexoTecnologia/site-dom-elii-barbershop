@@ -230,7 +230,7 @@ export default async function ArtigoPage({ params }: Props) {
                       alt={rel.imagemAlt}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
                   <span className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2">

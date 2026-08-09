@@ -27,25 +27,25 @@ export const equipeData: MembroEquipe[] = [
   {
     id: 1,
     nome: "Elias Filho",
-    cargo: "Barbeiro & Fundador",
+    cargo: "Fundador",
     descricao:
-      "O arquiteto por trás da Dom Elii. Especialista em visagismo e geometria facial, conduz cada atendimento partindo da estrutura óssea do cliente antes de encostar a máquina.",
+      "Fundador da Dom Elii. Começa todo atendimento pelo formato do rosto e pelo tipo de fio, antes de encostar a máquina.",
     imagem: "/barbeiro-elias-filho.jpeg",
   },
   {
     id: 2,
     nome: "Lucas Eduardo",
-    cargo: "Especialista em Degradê & Textura",
+    cargo: "Degradê e textura",
     descricao:
-      "Mestre das transições limpas. Referência da casa em fade, navalhado e trabalho de textura em cabelos crespos e ondulados.",
+      "Referência da casa em degradê, navalhado e trabalho de textura em cabelo crespo e ondulado.",
     imagem: "/barbeiro-lucas-eduardo.jpeg",
   },
   {
     id: 3,
     nome: "Henrique Vilares",
-    cargo: "Barbeiro & Especialista em Química",
+    cargo: "Química e coloração",
     descricao:
-      "Responsável pelos platinados, luzes e pigmentações da Dom Elii. Trabalha a descoloração priorizando a saúde do fio em cada sessão.",
+      "Responsável pelos platinados, luzes e pigmentações. Avalia o fio antes de qualquer descoloração e recusa o serviço quando o cabelo não aguenta.",
     imagem: "/barbeiro-henrique-vilares.jpeg",
   },
 ];

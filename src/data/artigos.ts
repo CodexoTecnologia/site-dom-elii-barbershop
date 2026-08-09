@@ -44,14 +44,14 @@ export const artigosBlog: Artigo[] = [
       "Visagismo Masculino: qual o corte ideal para o seu formato de rosto?",
     tituloSeo: "Visagismo Masculino: o corte ideal para cada formato de rosto",
     resumo:
-      "Como usamos a geometria facial para escolher o corte que equilibra as proporções do seu rosto — e por que o mesmo degradê fica ótimo em um cliente e estranho em outro.",
+      "O raciocínio por trás da escolha do corte que equilibra as proporções do seu rosto — e por que o mesmo degradê fica ótimo em um cliente e estranho em outro.",
     categoria: "Visagismo",
     publicadoEm: "2026-05-10",
     autor: "Elias Filho",
     tempoLeitura: "6 min",
     imagem: "/corte-1.jpeg",
     imagemAlt:
-      "Barbeiro executando corte com visagismo na Dom Elii Barbershop, em Curitiba",
+      "Barbeiro avaliando o formato do rosto do cliente antes do corte, na Dom Elii Barbershop",
     conteudo: [
       {
         tipo: "p",
@@ -61,7 +61,7 @@ export const artigosBlog: Artigo[] = [
       {
         tipo: "p",
         texto:
-          "É por isso que o mesmo degradê que ficou impecável no seu amigo pode não funcionar em você. Não é questão de qualidade do barbeiro: é questão de estrutura óssea. Abaixo está o raciocínio que usamos na cadeira da Dom Elii antes de encostar a máquina no seu cabelo.",
+          "É por isso que o mesmo degradê que ficou impecável no seu amigo pode não funcionar em você. Não é questão de qualidade do barbeiro: é questão de estrutura óssea. Abaixo está o raciocínio que usamos na Dom Elii antes de encostar a máquina no seu cabelo.",
       },
       { tipo: "h2", texto: "Primeiro passo: identificar o seu formato de rosto" },
       {
@@ -131,11 +131,11 @@ export const artigosBlog: Artigo[] = [
         texto:
           "Um corte tecnicamente perfeito que você não consegue reproduzir em casa é um corte que falhou.",
       },
-      { tipo: "h2", texto: "Como isso funciona na prática, na cadeira" },
+      { tipo: "h2", texto: "Como isso funciona na prática" },
       {
         tipo: "p",
         texto:
-          "Na Dom Elii, a conversa antes do corte não é formalidade. Analisamos o formato do rosto, a linha de implantação do cabelo, a densidade dos fios, a assimetria natural (praticamente todo rosto tem uma) e a sua rotina. Só então definimos altura de degradê, comprimento do topo e desenho da barba.",
+          "Você não precisa contratar um visagista para se beneficiar disso. Na Dom Elii, a conversa antes do corte não é formalidade: olhamos o formato do rosto, a linha de implantação do cabelo, a densidade dos fios, a assimetria natural (praticamente todo rosto tem uma) e a sua rotina. Só então definimos altura de degradê, comprimento do topo e desenho da barba.",
       },
       {
         tipo: "p",
@@ -145,7 +145,7 @@ export const artigosBlog: Artigo[] = [
       {
         tipo: "p",
         texto:
-          "Atendemos na Boa Vista, em Curitiba, com fácil acesso para quem vem do Bacacheri, Cabral, Ahú e Juvevê. O agendamento é feito pelo Booksy, com horário garantido.",
+          "Estamos na Boa Vista, em Curitiba, e atendemos clientes de toda a cidade. O agendamento é feito pelo Booksy, com horário garantido.",
       },
     ],
   },
@@ -155,7 +155,7 @@ export const artigosBlog: Artigo[] = [
     titulo: "Tendências de barba em Curitiba para o inverno",
     tituloSeo: "Barba no inverno de Curitiba: estilos e cuidados com a pele",
     resumo:
-      "O frio e a umidade de Curitiba castigam a pele sob a barba. Veja os estilos em alta na estação e como a barboterapia resolve descamação e coceira.",
+      "O frio de Curitiba resseca a pele embaixo da barba e causa coceira e descamação. Os estilos da estação e o que resolve o problema.",
     categoria: "Barba",
     publicadoEm: "2026-05-05",
     autor: "Elias Filho",
@@ -240,7 +240,7 @@ export const artigosBlog: Artigo[] = [
       {
         tipo: "p",
         texto:
-          "A Dom Elii fica na Boa Vista, em Curitiba, atendendo também Bacacheri, Cabral e Ahú. Barba e barboterapia podem ser agendadas separadamente ou dentro dos combos com corte, direto pelo Booksy.",
+          "A Dom Elii fica na Boa Vista, em Curitiba, e atende clientes de toda a cidade. Barba e barboterapia podem ser agendadas separadamente ou dentro dos combos com corte, direto pelo Booksy.",
       },
     ],
   },
@@ -250,7 +250,7 @@ export const artigosBlog: Artigo[] = [
     titulo: "Platinado masculino: como manter o cabelo saudável pós-química",
     tituloSeo: "Platinado masculino: cuidados para manter o fio saudável",
     resumo:
-      "Descoloriu para o platinado? O trabalho começa depois. Guia de manutenção para segurar o tom, evitar o amarelado e não perder o fio.",
+      "O trabalho começa depois da descoloração. Como segurar o tom, evitar o amarelado e não quebrar o fio.",
     categoria: "Cuidados",
     publicadoEm: "2026-04-28",
     autor: "Henrique Vilares",
@@ -267,7 +267,7 @@ export const artigosBlog: Artigo[] = [
       {
         tipo: "p",
         texto:
-          "Este guia é o que orientamos para todo cliente que sai da cadeira platinado na Dom Elii.",
+          "Este guia é o que orientamos para todo cliente que faz platinado na Dom Elii.",
       },
       { tipo: "h2", texto: "As 72 horas seguintes" },
       {
@@ -347,11 +347,19 @@ export function encontrarArtigo(slug: string): Artigo | undefined {
   return artigosBlog.find((a) => a.slug === slug);
 }
 
-/** Ex.: "2026-05-10" -> "10 de maio de 2026" */
+const MESES = [
+  "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+  "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
+];
+
+/**
+ * Ex.: "2026-05-10" -> "10 de maio de 2026".
+ *
+ * Sem `toLocaleDateString`: o resultado dele depende dos dados de locale
+ * instalados, que podem diferir entre o Node do servidor e o navegador do
+ * cliente — e qualquer diferença aqui quebra a hidratação do React.
+ */
 export function dataLegivel(iso: string): string {
-  return new Date(`${iso}T12:00:00-03:00`).toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
+  const [ano, mes, dia] = iso.split("-").map(Number);
+  return `${String(dia).padStart(2, "0")} de ${MESES[mes - 1]} de ${ano}`;
 }

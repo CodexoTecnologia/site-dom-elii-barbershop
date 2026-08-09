@@ -76,6 +76,32 @@ body {
   animation: revelar-suave 0.7s ease-out both;
 }
 
+/*
+  Zoom lento das fotos de hero. Só `transform`, então roda na GPU sem
+  recalcular layout. `alternate` evita o salto de volta ao início.
+*/
+@keyframes zoom-lento {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+.zoom-lento {
+  animation: zoom-lento 24s ease-in-out infinite alternate;
+}
+
+/* Carrossel da loja: esconde a barra de rolagem sem tirar o scroll. */
+.carrossel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carrossel::-webkit-scrollbar {
+  display: none;
+}
+
 .atraso-1 {
   animation-delay: 0.1s;
 }
@@ -87,6 +113,63 @@ body {
 }
 .atraso-4 {
   animation-delay: 0.45s;
+}
+
+/*
+  ENTRADA AO ROLAR — usada pelo componente <Revelar>.
+
+  O estado inicial invisível só se aplica quando o navegador tem JavaScript
+  ligado, senão uma falha de JS deixaria a página inteira em branco.
+
+  Antes isso era feito com uma classe `js` no <html>, posta por um script
+  inline. O script alterava o DOM antes do React hidratar e era exatamente
+  o que disparava o erro de hidratação. `@media (scripting: enabled)` faz o
+  mesmo trabalho em CSS puro: nada de script, nada de mismatch. Navegador
+  sem suporte à consulta simplesmente mostra o conteúdo sem a animação.
+*/
+.revelar {
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+@media (scripting: enabled) {
+  .revelar {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  .revelar.revelado {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/*
+  SCROLLYTELLING — os valores de --progresso são escritos por
+  useScrollProgresso, num requestAnimationFrame, sem passar pelo React.
+*/
+.parallax-hero {
+  transform: translateY(calc(var(--progresso, 0) * 20%));
+  will-change: transform;
+}
+
+/*
+  O trilho percorre exatamente o que sobra dele fora da tela:
+  `100% - 100vw` é a largura do trilho menos a da viewport. Assim o último
+  item sempre termina visível, em qualquer largura de tela — antes o valor
+  era um percentual fixo, que sobrava no desktop e faltava no celular.
+*/
+.galeria-trilho {
+  transform: translateX(calc(var(--progresso, 0) * (100vw - 100%)));
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-hero,
+  .galeria-trilho {
+    transform: none !important;
+  }
 }
 
 /*

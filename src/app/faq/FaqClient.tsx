@@ -1,20 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { motion, Variants } from "framer-motion";
-import { HelpCircle, ChevronDown, ArrowRight } from "lucide-react";
+import { Revelar } from "@/components/ui/Revelar";
+import { FundoHero } from "@/components/ui/FundoHero";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { faqData } from "@/data/faq";
 import { negocio } from "@/data/negocio";
-
-const containerReveal: Variants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const itemReveal: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
 
 export function FaqClient() {
   const [itemAberto, setItemAberto] = useState<number | null>(0);
@@ -24,35 +15,25 @@ export function FaqClient() {
 
   return (
     <main className="flex min-h-screen flex-col bg-[#0A0A0A] relative overflow-hidden">
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900/20 via-[#0A0A0A] to-[#0A0A0A]" />
-      </div>
+      <FundoHero
+        src="/barba-1.jpeg"
+        alt="Barboterapia na Dom Elii Barbershop"
+      />
 
       <section className="relative w-full pt-32 lg:pt-36 pb-32 z-10">
         <div className="container mx-auto px-6 md:px-12">
-          <motion.div
-            variants={containerReveal}
-            initial="hidden"
-            animate="show"
-            className="flex flex-col lg:flex-row gap-16 lg:gap-24"
-          >
-            <div className="lg:w-1/3 flex flex-col relative">
-              <motion.div variants={itemReveal} className="lg:sticky lg:top-32">
-                <div className="flex items-center gap-2 text-zinc-400 mb-6">
-                  <HelpCircle className="w-4 h-4" />
-                  <span className="text-xs font-bold tracking-[0.3em] uppercase">
-                    Manual do Cliente · Boa Vista
-                  </span>
-                </div>
-
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+            {/* mt no desktop: a logo grande da navbar invade esta coluna */}
+            <div className="lg:w-1/3 flex flex-col relative lg:mt-16">
+              <Revelar className="lg:sticky lg:top-32">
                 <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-white uppercase mb-6 leading-[1.1]">
                   Suas <br className="hidden lg:block" />
                   <span className="text-zinc-500">Dúvidas.</span>
                 </h1>
 
                 <p className="text-zinc-400 font-light leading-relaxed mb-10 max-w-sm">
-                  Respostas rápidas sobre endereço, horários, preços e
-                  agendamento na Dom Elii Barbershop, em Curitiba.
+                  Endereço, horários, preços e agendamento. Se a sua dúvida não
+                  estiver aqui, chame no WhatsApp.
                 </p>
 
                 <a
@@ -66,7 +47,7 @@ export function FaqClient() {
                     <ArrowRight className="w-4 h-4" />
                   </span>
                 </a>
-              </motion.div>
+              </Revelar>
             </div>
 
             <div className="lg:w-2/3 flex flex-col pt-4 lg:pt-0">
@@ -76,9 +57,9 @@ export function FaqClient() {
                 const idResposta = `faq-resposta-${index}`;
 
                 return (
-                  <motion.div
-                    variants={itemReveal}
+                  <Revelar
                     key={item.pergunta}
+                    atraso={index * 0.04}
                     className="border-t border-white/10 group"
                   >
                     <h2>
@@ -108,17 +89,17 @@ export function FaqClient() {
                           </span>
                         </span>
 
-                        <motion.span
-                          animate={{ rotate: isActive ? 180 : 0 }}
-                          transition={{ duration: 0.4, ease: "easeInOut" }}
-                          className={`flex-shrink-0 p-2 rounded-full border transition-colors duration-500 ${
+                        <span
+                          className={`flex-shrink-0 p-2 rounded-full border transition-all duration-500 ${
+                            isActive ? "rotate-180 " : ""
+                          }${
                             isActive
                               ? "border-white bg-white text-black"
                               : "border-white/10 text-zinc-400 group-hover:border-amber-100/50 group-hover:text-amber-100/80"
                           }`}
                         >
                           <ChevronDown className="w-4 h-4 md:w-5 md:h-5" />
-                        </motion.span>
+                        </span>
                       </button>
                     </h2>
 
@@ -127,21 +108,21 @@ export function FaqClient() {
                       Se desmontasse, o texto sumiria do HTML e o Google
                       indexaria apenas a primeira resposta da lista.
                     */}
-                    <motion.div
+                    <div
                       id={idResposta}
-                      initial={false}
-                      animate={{
-                        height: isActive ? "auto" : 0,
-                        opacity: isActive ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                      className="overflow-hidden"
+                      className={`grid transition-all duration-400 ease-in-out ${
+                        isActive
+                          ? "grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0"
+                      }`}
                     >
+                      <div className="overflow-hidden">
                       <p className="pb-6 pl-[3.5rem] md:pl-[4.5rem] pr-4 md:pr-12 text-zinc-400 font-light text-sm md:text-base leading-relaxed">
                         {item.resposta}
                       </p>
-                    </motion.div>
-                  </motion.div>
+                      </div>
+                    </div>
+                  </Revelar>
                 );
               })}
 
@@ -156,7 +137,7 @@ export function FaqClient() {
                 Agendar no Booksy
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </main>

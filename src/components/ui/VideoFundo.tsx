@@ -8,9 +8,14 @@ type Props = {
   poster: string;
   className?: string;
   /**
+   * Versão leve usada abaixo de 768px. Sem ela, o celular baixa o mesmo
+   * arquivo do desktop — no hero isso custa 1,4 MB e 9 pontos de Lighthouse.
+   */
+  srcMobile?: string;
+  /**
    * Largura mínima de viewport para o vídeo ser baixado, em px.
-   * Abaixo disso fica só o poster. Um fundo decorativo de mais de 1 MB não
-   * se paga no celular, ainda mais coberto por overlay escuro.
+   * Abaixo disso fica só o poster. Use quando o vídeo estiver longe da
+   * dobra e não valer o tráfego no celular.
    */
   larguraMinima?: number;
 };
@@ -36,10 +41,15 @@ export function VideoFundo({
   src,
   poster,
   className,
+  srcMobile,
   larguraMinima = 0,
 }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const [fonte, setFonte] = useState<string>();
+  // O `poster` é baixado assim que existe no DOM, mesmo com preload="none".
+  // Para o vídeo da galeria isso significava 23 KB gastos antes de o usuário
+  // chegar perto dele. Só entra quando o observador aproxima.
+  const [proximo, setProximo] = useState(false);
 
   useEffect(() => {
     const elemento = ref.current;
@@ -53,12 +63,23 @@ export function VideoFundo({
     if (conexao?.saveData) return;
     if (conexao?.effectiveType && /(^|-)2g$/.test(conexao.effectiveType)) return;
 
-    const carregar = () => setFonte(src);
+    const ehMobile = window.innerWidth < 768;
+    const escolhido = ehMobile && srcMobile ? srcMobile : src;
+
+    // requestIdleCallback deixa o vídeo para quando a thread estiver livre,
+    // depois que o conteúdo que importa já foi pintado.
+    const carregar = () => {
+      const agendar =
+        window.requestIdleCallback ??
+        ((cb: () => void) => window.setTimeout(cb, 200));
+      agendar(() => setFonte(escolhido));
+    };
 
     const observador = new IntersectionObserver(
       ([entrada]) => {
         if (!entrada.isIntersecting) return;
         observador.disconnect();
+        setProximo(true);
 
         if (document.readyState === "complete") carregar();
         else window.addEventListener("load", carregar, { once: true });
@@ -72,7 +93,7 @@ export function VideoFundo({
       observador.disconnect();
       window.removeEventListener("load", carregar);
     };
-  }, [src, larguraMinima]);
+  }, [src, srcMobile, larguraMinima]);
 
   useEffect(() => {
     if (!fonte) return;
@@ -84,7 +105,7 @@ export function VideoFundo({
     <video
       ref={ref}
       src={fonte}
-      poster={poster}
+      poster={proximo ? poster : undefined}
       muted
       loop
       playsInline

@@ -1,5 +1,6 @@
 // Server Component de propósito: não há estado nem evento aqui, então nada
 // deste arquivo precisa virar JavaScript no navegador.
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Clock } from "lucide-react";
 import { negocio, horarioLegivel } from "@/data/negocio";
@@ -43,8 +44,8 @@ export function Footer() {
               Dom Elii<span className="text-zinc-500">.</span>
             </p>
             <p className="text-zinc-400 font-light leading-relaxed max-w-sm mb-8">
-              Barbearia de visagismo e estética masculina na Boa Vista, em
-              Curitiba. Atendemos também Bacacheri, Cabral, Ahú e Juvevê.
+              Barbearia na Boa Vista, em Curitiba. Corte, barba e química
+              masculina, com agendamento pelo Booksy.
             </p>
             <a
               href={negocio.links.booksy}
@@ -129,7 +130,7 @@ export function Footer() {
           {/* Contato */}
           <div className="md:col-span-3 flex flex-col">
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400 mb-6">
-              Contato e localização
+              Contato
             </p>
 
             <address className="not-italic flex flex-col gap-5">
@@ -198,12 +199,19 @@ export function Footer() {
             href="https://codexo.com.br"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-400 text-xs font-light hover:text-white transition-colors flex items-center gap-2"
+            className="group flex items-center gap-3 text-zinc-400 text-xs font-light hover:text-white transition-colors"
           >
-            Desenvolvido por{" "}
-            <strong className="font-bold tracking-widest text-zinc-400 hover:text-white transition-colors">
-              CODEXO.
-            </strong>
+            <span>Desenvolvido por</span>
+            <Image
+              src="/logo_codexo_nome_branco.svg"
+              alt="Codexo"
+              width={92}
+              height={33}
+              // SVG não passa pelo otimizador do Next; servido como está fica
+              // mais leve e nítido em qualquer densidade de tela.
+              unoptimized
+              className="h-5 w-auto opacity-70 group-hover:opacity-100 transition-opacity"
+            />
           </a>
         </div>
       </div>

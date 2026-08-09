@@ -9,6 +9,7 @@ import {
 } from "@/data/negocio";
 import { equipeData } from "@/data/equipe";
 import { catalogoServicos, precoFormatado } from "@/data/servicos";
+import { FundoHero } from "@/components/ui/FundoHero";
 import { JsonLd } from "@/components/JsonLd";
 import { schemaBreadcrumb } from "@/lib/schema";
 import { criarMetadata } from "@/lib/seo";
@@ -21,7 +22,7 @@ import { criarMetadata } from "@/lib/seo";
 export const metadata: Metadata = criarMetadata({
   titulo: "Barbearia em Curitiba — Boa Vista, Bacacheri e Região",
   descricao:
-    "Barbearia na Boa Vista, em Curitiba, atendendo Bacacheri, Cabral, Ahú e Juvevê. Corte, barba, visagismo e química masculina com hora marcada. Veja endereço, horários e preços.",
+    "Barbearia na Boa Vista, em Curitiba, atendendo clientes de toda a cidade. Corte, barba, sobrancelha e química masculina. Veja endereço, horários e preços.",
   caminho: "/barbearia-curitiba",
 });
 
@@ -50,33 +51,25 @@ export default function BarbeariaCuritibaPage() {
 
       <main className="flex min-h-screen flex-col bg-[#0A0A0A]">
         {/* HERO */}
-        <section className="relative w-full pt-36 md:pt-44 pb-20 border-b border-white/5 overflow-hidden">
-          <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900/40 via-[#0A0A0A] to-[#0A0A0A]" />
+        <section className="relative w-full pt-36 md:pt-44 pb-20 overflow-hidden">
+          <FundoHero
+            src="/barbearia-estacao-trabalho.jpeg"
+            alt="Interior da Dom Elii Barbershop, na Boa Vista, em Curitiba"
+          />
 
           <div className="container mx-auto px-6 md:px-12 relative z-10">
             <div className="flex flex-col lg:flex-row gap-16 items-center">
               <div className="lg:w-1/2">
-                <p className="text-xs font-bold text-zinc-400 tracking-[0.3em] uppercase mb-6 flex items-center gap-3">
-                  <MapPin className="w-4 h-4" />
-                  {negocio.endereco.bairro} · {negocio.endereco.cidade} —{" "}
-                  {negocio.endereco.estado}
-                </p>
-
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase leading-[1.05] mb-8">
                   Barbearia em <br />
                   <span className="text-zinc-500">Curitiba.</span>
                 </h1>
 
-                <p className="text-zinc-400 text-lg font-light leading-relaxed mb-6">
-                  A Dom Elii Barbershop fica na {negocio.endereco.rua}, no bairro{" "}
-                  {negocio.endereco.bairro}, em Curitiba. Somos uma barbearia de
-                  visagismo e estética masculina, com atendimento por hora
-                  marcada e três barbeiros especializados.
-                </p>
-
-                <p className="text-zinc-400 font-light leading-relaxed mb-10">
-                  Atendemos clientes de toda a região norte da cidade:{" "}
-                  {negocio.areasAtendidas.join(", ")} e bairros vizinhos.
+                <p className="text-zinc-300 text-lg font-light leading-relaxed mb-10">
+                  A Dom Elii Barbershop fica na {negocio.endereco.rua},{" "}
+                  {negocio.endereco.numero}, no bairro {negocio.endereco.bairro}.
+                  Atendemos clientes de toda Curitiba, com três barbeiros para
+                  você escolher. Agende pelo Booksy ou passe por aqui.
                 </p>
 
                 <div className="flex flex-wrap gap-4">
@@ -186,8 +179,8 @@ export default function BarbeariaCuritibaPage() {
               Como chegar
             </h2>
             <p className="text-zinc-400 font-light leading-relaxed max-w-2xl mb-12">
-              A barbearia fica na Rua Lodovico Geronazzo, na Boa Vista, região
-              norte de Curitiba, com estacionamento na via em frente.
+              Estamos na Rua Lodovico Geronazzo, 539, na Boa Vista, com vagas
+              na via em frente. Veja o caminho a partir do seu bairro.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
@@ -196,9 +189,9 @@ export default function BarbeariaCuritibaPage() {
                   Quem vem do Bacacheri
                 </h3>
                 <p className="text-zinc-400 font-light text-sm leading-relaxed">
-                  A Boa Vista faz divisa direta com o Bacacheri. O trajeto leva
-                  poucos minutos de carro, e a barbearia é uma das opções mais
-                  próximas para quem mora na região do Parque Bacacheri.
+                  A Boa Vista faz divisa com o Bacacheri, então o trajeto leva
+                  poucos minutos de carro. É a opção mais próxima para quem mora
+                  perto do Parque Bacacheri.
                 </p>
               </div>
 
@@ -207,9 +200,8 @@ export default function BarbeariaCuritibaPage() {
                   Quem vem do Cabral e do Juvevê
                 </h3>
                 <p className="text-zinc-400 font-light text-sm leading-relaxed">
-                  Acesso rápido pela Avenida Paraná no sentido norte. É o
-                  caminho natural para quem sai do trabalho na região central e
-                  quer um horário no fim da tarde.
+                  Acesso pela Avenida Paraná, sentido norte. É o caminho de quem
+                  sai do trabalho no centro e pega horário no fim da tarde.
                 </p>
               </div>
 
@@ -218,9 +210,8 @@ export default function BarbeariaCuritibaPage() {
                   Quem vem do Ahú e do Alto da Glória
                 </h3>
                 <p className="text-zinc-400 font-light text-sm leading-relaxed">
-                  Poucos quilômetros separam o Ahú da Boa Vista. Vale agendar
-                  horários de meio de tarde, quando o trânsito na região é mais
-                  tranquilo.
+                  São poucos quilômetros. O meio da tarde costuma ter o trânsito
+                  mais tranquilo nesse trecho.
                 </p>
               </div>
 
@@ -229,9 +220,8 @@ export default function BarbeariaCuritibaPage() {
                   Quem vem de Santa Cândida
                 </h3>
                 <p className="text-zinc-400 font-light text-sm leading-relaxed">
-                  Descendo em direção ao centro, a Boa Vista é passagem
-                  obrigatória. Atendemos bastante cliente da região com
-                  agendamento no início da manhã.
+                  A Boa Vista fica no caminho de quem desce para o centro. Muita
+                  gente da região agenda no início da manhã.
                 </p>
               </div>
             </div>
@@ -274,7 +264,7 @@ export default function BarbeariaCuritibaPage() {
         <section className="w-full py-20 border-b border-white/5">
           <div className="container mx-auto px-6 md:px-12">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white uppercase mb-10">
-              Nossos barbeiros
+              Quem vai te atender
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -299,11 +289,10 @@ export default function BarbeariaCuritibaPage() {
         <section className="w-full py-24 text-center">
           <div className="container mx-auto px-6 md:px-12 flex flex-col items-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white uppercase mb-6">
-              Sua cadeira está <span className="text-zinc-500">reservada.</span>
+              Seu horário está a <span className="text-zinc-500">um toque.</span>
             </h2>
             <p className="text-zinc-400 font-light mb-10 max-w-lg">
-              Escolha o serviço, o barbeiro e o horário direto na agenda da Dom
-              Elii Barbershop.
+              Escolha o serviço, o barbeiro e o horário direto na agenda.
             </p>
             <a
               href={negocio.links.booksy}

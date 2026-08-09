@@ -201,7 +201,7 @@ export function schemaBlog() {
     "@id": `${SITE_URL}/blog#blog`,
     name: `Editorial ${negocio.nome}`,
     description:
-      "Artigos sobre visagismo, cortes masculinos, barba e estética masculina em Curitiba.",
+      "Artigos sobre cortes masculinos, barba, química e cuidados com o cabelo, escritos pelos barbeiros da Dom Elii, em Curitiba.",
     url: `${SITE_URL}/blog`,
     inLanguage: "pt-BR",
     publisher: { "@id": ID_NEGOCIO },

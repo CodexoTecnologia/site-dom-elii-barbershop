@@ -3,16 +3,13 @@ import { ServicosClient } from "./ServicosClient";
 import { JsonLd } from "@/components/JsonLd";
 import { schemaBreadcrumb } from "@/lib/schema";
 import { criarMetadata } from "@/lib/seo";
-import { precoMinimo } from "@/data/servicos";
-
-const formatarBRL = (v: number) =>
-  v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+import { precoEmReais, precoMinimo } from "@/data/servicos";
 
 export const metadata: Metadata = criarMetadata({
-  titulo: "Serviços e Preços",
-  descricao: `Tabela de preços da Dom Elii Barbershop, em Curitiba: corte de cabelo a partir de ${formatarBRL(
+  titulo: "Preços de Barbearia em Curitiba",
+  descricao: `Tabela de preços da Dom Elii Barbershop, em Curitiba: corte de cabelo a partir de ${precoEmReais(
     49.9
-  )}, barba, platinado, luzes, sobrancelha e limpeza de pele desde ${formatarBRL(
+  )}, barba, platinado, luzes, sobrancelha e limpeza de pele desde ${precoEmReais(
     precoMinimo
   )}. Agende pelo Booksy.`,
   caminho: "/servicos",
