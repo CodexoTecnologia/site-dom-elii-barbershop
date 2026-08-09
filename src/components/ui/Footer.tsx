@@ -1,105 +1,211 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { MapPin, Phone } from "lucide-react";
+import { MapPin, Phone, Clock } from "lucide-react";
+import { negocio, horarioLegivel } from "@/data/negocio";
 
+/** lucide-react v1 removeu os ícones de marca — SVG inline, zero dependência. */
+function IconeInstagram({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
+
+/**
+ * NAP (nome, endereço, telefone) tem que bater EXATAMENTE com o Google
+ * Business Profile, o Booksy e o Instagram. Tudo vem de src/data/negocio.ts —
+ * nunca escreva endereço ou telefone direto aqui.
+ */
 export function Footer() {
   return (
     <footer className="relative w-full bg-[#050505] pt-24 pb-12 border-t border-white/5 z-20">
       <div className="container mx-auto px-6">
-        
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-20">
-          
-          {/* Coluna 1: Brand & Manifesto (Ocupa 5 colunas no Desktop) */}
-          <div className="md:col-span-5 flex flex-col">
-            <h3 className="text-2xl font-bold tracking-tighter uppercase text-white mb-6">
-              Dom Elii<span className="text-zinc-600">.</span>
-            </h3>
-            <p className="text-zinc-500 font-light leading-relaxed max-w-sm mb-8">
-              Elevando a estética masculina no Bacacheri, Curitiba. Mais que uma barbearia, um santuário de visagismo, precisão e estilo.
+          {/* Marca */}
+          <div className="md:col-span-4 flex flex-col">
+            <p className="text-2xl font-bold tracking-tighter uppercase text-white mb-6">
+              Dom Elii<span className="text-zinc-500">.</span>
             </p>
-            <a 
-              href="https://booksy.com/pt-br/311640_dom-elii-barbershop_barbearias_583853_curitiba#site" 
-              target="_blank" 
+            <p className="text-zinc-400 font-light leading-relaxed max-w-sm mb-8">
+              Barbearia de visagismo e estética masculina na Boa Vista, em
+              Curitiba. Atendemos também Bacacheri, Cabral, Ahú e Juvevê.
+            </p>
+            <a
+              href={negocio.links.booksy}
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-block border-b border-zinc-700 pb-1 text-sm font-bold uppercase tracking-widest text-zinc-300 hover:text-white hover:border-white transition-colors self-start"
             >
-              Agendar Horário
+              Agendar no Booksy
             </a>
           </div>
 
-          {/* Coluna 2: Navegação Rápida (Ocupa 3 colunas) */}
-          <div className="md:col-span-3 flex flex-col">
-            <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-zinc-600 mb-6">Explore</h4>
+          {/* Navegação */}
+          <nav className="md:col-span-2 flex flex-col" aria-label="Rodapé">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400 mb-6">
+              Explore
+            </p>
             <ul className="flex flex-col gap-4">
               <li>
-                <Link href="/" className="text-zinc-400 hover:text-white transition-colors text-sm font-light">A Experiência</Link>
+                <Link
+                  href="/"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm font-light"
+                >
+                  Início
+                </Link>
               </li>
               <li>
-                <Link href="/espaco" className="text-zinc-400 hover:text-white transition-colors text-sm font-light">O Espaço</Link>
+                <Link
+                  href="/servicos"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm font-light"
+                >
+                  Serviços e preços
+                </Link>
               </li>
               <li>
-                <Link href="/servicos" className="text-zinc-400 hover:text-white transition-colors text-sm font-light">Curadoria de Serviços</Link>
+                <Link
+                  href="/barbearia-curitiba"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm font-light"
+                >
+                  A barbearia
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm font-light"
+                >
+                  Editorial
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm font-light"
+                >
+                  Dúvidas frequentes
+                </Link>
               </li>
             </ul>
+          </nav>
+
+          {/* Horários */}
+          <div className="md:col-span-3 flex flex-col">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400 mb-6 flex items-center gap-2">
+              <Clock size={14} /> Horários
+            </p>
+            <dl className="flex flex-col gap-2 text-sm">
+              {negocio.horarios.map((h) => (
+                <div key={h.dia} className="flex justify-between gap-4">
+                  <dt className="text-zinc-400 font-light">{h.rotulo}</dt>
+                  <dd
+                    className={
+                      h.abre ? "text-zinc-300 font-light" : "text-zinc-400 font-light"
+                    }
+                  >
+                    {horarioLegivel(h)}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          {/* Coluna 3: Contato & GEO SEO (Ocupa 4 colunas) */}
-          <div className="md:col-span-4 flex flex-col">
-            <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-zinc-600 mb-6">Contato & Localização</h4>
-            
-            {/* Tag Address Semântica para SEO Local */}
+          {/* Contato */}
+          <div className="md:col-span-3 flex flex-col">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400 mb-6">
+              Contato e localização
+            </p>
+
             <address className="not-italic flex flex-col gap-5">
-              <a href="https://maps.google.com/..." target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
-                <MapPin size={18} className="text-zinc-600 mt-1 group-hover:text-white transition-colors flex-shrink-0" />
+              <a
+                href={negocio.links.googleMaps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 group"
+              >
+                <MapPin
+                  size={18}
+                  className="text-zinc-400 mt-1 group-hover:text-white transition-colors flex-shrink-0"
+                />
                 <span className="text-zinc-400 group-hover:text-white transition-colors text-sm font-light leading-relaxed">
-                  Rua Exemplo do Endereço, 123<br />
-                  Bacacheri - Curitiba, PR<br />
-                  CEP: 80000-000
+                  {negocio.endereco.rua}, {negocio.endereco.numero}
+                  <br />
+                  {negocio.endereco.bairro} — {negocio.endereco.cidade},{" "}
+                  {negocio.endereco.estado}
+                  <br />
+                  CEP: {negocio.endereco.cep}
                 </span>
               </a>
 
-              <a href="https://wa.me/5541999999999" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
-                <Phone size={18} className="text-zinc-600 group-hover:text-white transition-colors" />
-                <span className="text-zinc-400 group-hover:text-white transition-colors text-sm font-light">(41) 99999-9999</span>
+              <a
+                href={negocio.links.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 group"
+              >
+                <Phone
+                  size={18}
+                  className="text-zinc-400 group-hover:text-white transition-colors"
+                />
+                <span className="text-zinc-400 group-hover:text-white transition-colors text-sm font-light">
+                  {negocio.telefone}
+                </span>
               </a>
 
-              {/* Bloco do Instagram com SVG Nativo (Zero Dependências) */}
-              <a href="https://instagram.com/domelii" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group mt-2">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="18" 
-                  height="18" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  className="text-zinc-600 group-hover:text-white transition-colors"
-                >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                </svg>
-                <span className="text-zinc-400 group-hover:text-white transition-colors text-sm font-light">@domelii.barbershop</span>
+              <a
+                href={negocio.links.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 group"
+              >
+                <IconeInstagram className="text-zinc-400 group-hover:text-white transition-colors" />
+                <span className="text-zinc-400 group-hover:text-white transition-colors text-sm font-light">
+                  {negocio.instagramHandle}
+                </span>
               </a>
             </address>
           </div>
-
         </div>
 
-        {/* Linha Inferior: Copyright & Assinatura Codexo */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
-          <p className="text-zinc-600 text-xs font-light">
-            &copy; {new Date().getFullYear()} Dom Elii Barbershop. Todos os direitos reservados.
+          <p className="text-zinc-400 text-xs font-light text-center md:text-left">
+            &copy; {new Date().getFullYear()} {negocio.nomeLegal}. Todos os
+            direitos reservados.{" "}
+            <Link
+              href="/termos"
+              className="text-zinc-300 hover:text-white transition-colors underline underline-offset-4"
+            >
+              Termos e privacidade
+            </Link>
           </p>
-          <a href="https://codexo.com.br" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs font-light hover:text-white transition-colors flex items-center gap-2">
-            Desenvolvido por <strong className="font-bold tracking-widest text-zinc-500 hover:text-white transition-colors">CODEXO.</strong>
+          <a
+            href="https://codexo.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-400 text-xs font-light hover:text-white transition-colors flex items-center gap-2"
+          >
+            Desenvolvido por{" "}
+            <strong className="font-bold tracking-widest text-zinc-400 hover:text-white transition-colors">
+              CODEXO.
+            </strong>
           </a>
         </div>
-
       </div>
     </footer>
   );

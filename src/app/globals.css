@@ -22,3 +22,59 @@ body {
   background: #27272a;
   border-radius: 4px;
 }
+
+/*
+  CONTRASTE — regra do projeto sobre os fundos #0A0A0A e #050505.
+
+  zinc-400  7.7:1  qualquer texto
+  zinc-500  4.1:1  SÓ texto grande (>=24px, ou >=18.66px em negrito)
+  zinc-600  2.6:1  proibido em texto — apenas bordas e divisores
+  zinc-700  1.7:1  proibido em texto — apenas bordas e divisores
+
+  Texto pequeno precisa de 4.5:1 e texto grande de 3:1 (WCAG 2.2 AA).
+  Ao criar seção nova: secundário é zinc-400; a segunda linha de um título
+  grande pode ser zinc-500.
+*/
+
+/* Foco visível em qualquer elemento interativo, inclusive onde algum
+   componente zera o outline padrão. Navegação por teclado depende disso. */
+:focus-visible {
+  outline: 2px solid #fafafa;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/*
+  Respeita quem configurou "reduzir movimento" no sistema. O site tem
+  parallax, galeria horizontal e vídeo em loop — gatilhos clássicos de
+  enjoo e desconforto vestibular (WCAG 2.3.3).
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  video {
+    display: none;
+  }
+
+  /*
+    Substitui o vídeo escondido pela mesma imagem usada no atributo `poster`,
+    passada em `--poster` pelo componente.
+
+    Só existe dentro deste media query de propósito: no uso normal o `poster`
+    nativo do <video> já cobre o intervalo até o vídeo tocar e some sozinho
+    quando ele começa. Um background fixo aqui apareceria por trás do vídeo
+    (que é semitransparente) e sobreporia as duas imagens.
+  */
+  .fallback-video {
+    background-image: var(--poster);
+    background-size: cover;
+    background-position: center;
+  }
+}
