@@ -21,7 +21,7 @@ export function LocalizacaoSection() {
   return (
     <section
       id="localizacao"
-      className="relative w-full bg-[#050505] py-24 md:py-32 border-t border-white/5 z-20"
+      className="secao-adiada relative w-full bg-[#050505] py-24 md:py-32 border-t border-white/5 z-20"
     >
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">

@@ -36,6 +36,77 @@ body {
   grande pode ser zinc-500.
 */
 
+/*
+  ENTRADA DO HERO — em CSS, de propósito.
+
+  Quando essa animação era feita em JavaScript, o conteúdo ficava com
+  opacity:0 até o framer-motion hidratar. Em CPU lenta isso custava 3,5s de
+  "render delay" e o LCP ia para 5,2s, porque a tela ficava vazia esperando o
+  JS. Animação em CSS começa a rodar no parse do HTML, sem esperar nada.
+
+  Mantenha os delays curtos: cada 100ms aqui é 100ms a mais de LCP.
+*/
+@keyframes revelar-linha {
+  from {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes revelar-suave {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anima-linha {
+  animation: revelar-linha 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anima-suave {
+  animation: revelar-suave 0.7s ease-out both;
+}
+
+.atraso-1 {
+  animation-delay: 0.1s;
+}
+.atraso-2 {
+  animation-delay: 0.25s;
+}
+.atraso-3 {
+  animation-delay: 0.35s;
+}
+.atraso-4 {
+  animation-delay: 0.45s;
+}
+
+/*
+  Adia layout e pintura das seções que estão fora da tela.
+
+  A home é longa: sem isto, o navegador calcula o layout da página inteira
+  (galeria de 300vh, equipe, localização, rodapé) antes de pintar o primeiro
+  pixel — a tela ficava branca por 2,1s em CPU lenta.
+
+  `contain-intrinsic-size` reserva uma altura estimada para o conteúdo ainda
+  não renderizado, o que evita salto de scroll e mantém o CLS em zero.
+
+  NÃO usar em seção com `position: sticky` dentro (quebra o sticky) nem em
+  nada acima da dobra.
+*/
+.secao-adiada {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
 /* Foco visível em qualquer elemento interativo, inclusive onde algum
    componente zera o outline padrão. Navegação por teclado depende disso. */
 :focus-visible {
@@ -54,6 +125,7 @@ body {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;

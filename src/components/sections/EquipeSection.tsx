@@ -22,7 +22,7 @@ export function EquipeSection() {
   return (
     <section
       id="equipe"
-      className="relative w-full bg-[#0A0A0A] py-24 md:py-32 border-t border-white/5 z-20"
+      className="secao-adiada relative w-full bg-[#0A0A0A] py-24 md:py-32 border-t border-white/5 z-20"
     >
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col mb-16 text-center md:text-left">

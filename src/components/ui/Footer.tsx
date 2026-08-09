@@ -1,5 +1,5 @@
-"use client";
-
+// Server Component de propósito: não há estado nem evento aqui, então nada
+// deste arquivo precisa virar JavaScript no navegador.
 import Link from "next/link";
 import { MapPin, Phone, Clock } from "lucide-react";
 import { negocio, horarioLegivel } from "@/data/negocio";
@@ -34,7 +34,7 @@ function IconeInstagram({ className }: { className?: string }) {
  */
 export function Footer() {
   return (
-    <footer className="relative w-full bg-[#050505] pt-24 pb-12 border-t border-white/5 z-20">
+    <footer className="secao-adiada relative w-full bg-[#050505] pt-24 pb-12 border-t border-white/5 z-20">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-20">
           {/* Marca */}

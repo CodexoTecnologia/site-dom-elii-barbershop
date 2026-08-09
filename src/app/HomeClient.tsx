@@ -10,27 +10,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { useRef } from "react";
+import { VideoFundo } from "@/components/ui/VideoFundo";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { EquipeSection } from "@/components/sections/EquipeSection";
 import { LocalizacaoSection } from "@/components/sections/LocalizacaoSection";
 import { negocio } from "@/data/negocio";
-
-const containerReveal = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
-
-const itemReveal = {
-  hidden: { y: "120%", opacity: 0 },
-  show: {
-    y: "0%",
-    opacity: 1,
-    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const },
-  },
-};
 
 export function HomeClient() {
   const heroRef = useRef(null);
@@ -72,88 +56,67 @@ export function HomeClient() {
             // Custom property não existe no tipo de style; o cast é só nela,
             // para não conflitar com o MotionValue do parallax.
             ...({
-              "--poster": "url('/barbearia-estacao-trabalho.jpeg')",
+              "--poster": "url('/poster-hero.webp')",
             } as React.CSSProperties),
           }}
           className="fallback-video absolute inset-0 z-0 h-[120%] bg-[#0A0A0A]"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-[#0A0A0A]/80 to-[#0A0A0A] z-10" />
 
-          {/*
-            poster = LCP renderiza a imagem imediatamente;
-            preload="none" = o vídeo só baixa depois, sem competir com o LCP.
-          */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="none"
-            poster="/barbearia-estacao-trabalho.jpeg"
-            aria-hidden="true"
+          <VideoFundo
+            src="/video-geral-1-52seg.mp4"
+            poster="/poster-hero.webp"
+            larguraMinima={768}
             className="absolute top-0 left-0 w-full h-full object-cover opacity-60 grayscale-[20%]"
-          >
-            <source src="/video-geral-1-52seg.mp4" type="video/mp4" />
-          </video>
+          />
         </motion.div>
 
         <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center mt-20">
-          <motion.div
-            variants={containerReveal}
-            initial="hidden"
-            animate="show"
-            className="flex flex-col items-center"
-          >
-            <h1 className="flex flex-col items-center">
-              <span className="sr-only">
-                Dom Elii Barbershop — barbearia na Boa Vista, em Curitiba,
-                especializada em visagismo, degradê e barboterapia
+          {/*
+            Entrada animada por CSS (ver globals.css). Não use framer-motion
+            aqui: conteúdo acima da dobra não pode depender de hidratação
+            para ficar visível — foi o que jogou o LCP para 5,2s.
+          */}
+          <h1 className="flex flex-col items-center">
+            <span className="sr-only">
+              Dom Elii Barbershop — barbearia na Boa Vista, em Curitiba,
+              especializada em visagismo, degradê e barboterapia
+            </span>
+            <span className="block overflow-hidden pt-2">
+              <span className="anima-linha block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-white">
+                A Arte da
               </span>
-              <div className="overflow-hidden pt-2">
-                <motion.span
-                  variants={itemReveal}
-                  className="block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-white"
-                >
-                  A Arte da
-                </motion.span>
-              </div>
+            </span>
 
-              <div className="overflow-hidden pt-4 pb-2">
-                <motion.span
-                  variants={itemReveal}
-                  className="block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-zinc-400"
-                >
-                  Precisão.
-                </motion.span>
-              </div>
-            </h1>
-          </motion.div>
+            <span className="block overflow-hidden pt-4 pb-2">
+              <span className="anima-linha atraso-1 block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-zinc-400">
+                Precisão.
+              </span>
+            </span>
+          </h1>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="mt-8"
-          >
-            <p className="text-zinc-400 text-lg md:text-xl max-w-2xl font-light tracking-wide mb-6 leading-relaxed">
-              Barbearia de <strong className="font-medium text-zinc-200">visagismo e estética masculina</strong> na
-              Boa Vista, em Curitiba. A poucos minutos do Bacacheri, Cabral e Ahú.
-            </p>
-          </motion.div>
+          <p className="anima-suave atraso-2 mt-8 text-zinc-400 text-lg md:text-xl max-w-2xl font-light tracking-wide mb-6 leading-relaxed">
+            Barbearia de{" "}
+            <strong className="font-medium text-zinc-200">
+              visagismo e estética masculina
+            </strong>{" "}
+            na Boa Vista, em Curitiba. A poucos minutos do Bacacheri, Cabral e
+            Ahú.
+          </p>
 
           {/* Prova social — nota do Booksy, com link para a fonte. */}
-          <motion.a
+          <a
             href={negocio.links.booksy}
             target="_blank"
             rel="noopener noreferrer"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.9 }}
-            className="mb-10 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
+            className="anima-suave atraso-3 mb-10 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
           >
             <span className="flex items-center gap-1">
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-amber-200 text-amber-200" />
+                <Star
+                  key={i}
+                  className="w-3.5 h-3.5 fill-amber-200 text-amber-200"
+                />
               ))}
             </span>
             <span className="font-bold">
@@ -161,34 +124,28 @@ export function HomeClient() {
               {negocio.avaliacoes.quantidade} avaliações no{" "}
               {negocio.avaliacoes.fonte}
             </span>
-          </motion.a>
+          </a>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+          <a
+            href={negocio.links.booksy}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="anima-suave atraso-4 group relative px-10 py-5 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] overflow-hidden rounded-sm flex justify-center items-center"
           >
-            <a
-              href={negocio.links.booksy}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative px-10 py-5 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] overflow-hidden rounded-sm flex justify-center items-center"
-            >
-              <span className="relative z-10 flex items-center gap-3">
-                Agendar no Booksy{" "}
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </span>
-              <div className="absolute inset-0 bg-zinc-200 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out" />
-            </a>
-          </motion.div>
+            <span className="relative z-10 flex items-center gap-3">
+              Agendar no Booksy{" "}
+              <ArrowRight
+                size={16}
+                className="group-hover:translate-x-1 transition-transform"
+              />
+            </span>
+            <span className="absolute inset-0 bg-zinc-200 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out" />
+          </a>
         </div>
       </section>
 
       {/* DOBRA 2: O AMBIENTE */}
-      <section className="relative w-full bg-[#0A0A0A] py-24 md:pt-32 pb-12 md:pb-16 z-20 border-t border-white/5 overflow-hidden">
+      <section className="secao-adiada relative w-full bg-[#0A0A0A] py-24 md:pt-32 pb-12 md:pb-16 z-20 border-t border-white/5 overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
             <motion.div
@@ -285,22 +242,16 @@ export function HomeClient() {
             </div>
 
             <div
-              style={{ "--poster": "url('/corte-1.jpeg')" } as React.CSSProperties}
+              style={{ "--poster": "url('/poster-ritual.webp')" } as React.CSSProperties}
               className="fallback-video relative h-[500px] w-[600px] flex-shrink-0 border border-white/5 bg-zinc-900 group overflow-hidden"
             >
               <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-transparent transition-colors duration-700" />
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="none"
-                poster="/corte-1.jpeg"
-                aria-hidden="true"
+              <VideoFundo
+                src="/corte-1-17seg.mp4"
+                poster="/poster-ritual.webp"
+                larguraMinima={768}
                 className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              >
-                <source src="/corte-1-17seg.mp4" type="video/mp4" />
-              </video>
+              />
               <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
                 <p className="text-4xl md:text-5xl font-bold uppercase tracking-tighter text-white opacity-90">
                   O Ritual.
@@ -338,7 +289,7 @@ export function HomeClient() {
       <LocalizacaoSection />
 
       {/* DOBRA 7: FAQ */}
-      <section className="relative w-full bg-[#0A0A0A] py-24 md:py-32 border-t border-white/5 z-20">
+      <section className="secao-adiada relative w-full bg-[#0A0A0A] py-24 md:py-32 border-t border-white/5 z-20">
         <div className="container mx-auto px-6 md:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

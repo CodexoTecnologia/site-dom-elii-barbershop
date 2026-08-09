@@ -93,7 +93,7 @@ export function ServicesSection({ limite }: Props) {
   return (
     <section
       id="servicos"
-      className="w-full bg-[#0A0A0A] pt-24 pb-32 z-20 border-t border-white/5"
+      className="secao-adiada w-full bg-[#0A0A0A] pt-24 pb-32 z-20 border-t border-white/5"
     >
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col mb-16 text-center md:text-left">
