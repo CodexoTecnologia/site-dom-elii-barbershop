@@ -96,6 +96,7 @@ export function schemaNegocio() {
         }
       : {}),
     hasMap: negocio.links.googleMaps,
+    foundingDate: String(negocio.fundadaEm),
     openingHoursSpecification: horariosSchema(),
     areaServed: negocio.areasAtendidas.map((bairro) => ({
       "@type": "Place",

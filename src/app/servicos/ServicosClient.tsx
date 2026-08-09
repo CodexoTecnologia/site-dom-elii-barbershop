@@ -31,9 +31,20 @@ export function ServicosClient() {
               <span className="text-zinc-500">em Curitiba.</span>
             </h1>
 
-            <p className="text-zinc-300 text-lg font-light leading-relaxed mb-8">
-              O valor que está aqui é o que você paga. São{" "}
-              {catalogoServicos.reduce((t, c) => t + c.servicos.length, 0)}{" "}
+            <p className="text-zinc-200 text-lg font-light leading-relaxed mb-8">
+              Seu visual merece atenção aos detalhes. Cada serviço é executado
+              no tempo que precisa, com produto profissional e acabamento
+              cuidadoso — porque sair daqui bem muda o jeito como você se
+              apresenta.
+            </p>
+
+            {/*
+              O intervalo de preços fica numa linha secundária: quem chega
+              nesta página quer saber quanto custa, mas o número não precisa
+              ser a primeira coisa dita.
+            */}
+            <p className="text-zinc-400 font-light mb-8">
+              São {catalogoServicos.reduce((t, c) => t + c.servicos.length, 0)}{" "}
               serviços, de {precoEmReais(precoMinimo)} a{" "}
               {precoEmReais(precoMaximo)}.
             </p>
@@ -63,10 +74,10 @@ export function ServicosClient() {
 
       <div className="container mx-auto px-6 md:px-12 -mt-16 mb-8">
         <p className="text-xs text-zinc-400 font-light leading-relaxed max-w-2xl">
-          Valores marcados com &ldquo;a partir de&rdquo; variam conforme
-          comprimento do cabelo, histórico químico e complexidade do desenho. A
-          confirmação sai no orçamento antes de começar. Preços sincronizados
-          com o Booksy — em caso de divergência, vale o valor exibido lá.
+          Serviços marcados com &ldquo;a partir de&rdquo; dependem do
+          comprimento do cabelo, do histórico químico e da complexidade do
+          desenho — avaliamos e combinamos o valor com você antes de começar.
+          Os preços acompanham o Booksy, que é sempre a referência final.
         </p>
       </div>
 
@@ -74,11 +85,11 @@ export function ServicosClient() {
       <section className="w-full py-24 border-t border-white/5 text-center">
         <div className="container mx-auto px-6 md:px-12 flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white uppercase mb-6">
-            Escolheu o <span className="text-zinc-500">serviço?</span>
+            Pronto para <span className="text-zinc-500">agendar?</span>
           </h2>
           <p className="text-zinc-400 font-light mb-10 max-w-lg">
-            Escolha o barbeiro e o horário na agenda do Booksy. A confirmação
-            sai na hora.
+            Escolha o barbeiro e o horário que ficam melhores para você. A
+            confirmação sai na hora.
           </p>
           <a
             href={negocio.links.booksy}

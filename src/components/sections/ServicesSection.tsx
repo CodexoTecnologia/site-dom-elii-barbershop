@@ -104,8 +104,8 @@ export function ServicesSection({ limite }: Props) {
             <span className="text-zinc-500">cada serviço.</span>
           </h2>
           <p className="mt-6 text-zinc-400 font-light max-w-lg mx-auto md:mx-0">
-            Preço e duração de cada serviço, sem precisar perguntar. Toque no
-            card para agendar.
+            Conheça cada serviço, o tempo que leva e o valor. Toque no card
+            para agendar o seu horário.
           </p>
         </div>
 

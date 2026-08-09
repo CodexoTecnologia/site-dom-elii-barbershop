@@ -69,11 +69,29 @@ export const negocio = {
     booksyApp:
       "https://booksy.com/pt-br/dl/show-business/311640?utm_medium=c2c_referral",
     googleMaps: "https://share.google/ugawhcTt28ZvybTMO",
+    /**
+     * Abre o Google Maps já traçando a rota da localização atual do usuário
+     * até a barbearia. Formato oficial da Maps URLs API (`dir/?api=1`), que
+     * funciona em navegador, Android e iOS — diferente do link copiado da
+     * barra de endereço, que carrega estado de sessão e pode quebrar.
+     */
+    rota:
+      "https://www.google.com/maps/dir/?api=1&destination=" +
+      encodeURIComponent(
+        "Dom Elii Barbershop Barbearia, Rua Lodovico Geronazzo, 539 - Boa Vista, Curitiba - PR, 82560-040"
+      ),
     instagram: "https://instagram.com/dom_elii_barbershop",
     whatsapp: "https://wa.me/5541995384975",
   },
 
   instagramHandle: "@dom_elii_barbershop",
+
+  /** Ano de fundação. Alimenta o texto da página e o schema do negócio. */
+  fundadaEm: 2022,
+
+  /** URL do mapa incorporado (iframe). Gerada em "Compartilhar > Incorporar". */
+  mapaIncorporado:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57685.879767093036!2d-49.26431504969383!3d-25.358997504586874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce753e44b37b9%3A0x3ebb4bd569270b41!2sDom%20Elii%20Barbershop%20Barbearia!5e0!3m2!1spt-BR!2sbr!4v1786308439478!5m2!1spt-BR!2sbr",
 
   /**
    * Horários. `null` = fechado.

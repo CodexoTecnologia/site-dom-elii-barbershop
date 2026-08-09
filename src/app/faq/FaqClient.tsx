@@ -32,8 +32,9 @@ export function FaqClient() {
                 </h1>
 
                 <p className="text-zinc-400 font-light leading-relaxed mb-10 max-w-sm">
-                  Endereço, horários, preços e agendamento. Se a sua dúvida não
-                  estiver aqui, chame no WhatsApp.
+                  Reunimos aqui o que mais nos perguntam sobre endereço,
+                  horários, preços e agendamento. Se ficar qualquer dúvida,
+                  é só chamar no WhatsApp — a gente responde.
                 </p>
 
                 <a
