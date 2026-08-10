@@ -107,7 +107,7 @@ export const artigo: Artigo = {
       {
         tipo: "p",
         texto:
-          "Estamos na Boa Vista, em Curitiba, e atendemos clientes de toda a cidade. O agendamento é feito pelo Booksy, com horário garantido.",
+          "Estamos no Boa Vista, em Curitiba, e atendemos clientes de toda a cidade. Agende o seu horário para conversar sobre o corte antes de decidir.",
       },
     ]
 };

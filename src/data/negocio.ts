@@ -13,9 +13,9 @@ export const negocio = {
   nomeLegal: "Dom Elii Barbershop",
   slogan: "Corte e barba que mudam como você se vê",
   descricaoCurta:
-    "Barbearia na Boa Vista, em Curitiba. Corte, barba, sobrancelha e química masculina, com agendamento pelo Booksy.",
+    "Barbearia no Boa Vista, em Curitiba. Corte, barba, sobrancelha e química masculina, com hora marcada ou por ordem de chegada.",
   descricaoLonga:
-    "Barbearia em Curitiba, no bairro Boa Vista, atendendo clientes de toda a cidade. Corte de cabelo, degradê, barba com toalha no vapor, platinado, luzes, sobrancelha na navalha e freestyle. Agendamento pelo Booksy, com atendimento também por ordem de chegada quando há horário livre.",
+    "Barbearia em Curitiba, no bairro Boa Vista, atendendo clientes de toda a cidade. Corte de cabelo, degradê, barba com toalha no vapor, platinado, luzes, sobrancelha na navalha e freestyle. Atende com hora marcada e também por ordem de chegada, quando há horário livre.",
 
   endereco: {
     rua: "Rua Lodovico Geronazzo",
@@ -51,11 +51,19 @@ export const negocio = {
     "Santa Cândida",
   ],
 
-  /** 5.0 com 83 avaliações no Booksy (ver AVISO em src/lib/schema.ts). */
+  /**
+   * Reputação pública nas duas plataformas. Ver o AVISO em src/lib/schema.ts:
+   * estes números aparecem na tela com link para a fonte, mas NÃO entram no
+   * JSON-LD — marcar avaliação de terceiro como dado próprio rende ação
+   * manual do Google.
+   *
+   * Atualize junto com os depoimentos, em src/data/depoimentos.ts.
+   */
   avaliacoes: {
-    nota: 5.0,
-    quantidade: 83,
-    fonte: "Booksy",
+    nota: 4.9,
+    quantidade: 77,
+    fonte: "Google",
+    booksy: { nota: 5.0, quantidade: 83 },
   },
 
   /** Faixa de preço derivada do catálogo (ver src/data/servicos.ts). */
@@ -89,6 +97,20 @@ export const negocio = {
   /** Ano de fundação. Alimenta o texto da página e o schema do negócio. */
   fundadaEm: 2022,
 
+  /**
+   * Marcos que só crescem, nunca caem.
+   *
+   * Nota e contagem exata de avaliações não aparecem no site de propósito:
+   * uma avaliação ruim derruba a nota e o texto vira mentira sem ninguém
+   * perceber. Já "desde 2022" e "mais de mil clientes" continuam verdadeiros
+   * para sempre — e ficam mais fortes com o tempo.
+   *
+   * CONFIRMAR COM O ELIAS: o número de clientes é uma estimativa conservadora
+   * (3 barbeiros desde 2022). Se o Booksy tiver o total real, use o número
+   * redondo imediatamente abaixo dele.
+   */
+  clientesAtendidos: 1000,
+
   /** URL do mapa incorporado (iframe). Gerada em "Compartilhar > Incorporar". */
   mapaIncorporado:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57685.879767093036!2d-49.26431504969383!3d-25.358997504586874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce753e44b37b9%3A0x3ebb4bd569270b41!2sDom%20Elii%20Barbershop%20Barbearia!5e0!3m2!1spt-BR!2sbr!4v1786308439478!5m2!1spt-BR!2sbr",
@@ -107,6 +129,22 @@ export const negocio = {
     { dia: "Sunday", rotulo: "Domingo", abre: null, fecha: null },
   ] as const,
 } as const;
+
+/**
+ * Arredonda a contagem de avaliações para baixo, na dezena: 77 vira "+70".
+ *
+ * O número exato sobe quase toda semana e o site ficaria desatualizado a cada
+ * cliente novo. A forma aproximada continua verdadeira por meses e é como as
+ * páginas do setor exibem.
+ */
+export function clientesEmTexto(quantidade: number): string {
+  const milhares = Math.floor(quantidade / 1000);
+  return milhares <= 1 ? "mil" : `${milhares} mil`;
+}
+
+export function avaliacoesAproximadas(quantidade: number): string {
+  return `+${Math.floor(quantidade / 10) * 10}`;
+}
 
 export const enderecoLinhaUnica = `${negocio.endereco.rua}, ${negocio.endereco.numero} - ${negocio.endereco.bairro}, ${negocio.endereco.cidade} - ${negocio.endereco.estado}, ${negocio.endereco.cep}`;
 

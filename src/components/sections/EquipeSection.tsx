@@ -30,8 +30,8 @@ export function EquipeSection() {
             <span className="w-12 h-px bg-zinc-700" /> A equipe
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white uppercase leading-[1.1]">
-            Quem vai <br className="hidden md:block" />
-            <span className="text-zinc-500">te atender.</span>
+            Barbeiros em <br className="hidden md:block" />
+            <span className="text-zinc-500">Curitiba.</span>
           </h2>
           <p className="mt-6 text-zinc-400 font-light max-w-lg mx-auto md:mx-0">
             Cada um com uma especialidade. Você escolhe com quem quer ser

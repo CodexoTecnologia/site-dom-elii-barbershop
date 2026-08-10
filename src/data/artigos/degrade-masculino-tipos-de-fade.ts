@@ -127,7 +127,7 @@ export const artigo: Artigo = {
     {
       tipo: "p",
       texto:
-        "E seja honesto sobre a frequência com que você consegue voltar. Não adianta escolher um skin fade se você só consegue vir uma vez por mês: em duas semanas o desenho já não existe mais. Na Dom Elii, na Boa Vista, essa conversa acontece antes de a máquina ligar.",
+        "E seja honesto sobre a frequência com que você consegue voltar. Não adianta escolher um skin fade se você só consegue vir uma vez por mês: em duas semanas o desenho já não existe mais. Na Dom Elii, no Boa Vista, essa conversa acontece antes de a máquina ligar.",
     },
   ],
 };

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...criarMetadata({
     titulo: `Barbearia em Curitiba | ${negocio.nome} — Boa Vista`,
     descricao:
-      "Barbearia em Curitiba, no bairro Boa Vista, atendendo toda a cidade. Corte, barba, sobrancelha, platinado e luzes. Veja os preços e agende pelo Booksy.",
+      "Barbearia em Curitiba, no bairro Boa Vista, atendendo toda a cidade. Corte, barba, sobrancelha, platinado e luzes. Veja os preços e agende o seu horário.",
     caminho: "/",
   }),
   // Home usa o título completo, sem o template "%s | Dom Elii Barbershop".

@@ -90,7 +90,7 @@ export const artigo: Artigo = {
       {
         tipo: "p",
         texto:
-          "A Dom Elii fica na Boa Vista, em Curitiba, e atende clientes de toda a cidade. Barba e barboterapia podem ser agendadas separadamente ou dentro dos combos com corte, direto pelo Booksy.",
+          "A Dom Elii fica no Boa Vista, em Curitiba, e atende clientes de toda a cidade. Barba e barboterapia podem ser agendadas separadamente ou dentro dos combos com corte.",
       },
     ]
 };

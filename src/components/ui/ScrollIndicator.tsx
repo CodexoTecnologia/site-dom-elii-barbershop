@@ -59,7 +59,7 @@ export function ScrollIndicator() {
         target="_blank"
         rel="noopener noreferrer"
         className="group relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/40 backdrop-blur-md border border-white/5 shadow-2xl hover:bg-white transition-colors duration-500"
-        aria-label="Agendar horário no Booksy"
+        aria-label="Agendar horário"
       >
         <svg
           className="absolute inset-0 w-full h-full transform -rotate-90 pointer-events-none"

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import { Revelar } from "@/components/ui/Revelar";
+import { rolarUmItem } from "@/lib/carrossel";
 import {
   secaoAtiva,
   parceirosAtivos,
@@ -27,15 +28,7 @@ function CarrosselFotos({
 }) {
   const trilhoRef = useRef<HTMLUListElement>(null);
 
-  const rolar = (direcao: 1 | -1) => {
-    const trilho = trilhoRef.current;
-    if (!trilho) return;
-    // Rola ~80% da largura visível: sobra uma foto de referência na tela.
-    trilho.scrollBy({
-      left: direcao * trilho.clientWidth * 0.8,
-      behavior: "smooth",
-    });
-  };
+  const rolar = (direcao: 1 | -1) => rolarUmItem(trilhoRef.current, direcao);
 
   const temMaisDeUma = fotos.length > 1;
 

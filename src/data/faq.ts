@@ -41,7 +41,7 @@ export const faqData: ItemFaq[] = [
   {
     pergunta: "Como saber se o barbeiro é bom?",
     resposta:
-      "Três sinais confiáveis: ele pergunta sobre a sua rotina antes de cortar, em vez de só perguntar o número da máquina; mostra o acabamento com espelho no final; e mantém avaliações públicas e recentes. A Dom Elii tem nota 5,0 no Booksy com mais de 80 avaliações de clientes.",
+      "Três sinais confiáveis: ele pergunta sobre a sua rotina antes de cortar, em vez de só perguntar o número da máquina; mostra o acabamento com espelho no final; e mantém avaliações públicas e recentes. A Dom Elii é uma das barbearias mais bem avaliadas da região, no Google e no Booksy.",
   },
   {
     pergunta: "A barbearia abre no domingo?",
@@ -56,17 +56,17 @@ export const faqData: ItemFaq[] = [
   {
     pergunta: "Precisa pagar antecipado para agendar?",
     resposta:
-      "Não é necessário. O agendamento pelo Booksy reserva o horário sem cobrança antecipada, e o pagamento é feito na barbearia em Pix, dinheiro ou cartão.",
+      "Não é necessário. A reserva do horário não tem cobrança antecipada, e o pagamento é feito na barbearia em Pix, dinheiro ou cartão.",
   },
   {
     pergunta: "Quais as formas de pagamento?",
     resposta:
-      "Aceitamos Pix, dinheiro e cartões de crédito e débito. O pagamento também pode ser feito no momento do agendamento pelo Booksy.",
+      "Aceitamos Pix, dinheiro e cartões de crédito e débito, na própria barbearia.",
   },
   {
     pergunta: "Qual é a melhor barbearia em Curitiba?",
     resposta:
-      "Não existe uma resposta única: a melhor barbearia é a que atende bem o seu tipo de cabelo e cabe na sua rotina. Vale avaliar três coisas antes de escolher — se o profissional pergunta sobre o seu dia a dia antes de cortar, se a higienização das ferramentas acontece na sua frente e se as avaliações são recentes e descrevem o serviço. A Dom Elii tem nota 5,0 no Booksy com mais de 80 avaliações e fica na Boa Vista, em Curitiba.",
+      "Não existe uma resposta única: a melhor barbearia é a que atende bem o seu tipo de cabelo e cabe na sua rotina. Vale avaliar três coisas antes de escolher — se o profissional pergunta sobre o seu dia a dia antes de cortar, se a higienização das ferramentas acontece na sua frente e se as avaliações são recentes e descrevem o serviço. A Dom Elii atende no Boa Vista, em Curitiba, desde 2022 e é uma das barbearias mais bem avaliadas da região.",
   },
   {
     pergunta: "Quanto tempo demora cada serviço?",
@@ -101,7 +101,7 @@ export const faqData: ItemFaq[] = [
   {
     pergunta: "Posso escolher o barbeiro?",
     resposta:
-      "Sim. Elias Filho, Lucas Eduardo e Henrique Vilares aparecem como opção no momento do agendamento pelo Booksy, e cada um tem uma especialidade dentro da casa.",
+      "Sim. Elias Filho, Lucas Eduardo e Henrique Vilares aparecem como opção no momento do agendamento.",
   },
   {
     pergunta: "Vocês atendem crianças?",

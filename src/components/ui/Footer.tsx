@@ -44,8 +44,8 @@ export function Footer() {
               Dom Elii<span className="text-zinc-500">.</span>
             </p>
             <p className="text-zinc-400 font-light leading-relaxed max-w-sm mb-8">
-              Barbearia na Boa Vista, em Curitiba. Corte, barba e química
-              masculina, com agendamento pelo Booksy.
+              Barbearia no Boa Vista, em Curitiba. Corte, barba e química
+              masculina, com hora marcada ou por ordem de chegada.
             </p>
             <a
               href={negocio.links.booksy}
@@ -53,7 +53,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="inline-block border-b border-zinc-700 pb-1 text-sm font-bold uppercase tracking-widest text-zinc-300 hover:text-white hover:border-white transition-colors self-start"
             >
-              Agendar no Booksy
+              Agendar horário
             </a>
           </div>
 

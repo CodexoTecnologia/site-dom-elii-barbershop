@@ -136,7 +136,7 @@ export function FaqClient() {
                 rel="noopener noreferrer"
                 className="mt-12 self-start px-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] rounded-sm hover:bg-zinc-200 transition-colors"
               >
-                Agendar no Booksy
+                Agendar horário
               </a>
             </div>
           </div>

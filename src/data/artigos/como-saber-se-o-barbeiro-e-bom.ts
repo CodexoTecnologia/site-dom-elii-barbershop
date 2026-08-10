@@ -86,7 +86,7 @@ export const artigo: Artigo = {
     {
       tipo: "p",
       texto:
-        "Na Dom Elii, na Boa Vista, em Curitiba, você escolhe o barbeiro na hora de agendar pelo Booksy e vê as avaliações de cada atendimento antes de decidir.",
+        "Na Dom Elii, no Boa Vista, em Curitiba, você escolhe o barbeiro na hora de agendar e vê as avaliações de cada atendimento antes de decidir.",
     },
   ],
 };

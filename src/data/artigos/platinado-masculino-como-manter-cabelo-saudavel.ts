@@ -92,7 +92,7 @@ export const artigo: Artigo = {
       {
         tipo: "p",
         texto:
-          "Na Dom Elii, avaliamos o histórico químico e a resistência do fio antes de aplicar qualquer descoloração — inclusive recusando o procedimento quando o cabelo não está em condição de recebê-lo. Platinado, luzes e hidratação podem ser agendados pelo Booksy; se estiver em dúvida sobre a condição do seu cabelo, chame no WhatsApp e mande uma foto antes.",
+          "Na Dom Elii, avaliamos o histórico químico e a resistência do fio antes de aplicar qualquer descoloração — inclusive recusando o procedimento quando o cabelo não está em condição de recebê-lo. Platinado, luzes e hidratação podem ser agendados normalmente; se estiver em dúvida sobre a condição do seu cabelo, chame no WhatsApp e mande uma foto antes.",
       },
     ]
 };

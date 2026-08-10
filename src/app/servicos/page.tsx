@@ -11,7 +11,7 @@ export const metadata: Metadata = criarMetadata({
     49.9
   )}, barba, platinado, luzes, sobrancelha e limpeza de pele desde ${precoEmReais(
     precoMinimo
-  )}. Agende pelo Booksy.`,
+  )}. Veja a tabela completa.`,
   caminho: "/servicos",
 });
 

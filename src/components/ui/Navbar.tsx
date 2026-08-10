@@ -143,7 +143,7 @@ export function Navbar() {
           className="mt-4 px-6 py-4 bg-white text-black text-center text-sm tracking-widest uppercase font-bold rounded-sm"
           onClick={() => setIsMobileMenuOpen(false)}
         >
-          Agendar no Booksy
+          Agendar horário
         </a>
       </div>
 

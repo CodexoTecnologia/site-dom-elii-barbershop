@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MapPin, Clock, Star, ArrowUpRight } from "lucide-react";
-import { negocio, enderecoLinhaUnica } from "@/data/negocio";
+import {
+  negocio,
+  enderecoLinhaUnica,
+  avaliacoesAproximadas,
+} from "@/data/negocio";
 import { FundoHero } from "@/components/ui/FundoHero";
 import { EquipeSection } from "@/components/sections/EquipeSection";
 import { AgendaSemana } from "@/components/ui/AgendaSemana";
@@ -17,7 +21,7 @@ import { criarMetadata } from "@/lib/seo";
 export const metadata: Metadata = criarMetadata({
   titulo: "Barbearia em Curitiba — Boa Vista, Bacacheri e Região",
   descricao:
-    "Barbearia na Boa Vista, em Curitiba, atendendo clientes de toda a cidade. Corte, barba, sobrancelha e química masculina. Veja endereço, horários e preços.",
+    "Barbearia no Boa Vista, em Curitiba, atendendo clientes de toda a cidade. Corte, barba, sobrancelha e química masculina. Veja endereço, horários e preços.",
   caminho: "/barbearia-curitiba",
 });
 
@@ -52,7 +56,7 @@ export default function BarbeariaCuritibaPage() {
                   {negocio.endereco.numero}, no bairro {negocio.endereco.bairro},
                   e recebemos clientes de toda Curitiba. São três barbeiros,
                   cada um com a sua especialidade, para cuidar do seu visual do
-                  jeito que ele merece. Agende pelo Booksy ou passe por aqui.
+                  jeito que ele merece. Agende o seu horário ou passe por aqui.
                 </p>
 
                 <div className="flex flex-wrap gap-4">
@@ -62,7 +66,7 @@ export default function BarbeariaCuritibaPage() {
                     rel="noopener noreferrer"
                     className="px-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] rounded-sm hover:bg-zinc-200 transition-colors"
                   >
-                    Agendar no Booksy
+                    Agendar horário
                   </a>
                   <a
                     href={negocio.links.rota}
@@ -79,7 +83,7 @@ export default function BarbeariaCuritibaPage() {
                 <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden border border-white/5 bg-zinc-900">
                   <Image
                     src="/barbearia-estacao-trabalho.jpeg"
-                    alt="Cadeiras e estações de trabalho da Dom Elii Barbershop, na Boa Vista, em Curitiba"
+                    alt="Cadeiras e estações de trabalho da Dom Elii Barbershop, no Boa Vista, em Curitiba"
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -117,11 +121,11 @@ export default function BarbeariaCuritibaPage() {
                 <Star className="w-4 h-4" /> Reputação
               </h2>
               <p className="text-4xl font-bold text-white tracking-tighter mb-2">
-                {negocio.avaliacoes.nota.toFixed(1).replace(".", ",")}
+                {avaliacoesAproximadas(negocio.avaliacoes.quantidade)}
               </p>
               <p className="text-zinc-400 font-light text-sm leading-relaxed">
-                {negocio.avaliacoes.quantidade} avaliações de clientes no{" "}
-                {negocio.avaliacoes.fonte}.
+                avaliações de clientes no Google, além das recebidas no
+                Booksy.
               </p>
               <a
                 href={negocio.links.booksy}
@@ -146,7 +150,7 @@ export default function BarbeariaCuritibaPage() {
               <AgendaSemana />
               <p className="mt-6 text-xs text-zinc-400 font-light leading-relaxed">
                 Horários podem mudar em feriados. A agenda em tempo real, com os
-                horários que ainda estão livres, fica sempre no Booksy.
+                horários que ainda estão livres, aparece na hora de agendar.
               </p>
             </div>
           </div>
@@ -159,7 +163,7 @@ export default function BarbeariaCuritibaPage() {
               Como chegar
             </h2>
             <p className="text-zinc-400 font-light leading-relaxed max-w-2xl mb-10">
-              Estamos na Rua Lodovico Geronazzo, 539, na Boa Vista, com vagas na
+              Estamos na Rua Lodovico Geronazzo, 539, no Boa Vista, com vagas na
               via em frente. Toque no mapa para abrir a rota a partir de onde
               você está.
             </p>
@@ -172,7 +176,7 @@ export default function BarbeariaCuritibaPage() {
             <div className="relative w-full aspect-[4/3] md:aspect-[21/9] overflow-hidden rounded-sm border border-white/10 bg-zinc-900">
               <iframe
                 src={negocio.mapaIncorporado}
-                title="Mapa com a localização da Dom Elii Barbershop, na Boa Vista, em Curitiba"
+                title="Mapa com a localização da Dom Elii Barbershop, no Boa Vista, em Curitiba"
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="strict-origin-when-cross-origin"
@@ -240,7 +244,7 @@ export default function BarbeariaCuritibaPage() {
               rel="noopener noreferrer"
               className="px-10 py-5 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] rounded-sm hover:bg-zinc-200 transition-colors"
             >
-              Agendar no Booksy
+              Agendar horário
             </a>
           </div>
         </section>

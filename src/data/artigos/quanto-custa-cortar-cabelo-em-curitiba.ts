@@ -36,12 +36,12 @@ export const artigo: Artigo = {
     {
       tipo: "p",
       texto:
-        "Na Dom Elii, na Boa Vista, o corte de cabelo custa R$ 49,90 e leva cerca de 30 minutos. Cabelo e barba juntos saem por R$ 90,00, em uma hora.",
+        "Na Dom Elii, no Boa Vista, o corte de cabelo custa R$ 49,90 e leva cerca de 30 minutos. Cabelo e barba juntos saem por R$ 90,00, em uma hora.",
     },
     {
       tipo: "imagem",
       src: "/barbearia-estacao-trabalho.jpeg",
-      alt: "Estação de trabalho da Dom Elii Barbershop, na Boa Vista, em Curitiba",
+      alt: "Estação de trabalho da Dom Elii Barbershop, no Boa Vista, em Curitiba",
       legenda: "Tempo de cadeira é o que mais pesa no preço — e o mais fácil de conferir antes de agendar.",
     },
     { tipo: "h2", texto: "O que realmente faz o preço subir" },
@@ -110,7 +110,7 @@ export const artigo: Artigo = {
     {
       tipo: "p",
       texto:
-        "Barbearia que responde isso sem rodeio costuma ser barbearia que também não inventa valor no fim do atendimento. Na Dom Elii, todos os preços estão publicados na página de serviços e sincronizados com o Booksy, e o que tem valor variável — platinado, luzes, freestyle — é orçado na avaliação, antes de começar.",
+        "Barbearia que responde isso sem rodeio costuma ser barbearia que também não inventa valor no fim do atendimento. Na Dom Elii, todos os preços estão publicados na página de serviços, e o que tem valor variável — platinado, luzes, freestyle — é orçado na avaliação, antes de começar.",
     },
   ],
 };

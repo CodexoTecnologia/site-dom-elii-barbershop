@@ -8,7 +8,7 @@ import { faqData } from "@/data/faq";
 export const metadata: Metadata = criarMetadata({
   titulo: "Perguntas Frequentes",
   descricao:
-    "Endereço, horário de funcionamento, preços, formas de pagamento e agendamento da Dom Elii Barbershop, na Boa Vista, em Curitiba.",
+    "Endereço, horário de funcionamento, preços, formas de pagamento e agendamento da Dom Elii Barbershop, no Boa Vista, em Curitiba.",
   caminho: "/faq",
 });
 

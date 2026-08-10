@@ -77,7 +77,8 @@ export function ServicosClient() {
           Serviços marcados com &ldquo;a partir de&rdquo; dependem do
           comprimento do cabelo, do histórico químico e da complexidade do
           desenho — avaliamos e combinamos o valor com você antes de começar.
-          Os preços acompanham o Booksy, que é sempre a referência final.
+          Os valores são revisados periodicamente, e qualquer diferença é
+          confirmada com você antes do serviço.
         </p>
       </div>
 

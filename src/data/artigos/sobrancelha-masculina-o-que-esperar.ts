@@ -12,7 +12,7 @@ export const artigo: Artigo = {
   tempoLeitura: "4 min",
   imagem: "/barbearia-estacao-trabalho.jpeg",
   imagemAlt:
-    "Estação de trabalho da Dom Elii Barbershop, na Boa Vista, em Curitiba",
+    "Estação de trabalho da Dom Elii Barbershop, no Boa Vista, em Curitiba",
   conteudo: [
     {
       tipo: "p",

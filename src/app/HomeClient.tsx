@@ -10,6 +10,8 @@ import { useScrollProgresso } from "@/hooks/useScrollProgresso";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { EquipeSection } from "@/components/sections/EquipeSection";
 import { ParceirosSection } from "@/components/sections/ParceirosSection";
+import { BlogSection } from "@/components/sections/BlogSection";
+import { DepoimentosSection } from "@/components/sections/DepoimentosSection";
 import { negocio } from "@/data/negocio";
 
 export function HomeClient() {
@@ -51,16 +53,18 @@ export function HomeClient() {
             Cada linha a mais aqui empurra o CTA para fora da primeira tela
             no celular, que é onde a decisão acontece.
           */}
+          {/*
+            Sem texto extra escondido aqui dentro: ele encostava no texto
+            visível e o Google lia as palavras coladas. O nome da barbearia e
+            o bairro já estão no <title>, na descrição e no JSON-LD.
+            O {" "} entre as linhas evita que "barbearia" e "em" se juntem.
+          */}
           <h1 className="flex flex-col items-center">
-            <span className="sr-only">
-              Dom Elii Barbershop — barbearia em Curitiba, no bairro Boa Vista
-            </span>
             <span className="block overflow-hidden pt-2">
               <span className="anima-linha block text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter uppercase text-white">
                 Procurando barbearia
               </span>
-            </span>
-
+            </span>{" "}
             <span className="block overflow-hidden pt-3 pb-2">
               <span className="anima-linha atraso-1 block text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter uppercase text-zinc-400">
                 em Curitiba?
@@ -69,7 +73,7 @@ export function HomeClient() {
           </h1>
 
           <p className="anima-suave atraso-2 mt-6 mb-10 text-zinc-200 text-base md:text-lg max-w-xl font-light leading-relaxed">
-            Com um time experiente e agenda aberta no Booksy, nossa missão é
+            Com um time experiente e agenda sempre aberta, nossa missão é
             transformar visuais e elevar a autoestima de cada cliente.
             A Dom Elii é referência para quem busca uma{" "}
             <strong className="font-semibold text-white">
@@ -108,13 +112,13 @@ export function HomeClient() {
               </p>
 
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter uppercase text-white mb-8 leading-[1.1]">
-                Agende ou <br className="hidden md:block" />
-                <span className="text-zinc-500">passe por aqui.</span>
+                Como funciona <br className="hidden md:block" />
+                <span className="text-zinc-500">o atendimento.</span>
               </h2>
 
               <p className="text-zinc-400 text-lg font-light leading-relaxed mb-8 max-w-md">
-                Ficamos na Boa Vista, em CWB, e atendemos clientes de toda a
-                cidade. Agendando pelo Booksy você garante horário e barbeiro.
+                Ficamos no Boa Vista, em CWB, e atendemos clientes de toda a
+                cidade. Agendando você garante o horário e escolhe o barbeiro.
                 Chegando sem agendar, atendemos se houver janela livre na
                 agenda do dia.
               </p>
@@ -147,7 +151,7 @@ export function HomeClient() {
 
                 <Image
                   src="/barbearia-estacao-trabalho.jpeg"
-                  alt="Estação de trabalho da Dom Elii Barbershop, na Boa Vista, em Curitiba"
+                  alt="Estação de trabalho da Dom Elii Barbershop, no Boa Vista, em Curitiba"
                   fill
                   quality={65}
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -243,8 +247,14 @@ export function HomeClient() {
       {/* DOBRA 5: EQUIPE (E-E-A-T) */}
       <EquipeSection />
 
+      {/* DEPOIMENTOS (aparece quando src/data/depoimentos.ts for preenchido) */}
+      <DepoimentosSection />
+
       {/* PRODUTOS E PARCERIAS (desligavel em src/data/parceiros.ts) */}
       <ParceirosSection />
+
+      {/* ÚLTIMOS ARTIGOS — link interno da home para o blog */}
+      <BlogSection />
 
       {/* FAQ */}
       <section className="secao-adiada relative w-full bg-[#0A0A0A] py-24 md:py-32 border-t border-white/5 z-20">

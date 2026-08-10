@@ -40,8 +40,8 @@ export function LocalizacaoSection() {
             </h2>
 
             <p className="text-zinc-400 font-light leading-relaxed mb-10 max-w-md">
-              Estamos na {negocio.endereco.rua}, na Boa Vista — a poucos minutos
-              do Bacacheri, Cabral, Ahú e Juvevê. Agende pelo Booksy ou passe
+              Estamos na {negocio.endereco.rua}, no Boa Vista — a poucos minutos
+              do Bacacheri, Cabral, Ahú e Juvevê. Agende o seu horário ou passe
               por aqui.
             </p>
 
@@ -86,7 +86,7 @@ export function LocalizacaoSection() {
               rel="noopener noreferrer"
               className="mt-12 self-start px-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] rounded-sm hover:bg-zinc-200 transition-colors"
             >
-              Agendar no Booksy
+              Agendar horário
             </a>
           </Revelar>
 
@@ -121,8 +121,8 @@ export function LocalizacaoSection() {
             </dl>
 
             <p className="mt-8 text-xs text-zinc-400 font-light leading-relaxed">
-              Horários sujeitos a alteração em feriados. A agenda em tempo real
-              está sempre no Booksy.
+              Horários sujeitos a alteração em feriados. A disponibilidade em
+              tempo real aparece na hora de agendar.
             </p>
           </Revelar>
         </div>

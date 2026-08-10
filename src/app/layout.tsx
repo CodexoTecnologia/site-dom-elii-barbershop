@@ -21,23 +21,29 @@ export const metadata: Metadata = {
     template: `%s | ${negocio.nome}`,
     default: `Barbearia em Curitiba | ${negocio.nome} — Boa Vista`,
   },
-  description: `Barbearia em Curitiba, no bairro Boa Vista. Corte, barba, sobrancelha e química masculina. Atendemos toda a cidade. Agende pelo Booksy. ${negocio.telefone}.`,
+  description: `Barbearia em Curitiba, no bairro Boa Vista. Corte, barba, sobrancelha e química masculina. Atendemos toda a cidade. Agende o seu horário. ${negocio.telefone}.`,
   applicationName: negocio.nome,
-  authors: [{ name: negocio.nome, url: SITE_URL }],
+  authors: [{ name: negocio.nome }],
   creator: negocio.nome,
   publisher: negocio.nome,
-  keywords: [
-    "barbearia curitiba",
-    "barbearia boa vista curitiba",
-    "barbearia bacacheri",
-    "corte masculino curitiba",
-    "degradê curitiba",
-    "barboterapia curitiba",
-    "barbearia cwb",
-    "corte masculino curitiba",
-    "platinado masculino curitiba",
-  ],
   category: "Barbearia",
+  /*
+   * Duas versões do favicon. Ele aparece sobre o fundo da ABA do navegador,
+   * não sobre o site: em tema claro a aba é branca e a logo branca sumiria;
+   * em tema escuro acontece o inverso com a preta.
+   *
+   * Declarado aqui, e não pelos arquivos `icon.png`/`apple-icon.png` em
+   * app/, porque a convenção de arquivo não permite `media`.
+   *
+   * Os arquivos saem de `node scripts/gera-icones.mjs`.
+   */
+  icons: {
+    icon: [
+      { url: "/icon-claro.png", media: "(prefers-color-scheme: light)" },
+      { url: "/icon-escuro.png", media: "(prefers-color-scheme: dark)" },
+    ],
+    apple: "/apple-icon.png",
+  },
   formatDetection: { telephone: true, address: true },
   openGraph: {
     type: "website",
@@ -45,16 +51,17 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: SITE_URL,
   },
+  /*
+     * `max-image-preview: large` é o que libera a miniatura grande no
+     * resultado de busca — importante para negócio visual. Declarado no
+     * `robots` geral, e não só no googleBot, para valer também no Bing.
+     */
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
   },
 };
 
