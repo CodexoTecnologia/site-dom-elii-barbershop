@@ -39,8 +39,24 @@ export const metadata: Metadata = {
    */
   icons: {
     icon: [
-      { url: "/icon-claro.png", media: "(prefers-color-scheme: light)" },
-      { url: "/icon-escuro.png", media: "(prefers-color-scheme: dark)" },
+      /*
+       * O PRIMEIRO não tem `media` de propósito: é o que o Google lê para
+       * montar o ícone ao lado do resultado de busca. Ele ignora media
+       * queries e, se todos os ícones tiverem uma, mostra o globo genérico.
+       *
+       * É a logo preta porque o Google desenha o favicon sobre um círculo
+       * branco — a versão branca sumiria ali. Serve também para abas de
+       * navegador em tema claro.
+       *
+       * 192px porque o Google só aceita quadrados com lado múltiplo de 48.
+       */
+      { url: "/icon-claro.png", type: "image/png", sizes: "192x192" },
+      {
+        url: "/icon-escuro.png",
+        type: "image/png",
+        sizes: "192x192",
+        media: "(prefers-color-scheme: dark)",
+      },
     ],
     apple: "/apple-icon.png",
   },

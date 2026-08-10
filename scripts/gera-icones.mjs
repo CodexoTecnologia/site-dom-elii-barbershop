@@ -12,6 +12,10 @@
  * Os dois são gerados com fundo TRANSPARENTE: na aba, a logo fica sobre a
  * cor do próprio navegador, sem um quadrado preto em volta.
  *
+ * TAMANHO 192px NÃO É ARBITRÁRIO: o Google só considera favicons quadrados
+ * cujo lado seja múltiplo de 48. Com 256px ele descarta o ícone e mostra o
+ * globo genérico no resultado de busca.
+ *
  * Não geramos mais `favicon.ico`: ele é um arquivo só, não muda com o tema e
  * precisaria de fundo sólido para ser legível nos dois. Todo navegador atual
  * lê favicon em PNG.
@@ -64,8 +68,8 @@ async function montar(logo, tamanho, fundo) {
 const kb = (b) => `${(b.length / 1024).toFixed(1)} KB`;
 
 const saidas = [
-  ["public/icon-claro.png", await montar(logoPreta, 256, TRANSPARENTE), "logo preta, para abas claras"],
-  ["public/icon-escuro.png", await montar(logoBranca, 256, TRANSPARENTE), "logo branca, para abas escuras"],
+  ["public/icon-claro.png", await montar(logoPreta, 192, TRANSPARENTE), "logo preta: padrão e abas claras"],
+  ["public/icon-escuro.png", await montar(logoBranca, 192, TRANSPARENTE), "logo branca: abas escuras"],
   ["public/apple-icon.png", await montar(logoBranca, 180, PRETO), "iOS, sobre preto"],
   ["public/icon-192.png", await montar(logoBranca, 192, PRETO), "manifest"],
   ["public/icon-512.png", await montar(logoBranca, 512, PRETO), "manifest"],
