@@ -66,7 +66,7 @@ export const faqData: ItemFaq[] = [
   {
     pergunta: "Qual é a melhor barbearia em Curitiba?",
     resposta:
-      "Não existe uma resposta única: a melhor barbearia é a que atende bem o seu tipo de cabelo e cabe na sua rotina. Vale avaliar três coisas antes de escolher — se o profissional pergunta sobre o seu dia a dia antes de cortar, se a higienização das ferramentas acontece na sua frente e se as avaliações são recentes e descrevem o serviço. A Dom Elii atende no Boa Vista, em Curitiba, desde 2022 e é uma das barbearias mais bem avaliadas da região.",
+      "Não existe uma resposta única: a melhor barbearia é a que atende bem o seu tipo de cabelo e cabe na sua rotina. Vale avaliar três coisas antes de escolher — se o profissional pergunta sobre o seu dia a dia antes de cortar, se a higienização das ferramentas acontece na sua frente e se as avaliações são recentes e descrevem o serviço. A Dom Elii atende no Boa Vista, em Curitiba, desde 2023 e é uma das barbearias mais bem avaliadas da região.",
   },
   {
     pergunta: "Quanto tempo demora cada serviço?",

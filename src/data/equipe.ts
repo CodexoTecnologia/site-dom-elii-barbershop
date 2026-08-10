@@ -36,7 +36,7 @@ export const equipeData: MembroEquipe[] = [
     nome: "Elias Filho",
     cargo: "Barbeiro e fundador",
     descricao:
-      "Fundou a Dom Elii em 2022 e continua atendendo todos os dias. É quem define o padrão de acabamento que a casa segue.",
+      "Fundou a Dom Elii em 2023, depois de mais de cinco anos atrás da cadeira em outras casas. É quem define o padrão de acabamento que a barbearia segue.",
     imagem: "/barbeiro-elias-filho.jpeg",
   },
   {

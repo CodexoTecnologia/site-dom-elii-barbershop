@@ -204,10 +204,11 @@ export default function BarbeariaCuritibaPage() {
 
             <div className="flex flex-col gap-6 text-zinc-300 font-light leading-relaxed">
               <p>
-                A Dom Elii nasceu em {negocio.fundadaEm}, das mãos de Elias
-                Filho. Antes de abrir a própria barbearia em Curitiba, ele veio
-                do Norte do país e passou anos atrás da cadeira em outras casas,
-                aprendendo com cada cliente que passou por ali.
+                A Dom Elii abriu as portas em 23 de fevereiro de{" "}
+                {negocio.fundadaEm}, das mãos de Elias Filho. Antes disso, ele
+                veio do Norte do país e acumulou mais de cinco anos atrás da
+                cadeira em outras casas, aprendendo com cada cliente que passou
+                por ali.
               </p>
               <p>
                 Foi nesse caminho que a técnica foi sendo lapidada e que uma

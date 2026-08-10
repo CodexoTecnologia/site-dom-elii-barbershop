@@ -94,19 +94,22 @@ export const negocio = {
 
   instagramHandle: "@dom_elii_barbershop",
 
-  /** Ano de fundação. Alimenta o texto da página e o schema do negócio. */
-  fundadaEm: 2022,
+  /** Ano de fundação, usado nos textos. Data confirmada com o Elias. */
+  fundadaEm: 2023,
+
+  /** Data completa (ISO), usada no `foundingDate` do schema. */
+  fundadaEmData: "2023-02-23",
 
   /**
    * Marcos que só crescem, nunca caem.
    *
    * Nota e contagem exata de avaliações não aparecem no site de propósito:
    * uma avaliação ruim derruba a nota e o texto vira mentira sem ninguém
-   * perceber. Já "desde 2022" e "mais de mil clientes" continuam verdadeiros
+   * perceber. Já "desde 2023" e "mais de mil clientes" continuam verdadeiros
    * para sempre — e ficam mais fortes com o tempo.
    *
    * CONFIRMAR COM O ELIAS: o número de clientes é uma estimativa conservadora
-   * (3 barbeiros desde 2022). Se o Booksy tiver o total real, use o número
+   * (3 barbeiros desde 2023). Se o Booksy tiver o total real, use o número
    * redondo imediatamente abaixo dele.
    */
   clientesAtendidos: 1000,
