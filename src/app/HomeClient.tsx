@@ -214,7 +214,7 @@ export function HomeClient() {
               />
               <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
                 <p className="text-4xl md:text-5xl font-bold uppercase tracking-tighter text-white opacity-90">
-                  Cabelo e barba.
+                  Mais que um corte.
                 </p>
               </div>
             </div>
