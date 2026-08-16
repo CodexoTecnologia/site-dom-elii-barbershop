@@ -10,7 +10,7 @@ export const artigo: Artigo = {
   publicadoEm: "2026-07-20",
   autor: "Lucas Eduardo",
   tempoLeitura: "6 min",
-  imagem: "/corte-2.jpeg",
+  imagem: "/clientes/corte-2.jpeg",
   imagemAlt:
     "Degradê masculino executado na Dom Elii Barbershop, em Curitiba",
   conteudo: [
@@ -60,7 +60,7 @@ export const artigo: Artigo = {
     },
     {
       tipo: "imagem",
-      src: "/corte-2.jpeg",
+      src: "/clientes/corte-2.jpeg",
       alt: "Degradê médio executado na Dom Elii Barbershop, em Curitiba",
       legenda: "Mid fade: a transição começa na altura da têmpora. É o mais executado na casa.",
     },
@@ -99,7 +99,7 @@ export const artigo: Artigo = {
     },
     {
       tipo: "imagem",
-      src: "/corte-4.jpeg",
+      src: "/clientes/corte-4.jpeg",
       alt: "Corte masculino com degradê e desenho na Dom Elii Barbershop",
       legenda: "Quanto mais alto o degradê, mais curto o intervalo até a próxima manutenção.",
     },

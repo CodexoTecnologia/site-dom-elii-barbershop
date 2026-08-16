@@ -16,7 +16,7 @@ export function FaqClient() {
   return (
     <main className="flex min-h-screen flex-col bg-[#0A0A0A] relative overflow-hidden">
       <FundoHero
-        src="/barba-1.jpeg"
+        src="/clientes/barba-1.jpeg"
         alt="Barboterapia na Dom Elii Barbershop"
         escurecer={90}
       />

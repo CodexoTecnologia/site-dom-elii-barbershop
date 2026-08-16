@@ -10,7 +10,7 @@ export const artigo: Artigo = {
   publicadoEm: "2026-08-05",
   autor: "Elias Filho",
   tempoLeitura: "5 min",
-  imagem: "/corte-3.jpeg",
+  imagem: "/clientes/corte-3.jpeg",
   imagemAlt:
     "Corte masculino sendo finalizado na Dom Elii Barbershop, em Curitiba",
   conteudo: [
@@ -30,7 +30,7 @@ export const artigo: Artigo = {
       itens: [
         "Até R$ 35: atendimento rápido, geralmente por ordem de chegada, com 15 a 20 minutos de cadeira. Resolve a manutenção de quem já tem o corte pronto.",
         "De R$ 40 a R$ 70: a faixa da maioria das barbearias de bairro com agendamento. Aqui entra o tempo de conversar sobre o corte, o acabamento na navalha e o produto de finalização.",
-        "Acima de R$ 80: casas com nome consolidado, localização central ou serviço estendido, com bebida, atendimento mais longo e às vezes mais de um profissional no mesmo cliente.",
+        "Acima de R$ 80: casas com especialidades específicas, localização central ou serviço estendido, com bebida, atendimento mais longo e às vezes mais de um profissional no mesmo cliente.",
       ],
     },
     {

@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/confere-vazamento.mjs",
     "start": "next start",
     "lint": "eslint",
-    "otimizar-imagens": "node scripts/otimizar-imagens.mjs"
+    "otimizar-imagens": "node scripts/otimizar-imagens.mjs",
+    "converte-instagram": "node scripts/converte-fotos-instagram.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

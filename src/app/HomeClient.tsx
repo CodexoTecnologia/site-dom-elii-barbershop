@@ -11,6 +11,8 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { EquipeSection } from "@/components/sections/EquipeSection";
 import { ParceirosSection } from "@/components/sections/ParceirosSection";
 import { BlogSection } from "@/components/sections/BlogSection";
+import { InstagramSection } from "@/components/sections/InstagramSection";
+import { ComoChegarSection } from "@/components/sections/ComoChegarSection";
 import { DepoimentosSection } from "@/components/sections/DepoimentosSection";
 import { negocio } from "@/data/negocio";
 
@@ -127,7 +129,7 @@ export function HomeClient() {
                 {[
                   "Antes de começar, entendemos seu tipo de cabelo, sua rotina e o que você quer transmitir. A máquina vem depois disso.",
                   "Preço fechado antes de começar. Serviço de valor variável é orçado na avaliação, nunca no fim.",
-                  "Loja dentro da barbearia com pomada, cera e roupa, e geladeira com bebida gelada para acompanhar o corte.",
+                  "Loja dentro da barbearia: pomada, cera, perfume, roupa e peças impressas em 3D, de chaveiro a objeto de decoração. E geladeira com bebida gelada para acompanhar o corte.",
                 ].map((item) => (
                   <li
                     key={item}
@@ -188,7 +190,7 @@ export function HomeClient() {
           <div className="galeria-trilho flex gap-6 md:gap-12 px-6 md:px-20">
             <div className="relative h-[65vh] w-[72vw] md:h-[500px] md:w-[400px] flex-shrink-0 border border-white/10 group">
               <Image
-                src="/corte-1.jpeg"
+                src="/clientes/corte-1.jpeg"
                 fill
                 sizes="(max-width: 768px) 72vw, 400px"
                 quality={65}
@@ -221,7 +223,7 @@ export function HomeClient() {
 
             <div className="relative h-[65vh] w-[72vw] md:h-[500px] md:w-[400px] flex-shrink-0 border border-white/10">
               <Image
-                src="/barba-1.jpeg"
+                src="/clientes/barba-1.jpeg"
                 fill
                 sizes="(max-width: 768px) 72vw, 400px"
                 quality={65}
@@ -232,7 +234,7 @@ export function HomeClient() {
 
             <div className="relative h-[65vh] w-[72vw] md:h-[500px] md:w-[400px] flex-shrink-0 border border-white/10">
               <Image
-                src="/corte-2.jpeg"
+                src="/clientes/corte-2.jpeg"
                 fill
                 sizes="(max-width: 768px) 72vw, 400px"
                 quality={65}
@@ -252,6 +254,14 @@ export function HomeClient() {
 
       {/* PRODUTOS E PARCERIAS (desligavel em src/data/parceiros.ts) */}
       <ParceirosSection />
+
+      {/*
+        INSTAGRAM (desligavel em src/data/instagram.ts).
+
+        Depois de preço, equipe e avaliação: é link que tira a pessoa do site,
+        então só entra quando ela já viu o que precisava para agendar.
+      */}
+      <InstagramSection />
 
       {/* ÚLTIMOS ARTIGOS — link interno da home para o blog */}
       <BlogSection />
@@ -287,6 +297,15 @@ export function HomeClient() {
           </Revelar>
         </div>
       </section>
+
+      {/*
+        COMO CHEGAR — última seção antes do rodapé.
+
+        Depois de o visitante já saber preço, equipe e reputação, o que sobra
+        é "onde fica". Deixar o mapa aqui também evita que ele concorra com o
+        botão de agendar mais acima.
+      */}
+      <ComoChegarSection />
     </main>
   );
 }

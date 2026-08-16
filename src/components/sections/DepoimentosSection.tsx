@@ -136,22 +136,85 @@ export function DepoimentosSection() {
                 atraso={(index % 3) * 0.08}
                 className="w-[85vw] sm:w-[46%] lg:w-[31%] flex-shrink-0 snap-start"
               >
-                <figure className="flex h-full flex-col border border-white/10 rounded-sm p-7">
-                  <Estrelas />
+                {/*
+                  O card inteiro é o link, e não só o nome: aumenta muito a
+                  área de toque no celular, onde o carrossel é usado.
 
-                  <blockquote className="mt-5 text-zinc-300 font-light leading-relaxed flex-grow">
-                    {d.texto}
-                  </blockquote>
+                  Envolver tudo num <a> é seguro AQUI porque não há nada
+                  interativo dentro do card — ao contrário dos parceiros, que
+                  têm carrossel próprio e por isso continuam sem link externo.
+                */}
+                <a
+                  href={negocio.links.avaliacoesGoogle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/card flex h-full flex-col border border-white/10 hover:border-white/25 rounded-sm p-7 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <figure className="flex h-full flex-col">
+                    <Estrelas />
 
-                  <figcaption className="mt-6 pt-4 border-t border-white/5 flex items-center gap-3">
-                    <IconeGoogle className="w-4 h-4 shrink-0" />
-                    <span className="text-sm font-bold text-white">
-                      {d.nome}
-                    </span>
-                  </figcaption>
-                </figure>
+                    <blockquote className="mt-5 text-zinc-300 font-light leading-relaxed flex-grow">
+                      {d.texto}
+                    </blockquote>
+
+                    <figcaption className="mt-6 pt-4 border-t border-white/5 flex items-center gap-3">
+                      <IconeGoogle className="w-4 h-4 shrink-0" />
+                      <span className="text-sm font-bold text-white">
+                        {d.nome}
+                      </span>
+                      {/*
+                        Seta sempre visível, só mais forte no hover: em celular
+                        não existe estado de hover, e sem ela nada indicaria
+                        que o card abre alguma coisa.
+                      */}
+                      <ArrowUpRight
+                        aria-hidden="true"
+                        className="ml-auto w-4 h-4 shrink-0 text-zinc-500 group-hover/card:text-white transition-colors"
+                      />
+                      <span className="sr-only">— ver no Google</span>
+                    </figcaption>
+                  </figure>
+                </a>
               </Revelar>
             ))}
+
+            {/*
+              Último item do trilho: sem ele o carrossel termina em parede.
+              Quem chega ao fim já leu tudo e está no pico do interesse —
+              é o pior momento para não haver para onde ir.
+
+              Borda tracejada e sem <blockquote> de propósito: precisa ler
+              como saída, não como mais um depoimento.
+            */}
+            <Revelar
+              as="li"
+              atraso={(depoimentos.length % 3) * 0.08}
+              className="w-[85vw] sm:w-[46%] lg:w-[31%] flex-shrink-0 snap-start"
+            >
+              <a
+                href={negocio.links.avaliacoesGoogle}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/fim flex h-full flex-col justify-center items-start gap-4 border border-dashed border-white/15 hover:border-white/35 rounded-sm p-7 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <IconeGoogle className="w-8 h-8" />
+
+                <span className="text-xl font-bold text-white uppercase tracking-tight leading-tight">
+                  Ver todas as <br />
+                  avaliações
+                </span>
+
+                <span className="text-sm text-zinc-400 font-light leading-relaxed">
+                  Estas são algumas das avaliações que recebemos. As demais
+                  estão no perfil da Dom Elii no Google.
+                </span>
+
+                <span className="mt-2 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white">
+                  Abrir no Google
+                  <ArrowUpRight className="w-4 h-4 group-hover/fim:translate-x-0.5 group-hover/fim:-translate-y-0.5 transition-transform" />
+                </span>
+              </a>
+            </Revelar>
           </ul>
 
           {depoimentos.length > 1 && (

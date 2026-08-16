@@ -10,9 +10,9 @@ export const artigo: Artigo = {
   publicadoEm: "2026-07-12",
   autor: "Henrique Vilares",
   tempoLeitura: "6 min",
-  imagem: "/produto-classe-a-pomada-1.webp",
+  imagem: "/produtos/produto-tocton-cera-2.webp",
   imagemAlt:
-    "Pastas modeladoras Classe A à venda na Dom Elii Barbershop, em Curitiba",
+    "Produtos de finalização à venda na Dom Elii Barbershop, em Curitiba",
   conteudo: [
     {
       tipo: "p",
@@ -52,12 +52,6 @@ export const artigo: Artigo = {
       texto:
         "Atenção às pomadas à base de óleo: fixam muito e dão brilho intenso, mas exigem shampoo antirresíduo para sair de verdade. Se o seu cabelo tem ficado pesado e opaco com o tempo, pode ser acúmulo.",
     },
-    {
-      tipo: "imagem",
-      src: "/produto-classe-a-pomada-1.webp",
-      alt: "Pastas modeladoras Classe A de 60 g e 150 g na Dom Elii Barbershop",
-      legenda: "As pastas Classe A que usamos na finalização. A de 60 g dura cerca de dois meses em uso diário.",
-    },
     { tipo: "h2", texto: "Cera" },
     {
       tipo: "p",
@@ -74,7 +68,7 @@ export const artigo: Artigo = {
     },
     {
       tipo: "imagem",
-      src: "/produto-tocton-cera-1.webp",
+      src: "/produtos/produto-tocton-cera-1.webp",
       alt: "Ceras modeladoras Tocton Style à venda na Dom Elii Barbershop",
       legenda: "Ceras de acabamento seco, para quem não quer brilho nenhum.",
     },

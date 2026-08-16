@@ -3,30 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Clock } from "lucide-react";
-import { negocio, horarioLegivel } from "@/data/negocio";
-
-/** lucide-react v1 removeu os ícones de marca — SVG inline, zero dependência. */
-function IconeInstagram({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-    </svg>
-  );
-}
+import { IconeInstagram } from "@/components/ui/IconeInstagram";
+import {
+  negocio,
+  horarioLegivel,
+  clientesEmTexto,
+  listaEmTexto,
+} from "@/data/negocio";
 
 /**
  * NAP (nome, endereço, telefone) tem que bater EXATAMENTE com o Google
@@ -43,9 +26,20 @@ export function Footer() {
             <p className="text-2xl font-bold tracking-tighter uppercase text-white mb-6">
               Dom Elii<span className="text-zinc-500">.</span>
             </p>
+            {/*
+              Curto de propósito: a lista de serviços e a forma de agendar
+              ficam no texto do fim do rodapé. Repetir as duas coisas aqui
+              deixava os dois blocos quase idênticos na mesma tela.
+
+              Marcos que só crescem. Nota e contagem de avaliação ficam de
+              fora: caem de uma semana para outra e transformariam o rodapé —
+              que aparece em toda página — em texto falso sem ninguém notar.
+            */}
             <p className="text-zinc-400 font-light leading-relaxed max-w-sm mb-8">
-              Barbearia no Boa Vista, em Curitiba. Corte, barba e química
-              masculina, com hora marcada ou por ordem de chegada.
+              Barbearia no {negocio.endereco.bairro}, em{" "}
+              {negocio.endereco.cidade}, desde {negocio.fundadaEm}. Mais de{" "}
+              {clientesEmTexto(negocio.clientesAtendidos)} clientes atendidos e
+              uma das mais bem avaliadas do bairro.
             </p>
             <a
               href={negocio.links.booksy}
@@ -184,7 +178,46 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
+        {/*
+          Descrição do negócio, em texto corrido.
+
+          Aparece em toda página, e é justamente por isso que precisa ser
+          contida: rodapé repetido tem peso baixo na busca, e amontoar bairro e
+          serviço aqui não engana ninguém — vira o que o Google trata como
+          texto de preenchimento. O que de fato pesa é o endereço e o telefone
+          idênticos aos do Google Meu Negócio, logo acima, e os links internos.
+
+          Então isto aqui é o que um humano leria sem estranhar: onde fica, o
+          que faz e como agendar. A fundação e os números ficam no bloco da
+          marca, acima — dizer as duas coisas nos dois lugares deixava o
+          rodapé com cara de texto colado duas vezes.
+
+          Os bairros vêm de `areasAtendidas`, cortados nos SEIS PRIMEIROS: são
+          os que fazem fronteira com o ponto e aparecem no mapa em volta dele.
+          Citar bairro distante enfraquece a associação com os que importam, e
+          a frase vira lista de palavra-chave.
+        */}
+        <div className="pt-8 border-t border-white/5 mb-8">
+          <p className="text-xs text-zinc-400 font-light leading-relaxed max-w-4xl">
+            A {negocio.nome} fica na {negocio.endereco.rua},{" "}
+            {negocio.endereco.numero}, no {negocio.endereco.bairro}, a poucos
+            minutos de {listaEmTexto(negocio.areasAtendidas.slice(1, 7))}.
+            Fazemos corte de cabelo, degradê, barba na navalha com toalha no
+            vapor, sobrancelha, platinado, luzes e freestyle — com hora marcada
+            pelo Booksy ou por ordem de chegada, quando há horário livre na
+            agenda do dia.
+          </p>
+        </div>
+
+        {/*
+          `id` é o alvo que o botão flutuante de agendar observa para sair da
+          frente (ver components/ui/ScrollIndicator.tsx). Renomear aqui sem
+          renomear lá faz o botão voltar a cobrir a assinatura da Codexo.
+        */}
+        <div
+          id="rodape-creditos"
+          className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4"
+        >
           <p className="text-zinc-400 text-xs font-light text-center md:text-left">
             &copy; {new Date().getFullYear()} {negocio.nomeLegal}. Todos os
             direitos reservados.{" "}

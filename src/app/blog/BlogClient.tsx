@@ -25,7 +25,7 @@ export function BlogClient() {
   return (
     <main className="flex min-h-screen flex-col bg-[#0A0A0A] relative overflow-hidden">
       <FundoHero
-        src="/corte-2.jpeg"
+        src="/clientes/corte-2.jpeg"
         alt="Degradê masculino feito na Dom Elii Barbershop"
       />
 

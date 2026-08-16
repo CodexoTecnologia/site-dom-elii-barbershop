@@ -11,7 +11,7 @@ export const artigo: Artigo = {
     publicadoEm: "2026-05-10",
     autor: "Elias Filho",
     tempoLeitura: "6 min",
-    imagem: "/corte-1.jpeg",
+    imagem: "/clientes/corte-1.jpeg",
     imagemAlt:
       "Barbeiro avaliando o formato do rosto do cliente antes do corte, na Dom Elii Barbershop",
     conteudo: [

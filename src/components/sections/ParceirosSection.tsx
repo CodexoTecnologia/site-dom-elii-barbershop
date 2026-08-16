@@ -88,7 +88,13 @@ function CarrosselFotos({
  * dentro de link) e o arraste das fotos poderia disparar a navegação. O link
  * externo vive no título.
  */
-function CardParceiro({ parceiro }: { parceiro: Parceiro }) {
+function CardParceiro({
+  parceiro,
+  largo = false,
+}: {
+  parceiro: Parceiro;
+  largo?: boolean;
+}) {
   return (
     <article className="group flex h-full flex-col border border-white/10 rounded-sm p-6 sm:p-8 transition-colors hover:border-white/25">
       {parceiro.fotos && parceiro.fotos.length > 0 && (
@@ -115,9 +121,39 @@ function CardParceiro({ parceiro }: { parceiro: Parceiro }) {
         )}
       </h3>
 
-      <p className="text-zinc-400 font-light text-sm leading-relaxed">
+      {/*
+        No card largo o texto ganha teto: linha que atravessa a página inteira
+        cansa de ler, e o parágrafo aqui é curto o bastante para não precisar.
+      */}
+      <p
+        className={`text-zinc-400 font-light text-sm leading-relaxed ${
+          largo ? "max-w-2xl" : ""
+        }`}
+      >
         {parceiro.descricao}
       </p>
+
+      {/*
+        Links extras da marca (site, rede social). Ficam depois da descrição,
+        e não no título, para não competir com o nome — que já é o link
+        principal.
+      */}
+      {parceiro.outrosLinks && parceiro.outrosLinks.length > 0 && (
+        <div className="mt-5 flex flex-wrap gap-2">
+          {parceiro.outrosLinks.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-sm border border-white/15 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-zinc-300 hover:border-white/35 hover:text-white transition-colors"
+            >
+              {link.rotulo}
+              <ArrowUpRight className="w-3 h-3" />
+            </a>
+          ))}
+        </div>
+      )}
     </article>
   );
 }
@@ -152,21 +188,40 @@ export function ParceirosSection() {
           </h2>
 
           <p className="text-zinc-400 font-light leading-relaxed">
-            Pomada, cera e roupa à venda na loja, e geladeira com bebida gelada
-            para acompanhar o corte.
+            Pomada, cera, perfume e roupa à venda na loja, peças impressas em
+            3D — de chaveiro a objeto de decoração — e geladeira com bebida
+            gelada para acompanhar o corte.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {parceirosAtivos.map((parceiro, index) => (
-            <Revelar
-              key={parceiro.slug}
-              atraso={(index % 2) * 0.1}
-              className="h-full"
-            >
-              <CardParceiro parceiro={parceiro} />
-            </Revelar>
-          ))}
+          {parceirosAtivos.map((parceiro, index) => {
+            /*
+             * Grade de duas colunas com número ÍMPAR de cards deixa metade da
+             * última linha vazia, e o card sozinho parece descolado do resto.
+             * O último então ocupa a linha inteira.
+             *
+             * É calculado, não fixo: ligar ou desligar um item em
+             * src/data/parceiros.ts reorganiza sozinho, sem ninguém lembrar
+             * de mexer aqui.
+             *
+             * As fotos do carrossel têm largura fixa, então esticar o card não
+             * deforma imagem nenhuma — só cabem mais por vez.
+             */
+            const ultimoSozinho =
+              parceirosAtivos.length % 2 === 1 &&
+              index === parceirosAtivos.length - 1;
+
+            return (
+              <Revelar
+                key={parceiro.slug}
+                atraso={(index % 2) * 0.1}
+                className={`h-full ${ultimoSozinho ? "md:col-span-2" : ""}`}
+              >
+                <CardParceiro parceiro={parceiro} largo={ultimoSozinho} />
+              </Revelar>
+            );
+          })}
         </div>
       </div>
     </section>

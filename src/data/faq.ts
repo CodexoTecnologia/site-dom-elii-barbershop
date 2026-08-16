@@ -51,7 +51,7 @@ export const faqData: ItemFaq[] = [
   {
     pergunta: "Vocês vendem produtos para cabelo?",
     resposta:
-      "Sim. Vendemos as pomadas Classe A e as ceras Tocton Style que usamos na finalização do corte, além de roupas da Rawa Surf Wear, tudo na loja dentro da barbearia.",
+      "Sim. Vendemos pomadas e as ceras Tocton Style que usamos na finalização do corte, além de perfumes, roupas da Rawa Surf Wear e peças impressas em 3D, tudo na loja dentro da barbearia.",
   },
   {
     pergunta: "Precisa pagar antecipado para agendar?",
@@ -106,7 +106,7 @@ export const faqData: ItemFaq[] = [
   {
     pergunta: "Vocês atendem crianças?",
     resposta:
-      "Sim, atendemos o público infantil a partir de 3 anos, com a experiência de barbearia clássica adaptada para os pequenos.",
+      "Sim, de qualquer idade — inclusive o primeiro corte do bebê. Criança pede mais paciência que adulto, e o atendimento acompanha o ritmo dela: sem pressa e com pausa sempre que precisar.",
   },
   {
     pergunta: "Quanto tempo demora um platinado?",

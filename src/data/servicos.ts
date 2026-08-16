@@ -45,7 +45,7 @@ export const catalogoServicos: CategoriaServico[] = [
           "Cabelo, barba e sobrancelha no mesmo horário, em 1h15. Sai mais barato que os três separados.",
         preco: 105,
         duracaoMin: 75,
-        imagem: "/corte-1.jpeg",
+        imagem: "/clientes/cabelo-e-barba-2.jpeg",
       },
       {
         slug: "cabelo-e-barba",
@@ -55,7 +55,7 @@ export const catalogoServicos: CategoriaServico[] = [
           "Corte de cabelo mais barba desenhada na navalha, com opção de toalha quente. Leva 1 hora e sai mais barato que os dois separados.",
         preco: 90,
         duracaoMin: 60,
-        imagem: "/barba-1.jpeg",
+        imagem: "/clientes/barba-1.jpeg",
       },
       {
         slug: "corte-e-sobrancelha",
@@ -65,7 +65,7 @@ export const catalogoServicos: CategoriaServico[] = [
           "Corte de cabelo mais o desenho da sobrancelha na navalha. Bom para quem não usa barba e quer o rosto alinhado.",
         preco: 64.9,
         duracaoMin: 45,
-        imagem: "/corte-2.jpeg",
+        imagem: "/clientes/corte-e-sobrancelha-1.jpeg",
       },
       {
         slug: "corte-e-freestyle",
@@ -76,7 +76,7 @@ export const catalogoServicos: CategoriaServico[] = [
         preco: 64.9,
         apartirDe: true,
         duracaoMin: 45,
-        imagem: "/corte-4.jpeg",
+        imagem: "/clientes/corte-4.jpeg",
       },
     ],
   },
@@ -93,7 +93,7 @@ export const catalogoServicos: CategoriaServico[] = [
           "Degradê, social ou tesoura, conforme o seu tipo de cabelo e a sua rotina. Leva 30 minutos.",
         preco: 49.9,
         duracaoMin: 30,
-        imagem: "/corte-3.jpeg",
+        imagem: "/clientes/corte-6.jpeg",
       },
       {
         slug: "barba",
@@ -103,7 +103,7 @@ export const catalogoServicos: CategoriaServico[] = [
           "Contorno na navalha com toalha quente e óleo. A toalha no vapor é opcional, e não muda o preço.",
         preco: 45,
         duracaoMin: 30,
-        imagem: "/barba-1.jpeg",
+        imagem: "/clientes/barba-e-toalha-1.jpeg",
       },
       {
         slug: "so-maquina",
@@ -123,7 +123,7 @@ export const catalogoServicos: CategoriaServico[] = [
         preco: 15,
         apartirDe: true,
         duracaoMin: 15,
-        imagem: "/corte-5.jpeg",
+        imagem: "/clientes/corte-5.jpeg",
       },
     ],
   },
@@ -142,6 +142,7 @@ export const catalogoServicos: CategoriaServico[] = [
         preco: 100,
         apartirDe: true,
         duracaoMin: 30,
+        imagem: "/clientes/platinado-1.jpeg",
       },
       {
         slug: "luzes",
@@ -152,6 +153,7 @@ export const catalogoServicos: CategoriaServico[] = [
         preco: 100,
         apartirDe: true,
         duracaoMin: 45,
+        imagem: "/clientes/luzes-1.jpeg",
       },
       {
         slug: "alisamento-capilar",
@@ -205,6 +207,7 @@ export const catalogoServicos: CategoriaServico[] = [
           "Limpeza e desenho da sobrancelha na navalha, sem tirar o traço natural.",
         preco: 20,
         duracaoMin: 15,
+        imagem: "/clientes/sobrancelha-1.jpeg",
       },
       {
         slug: "pezinho",
@@ -215,6 +218,7 @@ export const catalogoServicos: CategoriaServico[] = [
         preco: 20,
         apartirDe: true,
         duracaoMin: 15,
+        imagem: "/clientes/corte-8.jpeg",
       },
       {
         slug: "acabamento-da-barba",
@@ -224,6 +228,7 @@ export const catalogoServicos: CategoriaServico[] = [
           "Só o contorno da barba na máquina de acabamento, sem mexer no comprimento.",
         preco: 25,
         duracaoMin: 15,
+        imagem: "/clientes/barba-2.jpeg",
       },
     ],
   },

@@ -10,7 +10,7 @@ export const artigo: Artigo = {
   publicadoEm: "2026-07-28",
   autor: "Elias Filho",
   tempoLeitura: "5 min",
-  imagem: "/corte-1.jpeg",
+  imagem: "/clientes/corte-1.jpeg",
   imagemAlt:
     "Barbeiro trabalhando o acabamento do corte na Dom Elii Barbershop",
   conteudo: [
@@ -39,7 +39,7 @@ export const artigo: Artigo = {
     },
     {
       tipo: "imagem",
-      src: "/corte-1.jpeg",
+      src: "/clientes/corte-1.jpeg",
       alt: "Barbeiro trabalhando o acabamento do corte na Dom Elii Barbershop",
       legenda: "Acabamento na navalha: é onde a diferença entre profissionais aparece primeiro.",
     },

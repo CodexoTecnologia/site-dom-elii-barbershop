@@ -10,7 +10,7 @@ export const artigo: Artigo = {
     publicadoEm: "2026-05-05",
     autor: "Elias Filho",
     tempoLeitura: "5 min",
-    imagem: "/barba-1.jpeg",
+    imagem: "/clientes/barba-1.jpeg",
     imagemAlt:
       "Barboterapia com toalha no vapor sendo aplicada na Dom Elii Barbershop, Curitiba",
     conteudo: [

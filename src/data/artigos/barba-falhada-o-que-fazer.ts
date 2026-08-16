@@ -10,7 +10,7 @@ export const artigo: Artigo = {
   publicadoEm: "2026-06-14",
   autor: "Elias Filho",
   tempoLeitura: "5 min",
-  imagem: "/barba-1.jpeg",
+  imagem: "/clientes/barba-1.jpeg",
   imagemAlt:
     "Barba sendo desenhada na navalha na Dom Elii Barbershop, em Curitiba",
   conteudo: [
@@ -57,7 +57,7 @@ export const artigo: Artigo = {
     },
     {
       tipo: "imagem",
-      src: "/barba-1.jpeg",
+      src: "/clientes/barba-1.jpeg",
       alt: "Barba sendo contornada na navalha na Dom Elii Barbershop",
       legenda: "O contorno é o que separa barba cheia de barba largada — e o que mais disfarça falha.",
     },

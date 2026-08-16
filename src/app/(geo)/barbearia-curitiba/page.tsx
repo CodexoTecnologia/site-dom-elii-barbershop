@@ -8,6 +8,8 @@ import {
 } from "@/data/negocio";
 import { FundoHero } from "@/components/ui/FundoHero";
 import { EquipeSection } from "@/components/sections/EquipeSection";
+import { MapaLocal } from "@/components/ui/MapaLocal";
+import { SeloLogo } from "@/components/ui/SeloLogo";
 import { AgendaSemana } from "@/components/ui/AgendaSemana";
 import { JsonLd } from "@/components/JsonLd";
 import { schemaBreadcrumb } from "@/lib/schema";
@@ -39,7 +41,7 @@ export default function BarbeariaCuritibaPage() {
         {/* HERO */}
         <section className="relative w-full pt-36 md:pt-44 pb-20 overflow-hidden">
           <FundoHero
-            src="/corte-1.jpeg"
+            src="/clientes/corte-1.jpeg"
             alt="Atendimento na Dom Elii Barbershop, em Curitiba"
           />
 
@@ -168,21 +170,7 @@ export default function BarbeariaCuritibaPage() {
               você está.
             </p>
 
-            {/*
-              `loading="lazy"` é essencial aqui: o mapa do Google carrega
-              bastante script de terceiro, e sem isso ele entraria no
-              carregamento inicial da página inteira.
-            */}
-            <div className="relative w-full aspect-[4/3] md:aspect-[21/9] overflow-hidden rounded-sm border border-white/10 bg-zinc-900">
-              <iframe
-                src={negocio.mapaIncorporado}
-                title="Mapa com a localização da Dom Elii Barbershop, no Boa Vista, em Curitiba"
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="strict-origin-when-cross-origin"
-                className="absolute inset-0 h-full w-full border-0"
-              />
-            </div>
+            <MapaLocal className="aspect-[4/3] md:aspect-[21/9]" />
 
             <a
               href={negocio.links.rota}
@@ -197,32 +185,81 @@ export default function BarbeariaCuritibaPage() {
 
         {/* A HISTÓRIA */}
         <section className="w-full py-20 border-b border-white/5">
-          <div className="container mx-auto px-6 md:px-12 max-w-3xl">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white uppercase mb-10">
-              Como tudo começou
-            </h2>
+          <div className="container mx-auto px-6 md:px-12">
+            {/*
+              Foto à esquerda, história à direita.
 
-            <div className="flex flex-col gap-6 text-zinc-300 font-light leading-relaxed">
-              <p>
-                A Dom Elii abriu as portas em 23 de fevereiro de{" "}
-                {negocio.fundadaEm}, das mãos de Elias Filho. Antes disso, ele
-                veio do Norte do país e acumulou mais de cinco anos atrás da
-                cadeira em outras casas, aprendendo com cada cliente que passou
-                por ali.
-              </p>
-              <p>
-                Foi nesse caminho que a técnica foi sendo lapidada e que uma
-                ideia foi ficando clara: existia um jeito de atender que ele
-                queria oferecer e que não cabia no espaço de mais ninguém. Um
-                lugar onde o tempo de cada serviço fosse respeitado e onde o
-                cliente saísse melhor do que entrou — não só no cabelo.
-              </p>
-              <p>
-                Da decisão de fundar o próprio espaço até hoje, o que mudou foi
-                o tamanho da equipe. O que não mudou foi o motivo: cuidar da
-                aparência de alguém é cuidar de como essa pessoa vai se
-                apresentar para o mundo no dia seguinte.
-              </p>
+              Antes era uma coluna de texto centrada, sozinha no meio de uma
+              página escura: bloco de três parágrafos sem nada em volta, com
+              cara de rascunho. A foto ancora o texto e dá escala à seção.
+
+              `items-start` em vez de `items-center`: com o texto mais alto que
+              a imagem, centralizar deixaria a foto flutuando no meio do vazio.
+            */}
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              {/*
+                Logo no anel, e não uma foto: as do acervo já aparecem em
+                outras seções desta mesma página, e repetir imagem faz o site
+                parecer ter menos material do que tem.
+              */}
+              <div className="flex flex-col items-center gap-8">
+                <SeloLogo />
+
+                <div className="text-center">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-zinc-300">
+                    Desde 23 de fevereiro de {negocio.fundadaEm}
+                  </p>
+                  <p className="mt-2 text-sm font-light text-zinc-400">
+                    {negocio.endereco.rua}, {negocio.endereco.numero} —{" "}
+                    {negocio.endereco.bairro}
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-bold text-zinc-400 tracking-[0.3em] uppercase mb-6 flex items-center gap-4">
+                  <span className="w-12 h-px bg-zinc-700" /> A história
+                </p>
+
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-white uppercase leading-[1.1] mb-8">
+                  Como tudo <br className="hidden lg:block" />
+                  <span className="text-zinc-500">começou.</span>
+                </h2>
+
+                <div className="flex flex-col gap-6 text-zinc-300 font-light leading-relaxed">
+                  <p>
+                    A Dom Elii abriu as portas em 23 de fevereiro de{" "}
+                    {negocio.fundadaEm}, das mãos de Elias Filho. Antes disso,
+                    ele veio do Norte do país e acumulou mais de cinco anos
+                    atrás da cadeira em outras casas, aprendendo com cada
+                    cliente que passou por ali.
+                  </p>
+                  <p>
+                    Foi nesse caminho que a técnica foi sendo lapidada e que uma
+                    ideia foi ficando clara: existia um jeito de atender que ele
+                    queria oferecer e que não cabia no espaço de mais ninguém.
+                    Um lugar onde o tempo de cada serviço fosse respeitado e
+                    onde o cliente saísse melhor do que entrou — não só no
+                    cabelo.
+                  </p>
+                  <p>
+                    Da decisão de fundar o próprio espaço até hoje, o que mudou
+                    foi o tamanho da equipe. O que não mudou foi o motivo:
+                    cuidar da aparência de alguém é cuidar de como essa pessoa
+                    vai se apresentar para o mundo no dia seguinte.
+                  </p>
+                </div>
+
+                {/*
+                  Fecha a história emendando na equipe, que vem logo abaixo:
+                  a seção seguinte deixa de aparecer do nada.
+                */}
+                <p className="mt-8 text-sm text-zinc-400 font-light">
+                  Hoje são três barbeiros atendendo no{" "}
+                  {negocio.endereco.bairro} — conheça quem está atrás da
+                  cadeira.
+                </p>
+              </div>
             </div>
           </div>
         </section>

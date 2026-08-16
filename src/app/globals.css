@@ -190,6 +190,33 @@ body {
   contain-intrinsic-size: auto 900px;
 }
 
+/*
+  Anel de texto girando em volta da logo (ver components/ui/SeloLogo.tsx).
+
+  Custa praticamente nada: `transform: rotate` não recalcula layout nem
+  repinta o conteúdo — o navegador rasteriza o anel UMA vez e só reaproveita
+  a mesma textura em ângulos diferentes, na GPU.
+
+  `will-change` é o que garante essa camada própria. Vale aqui porque é um
+  elemento pequeno e único na página; espalhar `will-change` pelo site teria
+  o efeito contrário, cada camada consome memória de vídeo.
+
+  Volta lenta de propósito: 30s é movimento que se percebe sem incomodar.
+  Quem pede menos movimento no sistema não vê nada girando — o bloco
+  `prefers-reduced-motion` mais abaixo zera toda animação do site.
+*/
+@keyframes girar-selo {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.selo-anel {
+  animation: girar-selo 30s linear infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
 /* Foco visível em qualquer elemento interativo, inclusive onde algum
    componente zera o outline padrão. Navegação por teclado depende disso. */
 :focus-visible {

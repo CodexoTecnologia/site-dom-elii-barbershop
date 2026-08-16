@@ -10,7 +10,7 @@ export const artigo: Artigo = {
   publicadoEm: "2026-07-02",
   autor: "Lucas Eduardo",
   tempoLeitura: "5 min",
-  imagem: "/corte-4.jpeg",
+  imagem: "/clientes/corte-4.jpeg",
   imagemAlt:
     "Manutenção de corte masculino na Dom Elii Barbershop, em Curitiba",
   conteudo: [
@@ -46,7 +46,7 @@ export const artigo: Artigo = {
     },
     {
       tipo: "imagem",
-      src: "/corte-5.jpeg",
+      src: "/clientes/corte-5.jpeg",
       alt: "Corte masculino recém-finalizado na Dom Elii Barbershop, em Curitiba",
       legenda: "Corte bem-feito não é o que fica bom no dia: é o que ainda está aceitável duas semanas depois.",
     },

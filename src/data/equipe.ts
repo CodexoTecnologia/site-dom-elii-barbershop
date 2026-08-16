@@ -17,6 +17,11 @@
  * `imagem`: retrato em /public, exibido em 4:5. Se o campo faltar, a UI cai
  * num placeholder com as iniciais em vez de quebrar.
  *
+ * MANTENHA O PREFIXO `barbeiro-` no nome do arquivo. É por ele que o
+ * next.config.ts tira os retratos de funcionário do índice de imagens do
+ * Google — quem sai da barbearia não fica ilustrando o site na busca por
+ * semanas. A foto do fundador é a única exceção, aberta lá explicitamente.
+ *
  * Nome de arquivo sempre em minúsculas: o Windows ignora maiúsculas, o
  * servidor de produção (Linux) não — divergência só aparece depois do deploy.
  */

@@ -10,7 +10,7 @@ export const artigo: Artigo = {
     publicadoEm: "2026-04-28",
     autor: "Henrique Vilares",
     tempoLeitura: "6 min",
-    imagem: "/corte-3.jpeg",
+    imagem: "/clientes/corte-3.jpeg",
     imagemAlt:
       "Resultado de platinado masculino executado na Dom Elii Barbershop, em Curitiba",
     conteudo: [

@@ -41,14 +41,28 @@ export const negocio = {
   telefoneE164: "+5541995384975",
   whatsapp: "5541995384975",
 
-  /** Bairros de captação para SEO local. Ordem = prioridade. */
+  /**
+   * Bairros de captação para SEO local.
+   *
+   * ORDEM = DISTÂNCIA, do mais perto para o mais longe. O primeiro é onde a
+   * barbearia fica; os seguintes são a vizinhança que aparece no mapa em
+   * volta do ponto. O rodapé cita só os primeiros da lista, então a ordem
+   * decide o que é mostrado — não é ordenação decorativa.
+   *
+   * Só entra bairro de onde alguém realmente atravessaria para cortar
+   * cabelo. Lista inchada com bairro distante não engana o Google e ainda
+   * enfraquece a associação com os que importam.
+   */
   areasAtendidas: [
     "Boa Vista",
     "Bacacheri",
+    "Santa Cândida",
+    "Barreirinha",
+    "Atuba",
+    "Bairro Alto",
     "Cabral",
     "Ahú",
     "Juvevê",
-    "Santa Cândida",
   ],
 
   /**
@@ -88,6 +102,22 @@ export const negocio = {
       encodeURIComponent(
         "Dom Elii Barbershop Barbearia, Rua Lodovico Geronazzo, 539 - Boa Vista, Curitiba - PR, 82560-040"
       ),
+    /**
+     * Abre a lista completa de avaliações do Google, já no painel lateral.
+     *
+     * O `#lrd` é o que salta direto para as avaliações em vez de parar na
+     * ficha do negócio; os dois hexadecimais identificam o local (o segundo é
+     * o CID da Dom Elii) e as vírgulas finais são posições de filtro vazias,
+     * exigidas pelo formato.
+     *
+     * A URL copiada da barra do Chrome vinha com `oq`, `gs_lcrp`, `sourceid`
+     * e `ie` — estado da SESSÃO de quem copiou, não do negócio. Isso não foi
+     * mantido: parâmetro de sessão alheia é ruído que pode mudar o resultado
+     * para o visitante.
+     */
+    avaliacoesGoogle:
+      "https://www.google.com/search?q=Dom+Elii+Barbershop+Barbearia" +
+      "#lrd=0x94dce753e44b37b9:0x3ebb4bd569270b41,1,,,,",
     instagram: "https://instagram.com/dom_elii_barbershop",
     whatsapp: "https://wa.me/5541995384975",
   },
@@ -150,6 +180,18 @@ export function avaliacoesAproximadas(quantidade: number): string {
 }
 
 export const enderecoLinhaUnica = `${negocio.endereco.rua}, ${negocio.endereco.numero} - ${negocio.endereco.bairro}, ${negocio.endereco.cidade} - ${negocio.endereco.estado}, ${negocio.endereco.cep}`;
+
+/**
+ * Junta itens como se escreve à mão: "Bacacheri, Cabral e Ahú".
+ *
+ * Serve para citar bairros em texto corrido. Lista separada só por vírgula
+ * lê como enumeração de palavra-chave — o oposto do que se quer num texto
+ * que o Google avalia.
+ */
+export function listaEmTexto(itens: readonly string[]): string {
+  if (itens.length <= 1) return itens[0] ?? "";
+  return `${itens.slice(0, -1).join(", ")} e ${itens[itens.length - 1]}`;
+}
 
 /** Ex.: "Segunda-feira: 13:00 às 20:00" | "Domingo: Fechado" */
 export function horarioLegivel(h: (typeof negocio.horarios)[number]): string {

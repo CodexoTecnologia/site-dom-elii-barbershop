@@ -18,7 +18,7 @@ export function ServicosClient() {
       {/* HERO */}
       <section className="relative w-full pt-36 md:pt-44 pb-16 overflow-hidden">
         <FundoHero
-          src="/corte-3.jpeg"
+          src="/clientes/corte-3.jpeg"
           alt="Corte masculino executado na Dom Elii Barbershop"
         />
 

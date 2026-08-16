@@ -18,17 +18,29 @@ const LARGURA_MAXIMA = 1600;
 const LARGURA_MAXIMA_LOGO = 512;
 const QUALIDADE_JPEG = 78;
 
+/**
+ * Ícones não passam por aqui: são gerados por scripts/gera-icones.mjs em
+ * tamanho exato (o Google exige lado múltiplo de 48) e com transparência.
+ * Recomprimir estragaria as duas coisas.
+ */
+const GERADOS = /^(icon|apple-icon|favicon)/;
+
 const kb = (bytes) => `${(bytes / 1024).toFixed(0)} KB`;
 
-const arquivos = await readdir(DIR);
+// recursive: as fotos moraram na raiz até serem separadas em
+// public/clientes e public/produtos. Sem isso o script varreria só a raiz e
+// as pastas novas passariam batido.
+const arquivos = await readdir(DIR, { recursive: true });
 let antes = 0;
 let depois = 0;
 
-for (const nome of arquivos) {
+for (const relativo of arquivos) {
+  const nome = relativo.split(/[\\/]/).pop();
   const ext = extname(nome).toLowerCase();
   if (![".jpg", ".jpeg", ".png"].includes(ext)) continue;
+  if (GERADOS.test(nome)) continue;
 
-  const caminho = join(DIR, nome);
+  const caminho = join(DIR, relativo);
   const tamanhoOriginal = (await stat(caminho)).size;
 
   const ehLogo = nome.includes("logo");
@@ -52,7 +64,7 @@ for (const nome of arquivos) {
   const buffer = await pipeline.toBuffer();
 
   if (buffer.length >= tamanhoOriginal) {
-    console.log(`= ${nome} (já otimizado, mantido em ${kb(tamanhoOriginal)})`);
+    console.log(`= ${relativo} (já otimizado, mantido em ${kb(tamanhoOriginal)})`);
     antes += tamanhoOriginal;
     depois += tamanhoOriginal;
     continue;
@@ -64,7 +76,7 @@ for (const nome of arquivos) {
 
   const reducao = (1 - buffer.length / tamanhoOriginal) * 100;
   console.log(
-    `✓ ${nome}: ${kb(tamanhoOriginal)} -> ${kb(buffer.length)} (-${reducao.toFixed(0)}%)`
+    `✓ ${relativo}: ${kb(tamanhoOriginal)} -> ${kb(buffer.length)} (-${reducao.toFixed(0)}%)`
   );
 }
 

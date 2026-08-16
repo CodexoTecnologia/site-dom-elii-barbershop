@@ -104,7 +104,7 @@ export function ServicesSection({ limite }: Props) {
             <span className="text-zinc-500">barbearia.</span>
           </h2>
           <p className="mt-6 text-zinc-400 font-light max-w-lg mx-auto md:mx-0">
-            Conheça cada serviço, o tempo que leva e o valor. Toque no card
+            Conheça cada serviço, o tempo que leva e o valor. Escolha um abaixo
             para agendar o seu horário.
           </p>
         </div>
