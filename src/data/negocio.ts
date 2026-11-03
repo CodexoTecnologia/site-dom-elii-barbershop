@@ -8,6 +8,13 @@
 
 export const SITE_URL = "https://domelii.com.br";
 
+/**
+ * Google tag (formato novo, com ID de contêiner GTM) entregue pelo Google Ads
+ * para medir conversão — principalmente clique no WhatsApp. Carregada em
+ * todas as páginas pelo layout raiz.
+ */
+export const GTM_ID = "GTM-M275FPVF";
+
 export const negocio = {
   nome: "Dom Elii Barbershop",
   nomeLegal: "Dom Elii Barbershop",

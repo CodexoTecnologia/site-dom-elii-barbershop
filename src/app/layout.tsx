@@ -6,7 +6,7 @@ import { Footer } from "@/components/ui/Footer";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { JsonLd } from "@/components/JsonLd";
 import { schemaNegocio, schemaWebSite } from "@/lib/schema";
-import { negocio, SITE_URL } from "@/data/negocio";
+import { GTM_ID, negocio, SITE_URL } from "@/data/negocio";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -93,6 +93,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      {/*
+       * Google tag do Google Ads, colada como o Google instrui: logo na
+       * abertura do <head>, em HTML puro, e não via `next/script` ou
+       * `@next/third-parties`. O diagnóstico do Ads procura a tag no HTML
+       * servido; injetada depois da hidratação ela pode não ser detectada.
+       *
+       * `async`: não bloqueia a renderização da página.
+       */}
+      <head>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());`,
+          }}
+        />
+      </head>
       <body
         className={`${inter.className} bg-[#0A0A0A] text-white antialiased selection:bg-zinc-800 selection:text-white`}
       >
