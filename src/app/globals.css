@@ -93,6 +93,60 @@ body {
   animation: zoom-lento 24s ease-in-out infinite alternate;
 }
 
+/*
+  TRILHO HORIZONTAL — os carrosséis que rolam no eixo X.
+
+  `overflow-x: auto` faz o `overflow-y` computar como `auto` também: o
+  trilho virava um scroller vertical sem ninguém pedir. Como os itens entram
+  com `translateY(28px)` (ver .revelar), havia 28px de curso vertical dentro
+  dele — e no celular um arrasto para baixo que começasse sobre um card era
+  capturado por esse scroller. O gesto ficava preso ali e a PÁGINA NÃO ANDAVA
+  até o dedo sair; com snap mandatory em posição intermediária, pior ainda.
+  Bug relatado em celular, no carrossel de depoimentos.
+
+  `clip` em vez de `hidden` porque hidden ainda cria caixa de rolagem
+  programável e cortaria o anel de foco do teclado; `overflow-clip-margin`
+  deixa o anel aparecer. `hidden` fica antes como reserva para navegador
+  sem suporte a `clip`.
+*/
+.trilho {
+  overscroll-behavior-x: contain;
+  overflow-y: hidden;
+  overflow-y: clip;
+  overflow-clip-margin: 8px;
+
+  /*
+    Arrastar com o botão/dedo pressionado em cima de um card travava a
+    rolagem da página inteira: o navegador entendia o gesto como arrastar um
+    link ou selecionar texto, e enquanto esse arrasto nativo durava nem a
+    página nem o trilho andavam. Era preciso soltar e rolar de volta.
+    Em carrossel o arrasto É o gesto de navegar, então ele não pode competir
+    com seleção de texto. O texto do depoimento continua legível por leitor
+    de tela e indexável — só não é selecionável com o dedo em cima do card.
+  */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/*
+  `draggable={false}` cobre o arrasto de link e de imagem nos navegadores
+  que ignoram `-webkit-user-drag`; os dois juntos porque nenhum sozinho
+  cobre Chrome, Safari e Firefox.
+*/
+.trilho a,
+.trilho img,
+.trilho video {
+  -webkit-user-drag: none;
+}
+
+/*
+  Dentro do trilho a entrada é só de opacidade: o deslocamento vertical é o
+  que criava a área de rolagem extra que travava o toque.
+*/
+.trilho .revelar {
+  transform: none;
+}
+
 /* Carrossel da loja: esconde a barra de rolagem sem tirar o scroll. */
 .carrossel {
   scrollbar-width: none;
@@ -155,19 +209,19 @@ body {
 }
 
 /*
-  O trilho percorre exatamente o que sobra dele fora da tela:
-  `100% - 100vw` é a largura do trilho menos a da viewport. Assim o último
-  item sempre termina visível, em qualquer largura de tela — antes o valor
-  era um percentual fixo, que sobrava no desktop e faltava no celular.
+  BARRA DE AVANÇO DA GALERIA (ver components/sections/GaleriaSection.tsx).
+
+  Largura e posição reais são escritas pelo componente num
+  requestAnimationFrame, direto no elemento. O que fica aqui é só o estado
+  inicial: sem JavaScript, ou antes da primeira medição, o marcador aparece
+  parcial em vez de sumir — uma barra vazia leria como carrossel quebrado.
 */
-.galeria-trilho {
-  transform: translateX(calc(var(--progresso, 0) * (100vw - 100%)));
-  will-change: transform;
+.galeria-marcador {
+  width: 40%;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .parallax-hero,
-  .galeria-trilho {
+  .parallax-hero {
     transform: none !important;
   }
 }

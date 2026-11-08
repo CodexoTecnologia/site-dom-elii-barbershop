@@ -127,7 +127,7 @@ export function DepoimentosSection() {
         <div className="relative">
           <ul
             ref={trilhoRef}
-            className="carrossel flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2 -mx-6 px-6 md:mx-0 md:px-0"
+            className="carrossel trilho flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2 -mx-6 px-6 md:mx-0 md:px-0"
           >
             {depoimentos.map((d, index) => (
               <Revelar
@@ -148,6 +148,7 @@ export function DepoimentosSection() {
                   href={negocio.links.avaliacoesGoogle}
                   target="_blank"
                   rel="noopener noreferrer"
+                  draggable={false}
                   className="group/card flex h-full flex-col border border-white/10 hover:border-white/25 rounded-sm p-7 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   <figure className="flex h-full flex-col">
@@ -195,6 +196,7 @@ export function DepoimentosSection() {
                 href={negocio.links.avaliacoesGoogle}
                 target="_blank"
                 rel="noopener noreferrer"
+                draggable={false}
                 className="group/fim flex h-full flex-col justify-center items-start gap-4 border border-dashed border-white/15 hover:border-white/35 rounded-sm p-7 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <IconeGoogle className="w-8 h-8" />

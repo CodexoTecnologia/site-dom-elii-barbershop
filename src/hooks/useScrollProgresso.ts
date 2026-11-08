@@ -10,9 +10,10 @@ type Opcoes = {
    *              1 quando termina.
    * "sticky"   → 0 quando o topo encosta no topo da viewport, 1 quando o
    *              conteúdo grudado se solta. É o único que percorre 0..1
-   *              inteiro enquanto algo `sticky` está preso — os outros modos
-   *              param em ~0,75 numa seção de 300vh, o que fazia a galeria
-   *              horizontal nunca chegar ao último item.
+   *              inteiro enquanto algo `sticky` está preso; os outros modos
+   *              param em ~0,75 numa seção alta. Hoje nenhuma seção usa este
+   *              modo — a galeria, que usava, virou carrossel de scroll
+   *              nativo (ver components/sections/GaleriaSection.tsx).
    */
   modo?: "entrada" | "travessia" | "sticky";
 };

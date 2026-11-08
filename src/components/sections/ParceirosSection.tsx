@@ -36,7 +36,7 @@ function CarrosselFotos({
     <div className="relative mb-6">
       <ul
         ref={trilhoRef}
-        className="carrossel flex gap-3 overflow-x-auto snap-x snap-mandatory"
+        className="carrossel trilho flex gap-3 overflow-x-auto snap-x snap-mandatory"
       >
         {fotos.map((foto) => (
           <li
@@ -46,6 +46,7 @@ function CarrosselFotos({
             <Image
               src={foto.src}
               alt={foto.alt}
+              draggable={false}
               fill
               quality={65}
               sizes="(max-width: 640px) 128px, 160px"

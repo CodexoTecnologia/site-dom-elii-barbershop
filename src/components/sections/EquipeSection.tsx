@@ -34,12 +34,17 @@ export function EquipeSection() {
             <span className="text-zinc-500">Curitiba.</span>
           </h2>
           <p className="mt-6 text-zinc-400 font-light max-w-lg mx-auto md:mx-0">
-            Cada um com uma especialidade. Você escolhe com quem quer ser
-            atendido na hora de agendar.
+            Você escolhe com quem quer ser atendido na hora de agendar.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        {/*
+          Colunas = número de barbeiros. Com a grade fixa em três e só dois
+          cards, sobrava uma coluna vazia na direita e a fileira lia como
+          conteúdo faltando. O `max-w` mantém o retrato no mesmo tamanho de
+          antes em vez de esticar cada card para meia tela.
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-3xl">
           {equipeData.map((membro, index) => (
             <Revelar
               as="article"
