@@ -6,9 +6,13 @@
  * funcionar: soar como pessoa real. Se todos estiverem bem escritos e no
  * mesmo tom, o leitor percebe e para de acreditar na página inteira.
  *
- * A seleção cobre de propósito: os três barbeiros pelo nome, os produtos da
- * loja, o ambiente e a expressão "melhor barbearia de Curitiba" — que é o
- * termo que as pessoas buscam, dito por um cliente e não por nós.
+ * A seleção cobre de propósito: os barbeiros pelo nome, os produtos da loja,
+ * o ambiente e a expressão "melhor barbearia de Curitiba" — que é o termo
+ * que as pessoas buscam, dito por um cliente e não por nós.
+ *
+ * Depoimento que cita barbeiro que saiu da casa é removido junto com ele:
+ * manda o cliente procurar, na hora de agendar, alguém que não está mais na
+ * lista. Saiu daqui o que citava o Lucas Eduardo (novembro de 2026).
  *
  * Sem data: "2 meses atrás" vira mentira sozinho com o passar do tempo, e
  * teria de ser revisado a cada visita ao arquivo.
@@ -46,11 +50,6 @@ export const depoimentos: Depoimento[] = [
     nome: "Thiago Silva",
     texto:
       "O atendimento, foi diferenciado! O Henrique me atendeu super bem, recomendo e vou voltar mais vezes!!!",
-    fonte: "Google",
-  },
-  {
-    nome: "Leonardo Domingues",
-    texto: "Experiência top! Muito bem atendido pelo Lucas",
     fonte: "Google",
   },
   {

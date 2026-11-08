@@ -101,7 +101,7 @@ export const faqData: ItemFaq[] = [
   {
     pergunta: "Posso escolher o barbeiro?",
     resposta:
-      "Sim. Elias Filho, Lucas Eduardo e Henrique Vilares aparecem como opção no momento do agendamento.",
+      "Sim. Elias Filho e Henrique Vilares aparecem como opção no momento do agendamento.",
   },
   {
     pergunta: "Vocês atendem crianças?",

@@ -8,6 +8,7 @@ import { VideoFundo } from "@/components/ui/VideoFundo";
 import { Revelar } from "@/components/ui/Revelar";
 import { useScrollProgresso } from "@/hooks/useScrollProgresso";
 import { ServicesSection } from "@/components/sections/ServicesSection";
+import { GaleriaSection } from "@/components/sections/GaleriaSection";
 import { EquipeSection } from "@/components/sections/EquipeSection";
 import { ParceirosSection } from "@/components/sections/ParceirosSection";
 import { BlogSection } from "@/components/sections/BlogSection";
@@ -18,11 +19,9 @@ import { negocio } from "@/data/negocio";
 
 export function HomeClient() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const galeriaRef = useRef<HTMLDivElement>(null);
 
-  // Escrevem --progresso (0..1) no próprio elemento; o transform mora no CSS.
+  // Escreve --progresso (0..1) no próprio elemento; o transform mora no CSS.
   useScrollProgresso(heroRef, "--progresso");
-  useScrollProgresso(galeriaRef, "--progresso", { modo: "sticky" });
 
   return (
     <main className="flex flex-col w-full bg-[#0A0A0A]">
@@ -181,70 +180,7 @@ export function HomeClient() {
       <ServicesSection limite={6} />
 
       {/* DOBRA 4: GALERIA HORIZONTAL */}
-      <section
-        ref={galeriaRef}
-        className="relative h-[300vh] bg-[#0A0A0A]"
-        aria-label="Galeria de trabalhos da Dom Elii Barbershop"
-      >
-        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <div className="galeria-trilho flex gap-6 md:gap-12 px-6 md:px-20">
-            <div className="relative h-[65vh] w-[72vw] md:h-[500px] md:w-[400px] flex-shrink-0 border border-white/10 group">
-              <Image
-                src="/clientes/corte-1.jpeg"
-                fill
-                sizes="(max-width: 768px) 72vw, 400px"
-                quality={65}
-                alt="Corte masculino feito na Dom Elii Barbershop, em Curitiba"
-                className="object-cover"
-              />
-              <div className="absolute bottom-0 left-0 p-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
-                <p className="text-white font-bold uppercase tracking-widest text-sm">
-                  Precisão
-                </p>
-              </div>
-            </div>
-
-            <div
-              style={{ "--poster": "url('/poster-ritual.webp')" } as React.CSSProperties}
-              className="fallback-video relative h-[65vh] w-[85vw] md:h-[500px] md:w-[600px] flex-shrink-0 border border-white/5 bg-zinc-900 group overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-transparent transition-colors duration-700" />
-              <VideoFundo
-                src="/corte-1-17seg.mp4"
-                poster="/poster-ritual.webp"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-                <p className="text-4xl md:text-5xl font-bold uppercase tracking-tighter text-white opacity-90">
-                  Mais que um corte.
-                </p>
-              </div>
-            </div>
-
-            <div className="relative h-[65vh] w-[72vw] md:h-[500px] md:w-[400px] flex-shrink-0 border border-white/10">
-              <Image
-                src="/clientes/barba-1.jpeg"
-                fill
-                sizes="(max-width: 768px) 72vw, 400px"
-                quality={65}
-                alt="Barboterapia com toalha no vapor na Dom Elii Barbershop"
-                className="object-cover"
-              />
-            </div>
-
-            <div className="relative h-[65vh] w-[72vw] md:h-[500px] md:w-[400px] flex-shrink-0 border border-white/10">
-              <Image
-                src="/clientes/corte-2.jpeg"
-                fill
-                sizes="(max-width: 768px) 72vw, 400px"
-                quality={65}
-                alt="Degradê masculino executado na Dom Elii Barbershop, em Curitiba"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <GaleriaSection />
 
       {/* DOBRA 5: EQUIPE (E-E-A-T) */}
       <EquipeSection />
