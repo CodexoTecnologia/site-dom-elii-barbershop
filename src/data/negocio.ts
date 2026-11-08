@@ -127,6 +127,18 @@ export const negocio = {
       "#lrd=0x94dce753e44b37b9:0x3ebb4bd569270b41,1,,,,",
     instagram: "https://instagram.com/dom_elii_barbershop",
     whatsapp: "https://wa.me/5541995384975",
+
+    /**
+     * Mesmo número do atendimento, com a mensagem já escrita. É o que
+     * permite saber, pelo texto que chega, que o contato é barbeiro
+     * respondendo ao card da seção de equipe e não cliente querendo horário
+     * — sem segundo número nem formulário.
+     */
+    trabalheConosco:
+      "https://wa.me/5541995384975?text=" +
+      encodeURIComponent(
+        "Olá! Sou barbeiro e quero fazer parte da equipe da Dom Elii."
+      ),
   },
 
   instagramHandle: "@dom_elii_barbershop",
