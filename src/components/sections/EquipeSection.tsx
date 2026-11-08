@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Plus, ArrowUpRight } from "lucide-react";
 import { Revelar } from "@/components/ui/Revelar";
 import { equipeData } from "@/data/equipe";
 import { negocio } from "@/data/negocio";
@@ -38,13 +39,7 @@ export function EquipeSection() {
           </p>
         </div>
 
-        {/*
-          Colunas = número de barbeiros. Com a grade fixa em três e só dois
-          cards, sobrava uma coluna vazia na direita e a fileira lia como
-          conteúdo faltando. O `max-w` mantém o retrato no mesmo tamanho de
-          antes em vez de esticar cada card para meia tela.
-        */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-3xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {equipeData.map((membro, index) => (
             <Revelar
               as="article"
@@ -84,6 +79,65 @@ export function EquipeSection() {
               </p>
             </Revelar>
           ))}
+
+          {/*
+            CONVITE PARA BARBEIRO — terceiro card da fileira.
+
+            Tem a mesma caixa, a mesma tipografia e as mesmas cores dos
+            barbeiros: card apagado no fim de uma fileira lê como erro de
+            carregamento. O que o mantém em segundo plano é não ter rosto —
+            quem procura com quem se atender percorre retratos e passa reto.
+
+            A caixa é a mesma dos retratos, `bg-zinc-900` chapado: nos cards
+            de barbeiro a foto cobre a caixa inteira, então qualquer fundo
+            mais elaborado aqui seria um tratamento que só este card tem.
+            Dentro dela, o contorno tracejado de uma cadeira vaga — o convite
+            dito em imagem: este lugar existe e está vazio.
+
+            Sem schema `JobPosting`: esse markup pede vaga formal, com data
+            de validade e tipo de contrato, e sem isso rende aviso no Search
+            Console em vez de resultado melhor.
+          */}
+          <Revelar
+            as="article"
+            atraso={equipeData.length * 0.1}
+            className="flex flex-col"
+          >
+            <a
+              href={negocio.links.trabalheConosco}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex h-full flex-col rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <div className="relative w-full aspect-[4/5] mb-6 flex items-center justify-center overflow-hidden rounded-sm border border-white/5 bg-zinc-900">
+                <span
+                  aria-hidden="true"
+                  className="flex h-20 w-20 items-center justify-center rounded-full border border-dashed border-white/25 text-white transition-all duration-500 group-hover:scale-105 group-hover:border-solid group-hover:border-white group-hover:bg-white group-hover:text-black"
+                >
+                  <Plus className="h-7 w-7" strokeWidth={1.5} />
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-bold text-white uppercase tracking-tight mb-1">
+                Sua cadeira
+              </h3>
+              <p className="text-xs font-bold text-zinc-400 uppercase tracking-[0.2em] mb-4">
+                Faça parte da equipe
+              </p>
+              <p className="text-zinc-400 font-light text-sm leading-relaxed">
+                Tem cadeira livre na Dom Elii. Se você é barbeiro, trabalha com
+                capricho e quer uma casa com movimento e clientela fiel, manda
+                uma mensagem para a equipe — a conversa começa por aí.
+              </p>
+
+              <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white">
+                <span className="border-b border-zinc-700 pb-1 transition-colors group-hover:border-white">
+                  Mandar mensagem
+                </span>
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </a>
+          </Revelar>
         </div>
 
         <div className="mt-14 flex justify-center md:justify-start">

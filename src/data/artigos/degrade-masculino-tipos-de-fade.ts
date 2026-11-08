@@ -8,7 +8,7 @@ export const artigo: Artigo = {
     "Low, mid, high e skin fade: o que muda entre eles, quanto cada um exige de manutenção e qual funciona em cabelo fino, crespo ou com entradas.",
   categoria: "Cortes",
   publicadoEm: "2026-07-20",
-  autor: "Lucas Eduardo",
+  autor: "Elias Filho",
   tempoLeitura: "6 min",
   imagem: "/clientes/corte-2.jpeg",
   imagemAlt:

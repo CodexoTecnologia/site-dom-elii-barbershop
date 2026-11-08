@@ -8,7 +8,7 @@ export const artigo: Artigo = {
     "O intervalo ideal muda conforme o corte, o tipo de fio e a barba. Um guia por estilo, e o que acontece quando passa do ponto.",
   categoria: "Rotina",
   publicadoEm: "2026-07-02",
-  autor: "Lucas Eduardo",
+  autor: "Elias Filho",
   tempoLeitura: "5 min",
   imagem: "/clientes/corte-4.jpeg",
   imagemAlt:
